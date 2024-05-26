@@ -9,14 +9,7 @@ from abjadext import rmakers
 
 import tupos
 
-# integers = [_ + 1 for _ in [
-#     4, 1, 7, 2, 7, 6, 1, 6, 5, 7, 5, 3, 6, 3, 4, 5, 4, 2, 3, 2, 1, # numbers backward
-#     3, 2, 4, 4, 3, 6, 6, 3, 5, 7, 5, 6, # up/down patterns
-#     3, 5, 6, 2, 7, 1, 4, # no repetitions from reverse *in* reverse
-# ]][:27]
-# print(integers)
-# integers.reverse()
-# print(integers)
+pitches = evans.PitchHandler(tupos.segment_1_pitches)
 
 maker = evans.SegmentMaker(
     instruments=tupos.instruments,
@@ -30,15 +23,50 @@ maker = evans.SegmentMaker(
     fermata_measures=tupos.fermata_measures_01,
     commands=[
         evans.MusicCommand(
-            ("piccolo voice", (0, 28)),
+            ("piccolo voice", (0, 12)),
             tupos.numeric_subdivisions(
-                tupos.segment_1_pitch_intervals,
+                tupos.segment_1_pitch_intervals[0:12],
                 preprocessor=None,
                 rewrite=None,
-                treat_tuplets=False,
+                treat_tuplets=True, # ? Probably need to modify tuplet treating to accomodate nested values.
+                subdivided=False, # ?
             ),
             # lambda _: print(f"# of notes: {len(abjad.select.logical_ties(_, pitched=True))}"),
-            evans.PitchHandler(tupos.segment_1_pitches),
+            pitches,
+        ),
+        evans.MusicCommand(
+            ("piccolo voice", (12, 16)),
+            tupos.numeric_subdivisions(
+                tupos.segment_1_pitch_intervals[12:16],
+                preprocessor=None,
+                rewrite=None,
+                treat_tuplets=True, # ? Probably need to modify tuplet treating to accomodate nested values.
+                subdivided=False, # ?
+            ),
+            pitches,
+        ),
+        evans.MusicCommand(
+            ("piccolo voice", (16, 22)),
+            tupos.numeric_subdivisions(
+                tupos.segment_1_pitch_intervals[16:22],
+                preprocessor=None,
+                rewrite=None,
+                treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
+                subdivided=True, # ?
+                weighted="right",
+            ),
+            pitches,
+        ),
+        evans.MusicCommand(
+            ("piccolo voice", (22, 28)),
+            tupos.numeric_subdivisions(
+                tupos.segment_1_pitch_intervals[22:28],
+                preprocessor=None,
+                rewrite=None,
+                treat_tuplets=True, # ? Probably need to modify tuplet treating to accomodate nested values.
+                subdivided=False, # ?
+            ),
+            pitches,
         ),
         evans.call(
             "piccolo voice",
@@ -74,7 +102,7 @@ maker = evans.SegmentMaker(
         evans.call(
             "piccolo voice",
             lambda _: tupos.ascend_and_descend_in_range(
-                _, abjad.PitchRange("[C3, C5)"), toggle=abjad.UP
+                _, abjad.PitchRange("[F4, F5)"), toggle=abjad.UP
             ),
             evans.select_measures([_ for _ in range(22, 26)]),
         ),

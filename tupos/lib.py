@@ -9,11 +9,11 @@ from abjadext import rmakers
 
 # lily met
 
-met = abjad.MetronomeMark((1, 4), 70)
+met = abjad.MetronomeMark((1, 4), 80)
 
 # markup met
 
-mark = abjad.MetronomeMark.make_tempo_equation_markup((1, 4), 70)
+mark = abjad.MetronomeMark.make_tempo_equation_markup((1, 4), 80)
 
 # markup met
 

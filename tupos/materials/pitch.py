@@ -70,8 +70,6 @@ class CannibalizingPitchSequence:
             _steer_by=self.steer_by,
             user_counter=self.counter,
         )
-        # raise Exception(len(new_pitches))
-        # self.pitches.extend(new_pitches)
         self.intervals += arg
 
     def __contains__(self, argument):
@@ -110,6 +108,9 @@ class CannibalizingPitchSequence:
                         pitches = temp.pitches
                     else:
                         pitches.extend(temp)
+                    print(f"intervals: {intervals}") ## DEBUG
+                    print(f"pitches: {temp}")
+                    print("")
                     counter += 1
             else:
                 if counter is None:
@@ -117,6 +118,7 @@ class CannibalizingPitchSequence:
                 else:
                     pitches.append(pitches[counter] + interval)
                     counter += 1
+        self.counter = counter
         return pitches
 
 
@@ -172,68 +174,54 @@ built_materials = CannibalizingPitchSequence(
     ],
     starting_pitch=2,
     steer_by="next pitch",
-)  # TAKE THE TIME TO MAKE MOTIVES MATCH PHRASE SIZES
-slices = interval_slices_from_leaf_counts(
-    [
-        3,
-        4,
-        4,
-        6,
-        4,
-        3,
-        3,
-        3,
-        5,
-        4,
-        2,
-        6,
-        4,
-        5,
-        2,
-        4,
-        4,
-        3,
-        4,
-        4,
-        4,
-        3,
-        4,
-        5,
-        5,
-        4,
-        4,
-        3,
-        3,
-        5,
-        4,
-        3,
-        2,
-        5,
-        4,
-        3,
-        5,
-        4,
-        2,
-        3,
-        2,
-        2,
-        2,
-        5,
-        3,
-        4,
-        3,
-        6,
-        2,
-    ]
 )
+# TAKE THE TIME TO MAKE MOTIVES MATCH PHRASE SIZES ... preserves interval between cells
+# slices = interval_slices_from_leaf_counts(
+#     [
+#         3, 4, 4, 6, 4, 3, 3, 3, 5,
+#         4, 3, 6, 4,
+#         5, 3, 3, 3, 4,
+#         4, 4, 4, 3,
+#         4, 7, 4, 5, 4, 3,
+#         5, 4, 4, 1, 6, 3, 4, 4, 4,
+#         5, 5, 1, 3, 3, 3, 4, 5, 2,
+#     ]
+# )
+#
+# for pair in slices:
+#     built_materials(
+#         [
+#             # add more but as subdivisions: maybe based on phrase groups
+#             abjad.sequence.flatten(built_materials.intervals, depth=-1)[
+#                 pair[0] : pair[1]
+#             ],
+#         ]
+#     )
 
-for pair in slices:
+##### ATTEMPT 2 OF CELL CONSTRUCTION .... This way eliminates the interval between cells
+cell_sizes = [
+        3, 4, 4, 6, 4, 3, 3, 3, 5,
+        4, 4, 5, 6,
+        4, 4, 4, 5,
+        5, 6, 4,
+        6, 4, 4, 5, 5, 2,
+        2, 3, 4, 2, 3, 6, 3, 5, 4, 4,
+        6, 2, 2, 2, 3, 3, 4, 3, 4, 1,
+    ]
+
+for i, cell in enumerate(cell_sizes):
+    partitions = abjad.sequence.partition_by_counts(
+        built_materials.pitches,
+        cell_sizes,
+        cyclic=True,
+        overhang=True,
+    )
+    relevant_partition = partitions[i]
+    intervals = get_intervals_from_pitches(relevant_partition)
     built_materials(
         [
             # add more but as subdivisions: maybe based on phrase groups
-            abjad.sequence.flatten(built_materials.intervals, depth=-1)[
-                pair[0] : pair[1]
-            ],
+            intervals,
         ]
     )
 
@@ -389,125 +377,109 @@ def get_a_d_group_lengths_from_ties(leaves, toggle=abjad.UP):
 
 
 ## leaves
+def transpose_to_or_immediately_above_pitch(tie, reference):
+    arg = tie[0].written_pitch
+    if abjad.NamedPitch(arg) == reference:
+        print("SAME!")
+        arg = arg
+    elif reference < abjad.NamedPitch(arg):
+        while reference < abjad.NamedPitch(arg):
+            arg = abjad.NamedPitch(arg).transpose(-12).number
+        if abjad.NamedPitch(arg) == reference:
+            arg = arg
+        else:
+            arg = abjad.NamedPitch(arg).transpose(+12).number
+    elif abjad.NamedPitch(arg) < reference:
+        while abjad.NamedPitch(arg) < reference:
+            arg = abjad.NamedPitch(arg).transpose(+12).number
+    for leaf in tie:
+        leaf.written_pitch = arg
+    return arg
 
+def transpose_to_or_immediately_below_pitch(tie, reference):
+    arg = tie[0].written_pitch
+    if abjad.NamedPitch(arg) == reference:
+        arg = arg
+    elif abjad.NamedPitch(arg) < reference:
+        while abjad.NamedPitch(arg) < reference:
+            arg = abjad.NamedPitch(arg).transpose(+12).number
+        if abjad.NamedPitch(arg) == reference:
+            arg = arg
+        else:
+            arg = abjad.NamedPitch(arg).transpose(-12).number
+    elif reference < abjad.NamedPitch(arg):
+        while abjad.NamedPitch(arg) < reference:
+            arg = abjad.NamedPitch(arg).transpose(-12).number
+    for leaf in tie:
+        leaf.written_pitch = arg
+    return arg
 
 def ascend_leaves_in_range(leaves, pitch_range):
     ties = abjad.select.logical_ties(leaves, pitched=True)
-
-    def transpose_immediately_above_pitch(tie, reference):
-        arg = tie[0].written_pitch
-        if reference < abjad.NamedPitch(arg):
-            while reference < abjad.NamedPitch(arg):
-                arg = abjad.NamedPitch(arg).transpose(-12).number
-            arg = abjad.NamedPitch(arg).transpose(+12).number
-        elif abjad.NamedPitch(arg) < reference:
-            while abjad.NamedPitch(arg) < reference:
-                arg = abjad.NamedPitch(arg).transpose(+12).number
-        for leaf in tie:
-            leaf.written_pitch = arg
-        return arg
 
     start = pitch_range.start_pitch
     stop = pitch_range.stop_pitch
     out = []
     for tie in ties:
         if len(out) == 0:
-            out.append(transpose_immediately_above_pitch(tie, start))
+            out.append(transpose_to_or_immediately_above_pitch(tie, start))
         else:
-            transposed_pitch = transpose_immediately_above_pitch(tie, out[-1])
+            transposed_pitch = transpose_to_or_immediately_above_pitch(tie, out[-1])
             if stop < abjad.NamedPitch(transposed_pitch):
-                out.append(transpose_immediately_above_pitch(tie, start))
+                out.append(transpose_to_or_immediately_above_pitch(tie, start))
             else:
                 out.append(transposed_pitch)
+    # return out
 
 
 def descend_leaves_in_range(leaves, pitch_range):
     ties = abjad.select.logical_ties(leaves, pitched=True)
-
-    def transpose_immediately_below_pitch(tie, reference):
-        arg = tie[0].written_pitch
-        if abjad.NamedPitch(arg) < reference:
-            while abjad.NamedPitch(arg) < reference:
-                arg = abjad.NamedPitch(arg).transpose(+12).number
-            arg = abjad.NamedPitch(arg).transpose(-12).number
-        elif reference < abjad.NamedPitch(arg):
-            while abjad.NamedPitch(arg) < reference:
-                arg = abjad.NamedPitch(arg).transpose(-12).number
-        for leaf in tie:
-            leaf.written_pitch = arg
-        return arg
 
     stop = pitch_range.start_pitch
     start = pitch_range.stop_pitch
     out = []
     for tie in ties:
         if len(out) == 0:
-            out.append(transpose_immediately_below_pitch(tie, start))
+            out.append(transpose_to_or_immediately_below_pitch(tie, start))
         else:
-            transposed_pitch = transpose_immediately_below_pitch(tie, out[-1])
+            transposed_pitch = transpose_to_or_immediately_below_pitch(tie, out[-1])
             if abjad.NamedPitch(transposed_pitch) < stop:
-                out.append(transpose_immediately_below_pitch(tie, start))
+                out.append(transpose_to_or_immediately_below_pitch(tie, start))
             else:
                 out.append(transposed_pitch)
-    return out
+    # return out
 
 
 def ascend_and_descend_in_range(leaves, pitch_range, toggle=abjad.UP):
     ties = abjad.select.logical_ties(leaves, pitched=True)
 
-    def transpose_immediately_above_pitch(tie, reference):
-        arg = tie[0].written_pitch
-        if reference < abjad.NamedPitch(arg):
-            while reference < abjad.NamedPitch(arg):
-                arg = abjad.NamedPitch(arg).transpose(-12).number
-            arg = abjad.NamedPitch(arg).transpose(+12).number
-        elif abjad.NamedPitch(arg) < reference:
-            while abjad.NamedPitch(arg) < reference:
-                arg = abjad.NamedPitch(arg).transpose(+12).number
-        for leaf in tie:
-            leaf.written_pitch = arg
-        return arg
-
-    def transpose_immediately_below_pitch(tie, reference):
-        arg = tie[0].written_pitch
-        if abjad.NamedPitch(arg) < reference:
-            while abjad.NamedPitch(arg) < reference:
-                arg = abjad.NamedPitch(arg).transpose(+12).number
-            arg = abjad.NamedPitch(arg).transpose(-12).number
-        elif reference < abjad.NamedPitch(arg):
-            while abjad.NamedPitch(arg) < reference:
-                arg = abjad.NamedPitch(arg).transpose(-12).number
-        for leaf in tie:
-            leaf.written_pitch = arg
-        return arg
-
-    stop = pitch_range.start_pitch
-    start = pitch_range.stop_pitch
+    start = pitch_range.start_pitch
+    stop = pitch_range.stop_pitch
     out = []
     for tie in ties:
         if toggle == abjad.UP:
             if len(out) == 0:
-                out.append(transpose_immediately_above_pitch(tie, start))
+                out.append(transpose_to_or_immediately_above_pitch(tie, start))
             else:
-                transposed_pitch = transpose_immediately_above_pitch(tie, out[-1])
+                transposed_pitch = transpose_to_or_immediately_above_pitch(tie, out[-1])
                 if stop < abjad.NamedPitch(transposed_pitch):
-                    out.append(transpose_immediately_below_pitch(tie, stop))
+                    out.append(transpose_to_or_immediately_below_pitch(tie, stop))
                     toggle = abjad.DOWN
                 else:
                     out.append(transposed_pitch)
         elif toggle == abjad.DOWN:
-            for tie in ties:
-                if len(out) == 0:
-                    out.append(transpose_immediately_below_pitch(tie, stop))
+            if len(out) == 0:
+                out.append(transpose_to_or_immediately_below_pitch(tie, stop))
+            else:
+                transposed_pitch = transpose_to_or_immediately_below_pitch(tie, out[-1])
+                if abjad.NamedPitch(transposed_pitch) < start:
+                    out.append(transpose_to_or_immediately_above_pitch(tie, start))
+                    toggle = abjad.UP
                 else:
-                    transposed_pitch = transpose_immediately_below_pitch(tie, out[-1])
-                    if abjad.NamedPitch(transposed_pitch) < start:
-                        out.append(transpose_immediately_above_pitch(tie, start))
-                        toggle = abjad.UP
-                    else:
-                        out.append(transposed_pitch)
+                    out.append(transposed_pitch)
         else:
             raise Exception(
                 f"ERROR! toggle must be abjad.UP or abjad.DOWN not {toggle}"
             )
-    return out
+    assert len(ties) == len(out)
+    # return out
