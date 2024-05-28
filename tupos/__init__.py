@@ -63,6 +63,8 @@ from .lib import (
 from .materials.instruments import instruments
 from .materials.pitch import (
     CannibalizingPitchSequence,
+    cell_size_construction,
+    vector_to_indices,
     ascend_and_descend_in_range,
     ascend_in_range,
     ascend_leaves_in_range,
@@ -73,6 +75,8 @@ from .materials.pitch import (
     get_descending_group_lengths_from_ties,
     segment_1_pitch_intervals,
     segment_1_pitches,
+    segment_2_stutters,
+    segment_2_pitches,
 )
 from .materials.rhythm import numeric_subdivisions
 from .materials.score_structure import score
@@ -180,4 +184,9 @@ __all__ = [
     "trill_pitches_followed_by_run",
     "trill_ties",
     "triple_swell",
+    "segment_2_stutters",
+    "cell_sizes",
+    "vector_to_indices",
+    "cell_size_construction",
+    "segment_2_pitches",
 ]

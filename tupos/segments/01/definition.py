@@ -31,7 +31,6 @@ maker = evans.SegmentMaker(
                 treat_tuplets=True, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
             ),
-            # lambda _: print(f"# of notes: {len(abjad.select.logical_ties(_, pitched=True))}"),
             pitches,
         ),
         evans.MusicCommand(
@@ -137,6 +136,11 @@ maker = evans.SegmentMaker(
         #     "score",
         #     evans.SegmentMaker.beam_score_without_splitting,
         #     lambda _: abjad.select.components(_, abjad.Score),
+        # ),
+        # evans.call(
+        #     "piccolo voice",
+        #     lambda _: print(f"# of notes: {len(abjad.select.logical_ties(_, pitched=True))}"),
+        #     selector=lambda _: _,
         # ),
         evans.attach(
             "Global Context",

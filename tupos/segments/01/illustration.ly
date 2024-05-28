@@ -554,11 +554,9 @@
                                 bf''8
 
                                 f'''8
-                                ]
 
-                                bf'8
-                                - \accent
-                                [
+                                fs'''8
+                                ]
 
                                 \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
@@ -568,22 +566,24 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 14]
-                                    cs''16
-
-                                    a''16
-
-                                    d'''16
-
-                                    d'''16
-                                    ]
-
-                                    cs''16
+                                    d''16
                                     - \accent
                                     [
 
-                                    ef''16
-
                                     a''16
+
+                                    c'''16
+                                    ]
+
+                                    a'16
+                                    - \accent
+                                    [
+
+                                    fs''16
+
+                                    f'''16
+
+                                    g'''16
                                     ]
 
                                 }
@@ -594,11 +594,12 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 15]
-                                    a''2
+                                    c''2
+                                    - \accent
 
                                     bf''2
 
-                                    cs'''2
+                                    e'''2
 
                                 }
 
@@ -609,8 +610,7 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 16]
-                                    af'1
-                                    - \accent
+                                    fs'''1
 
                                 }
 
@@ -621,34 +621,37 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 17]
-                                    ef''8
+                                    f''8
+                                    - \accent
                                     [
 
-                                    c'''8
-
-                                    e'''8
+                                    cs'''8
                                     ]
 
                                     b'8
                                     - \accent
                                     [
 
+                                    c''8
+
                                     \times 2/3
                                     {
 
-                                        d''16
-
                                         ef''16
 
-                                        af''16
+                                        bf''16
 
-                                        cs'''16
+                                        d'''16
 
-                                        ef'''16
+                                        g'''16
                                         ]
 
-                                        d''16
+                                        f''16
                                         - \accent
+                                        [
+
+                                        c'''16
+                                        ]
 
                                     }
 
@@ -661,22 +664,22 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 18]
-                                    af''4
-
-                                    b''4
+                                    ef'''4
 
                                     g'''4
+
+                                    e''4
+                                    - \accent
 
                                     \times 2/3
                                     {
 
-                                        a'8
-                                        - \accent
+                                        ef'''8
                                         [
 
-                                        f''8
+                                        f'''8
 
-                                        f''8
+                                        fs'''8
                                         ]
 
                                     }
@@ -690,10 +693,10 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 19]
-                                    b''2
-
-                                    bf'2
+                                    e''2
                                     - \accent
+
+                                    bf''2
 
                                 }
 
@@ -707,39 +710,40 @@
                                           %! COMMENT_MEASURE_NUMBERS
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 20]
-                                        c''8
+                                        c'''8
+
+                                        b'8
+                                        - \accent
                                         [
 
-                                        g''8
+                                        ef''8
 
-                                        f'''8
-
-                                        fs'''8
-                                        ]
+                                        cs'''8
 
                                     }
 
-                                    a'16
+                                    d'''16
+
+                                    f'''16
+                                    ]
+
+                                    c''16
                                     - \accent
                                     [
 
                                     e''16
 
-                                    fs''16
-
-                                    a''16
-
                                     \times 2/3
                                     {
 
-                                        f'''16
+                                        d'''16
                                         ]
 
                                         bf'16
                                         - \accent
                                         [
 
-                                        bf'16
+                                        ef''16
                                         ]
 
                                     }
@@ -756,35 +760,35 @@
                                           %! COMMENT_MEASURE_NUMBERS
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 21]
-                                        ef'''4
+                                        c''''4
                                         - \accent
 
-                                        f''4
+                                        b'''4
 
                                     }
 
-                                    b'''16
-                                    - \accent
+                                    cs'''16
                                     [
 
-                                    b''16
+                                    g''16
 
-                                    c''16
+                                    f''16
                                     ]
 
-                                    ef'''16
+                                    fs'''16
                                     - \accent
                                     [
 
                                     \times 2/3
                                     {
 
-                                        af''16
+                                        a''16
 
-                                        ef''16
-
-                                        c''16
+                                        e''16
                                         ]
+
+                                        af'''16
+                                        - \accent
 
                                     }
 
@@ -797,19 +801,18 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 22]
-                                    e'''4
-                                    - \accent
+                                    bf''4
 
-                                    e''4
+                                    d''4
 
                                     \times 2/3
                                     {
 
-                                        g'''8
+                                        a'''8
                                         - \accent
                                         [
 
-                                        af''8
+                                        c'''8
 
                                         cs''8
                                         ]
@@ -826,26 +829,26 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 23]
-                                    fs'16
-                                    - \accent
-                                    [
-
-                                    af'16
-
-                                    ef''16
-
-                                    a''16
-
-                                    c''16
-
-                                    af'16
-                                    ]
-
                                     b'16
                                     - \accent
                                     [
 
-                                    g'16
+                                    f''16
+
+                                    g''16
+
+                                    fs''16
+
+                                    ef''16
+
+                                    af'16
+                                    ]
+
+                                    e''16
+                                    - \accent
+                                    [
+
+                                    ef'''16
 
                                 }
 
@@ -856,34 +859,34 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 24]
-                                    g'32
-                                    ]
-
-                                    cs''32
-                                    - \accent
-                                    [
+                                    b''32
 
                                     e''32
 
-                                    fs''32
-
                                     cs''32
 
-                                    b'32
+                                    c''32
                                     ]
 
-                                    c''32
+                                    d''32
                                     - \accent
                                     [
 
-                                    cs''32
-
                                     af''32
 
-                                    bf'32
+                                    fs''32
+
+                                    g'32
                                     ]
 
-                                    cs''32
+                                    bf'32
+                                    - \accent
+                                    [
+
+                                    f'32
+                                    ]
+
+                                    a'32
                                     - \accent
                                     [
 
@@ -897,24 +900,25 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 25]
-                                    a''16
-
                                     c''16
 
-                                    c''16
+                                    af''16
+
+                                    cs''16
+
+                                    b'16
+
+                                    bf'16
                                     ]
 
-                                    d''16
+                                    c''16
                                     - \accent
                                     [
 
-                                    e''16
+                                    fs''16
 
-                                    af''16
-
-                                    af''16
-
-                                    a'16
+                                    cs''16
+                                    ]
 
                                 }
 
@@ -925,21 +929,17 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 26]
-                                    fs'8
-                                    ]
-
-                                    b'8
+                                    d''8
                                     - \accent
                                     [
 
-                                    fs'8
-                                    ]
+                                    f''8
 
-                                    ef''8
-                                    - \accent
-                                    [
+                                    c'''8
 
                                     g''8
+
+                                    a'8
                                     ]
 
                                 }
@@ -950,27 +950,9 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 27]
-                                    g'''16
+                                    cs'''16
                                     - \accent
                                     [
-
-                                    bf''16
-                                    ]
-
-                                    b'''16
-                                    - \accent
-                                    [
-
-                                    e'''16
-
-                                    f''16
-                                    ]
-
-                                    g'''16
-                                    - \accent
-                                    [
-
-                                    d'''16
 
                                     af''16
                                     ]
@@ -978,6 +960,22 @@
                                     b'''16
                                     - \accent
                                     [
+
+                                    c'''16
+
+                                    f''16
+                                    ]
+
+                                    b'''16
+                                    - \accent
+                                    [
+
+                                    cs'''16
+
+                                    c'''16
+
+                                    fs''16
+                                    ]
 
                                 }
 
@@ -987,6 +985,10 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 28]
+                                    b'''32
+                                    - \accent
+                                    [
+
                                     g'''32
 
                                     a''32
@@ -994,28 +996,25 @@
                                     f''32
                                     ]
 
-                                    f'''32
+                                    bf'''32
                                     - \accent
                                     [
 
-                                    c'''32
+                                    e'''32
 
-                                    ef''32
+                                    ef'''32
+
+                                    f''32
                                     ]
 
-                                    f'''32
+                                    af'''32
                                     - \accent
                                     [
 
-                                    c'''32
+                                    fs'''32
 
-                                    bf''32
-
-                                    af''32
+                                    g''32
                                     ]
-
-                                    a'''32
-                                    - \accent
 
                                 }
 

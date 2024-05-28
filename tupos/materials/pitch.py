@@ -89,6 +89,8 @@ class CannibalizingPitchSequence:
                 counter = 0
             else:
                 counter = user_counter
+        else:
+            counter = -1
         if user_counter is None:
             pitches = [starting_pitch]
         else:
@@ -107,11 +109,12 @@ class CannibalizingPitchSequence:
                     if len(pitches) == 1:
                         pitches = temp.pitches
                     else:
-                        pitches.extend(temp)
-                    print(f"intervals: {intervals}") ## DEBUG
-                    print(f"pitches: {temp}")
-                    print("")
-                    counter += 1
+                        if _steer_by == "next pitch":
+                            pitches.extend(temp)
+                        else:
+                            pitches.extend(temp[1:])
+                    if counter != -1:
+                        counter += 1
             else:
                 if counter is None:
                     pitches.append(pitches[-1] + interval)
@@ -200,31 +203,53 @@ built_materials = CannibalizingPitchSequence(
 
 ##### ATTEMPT 2 OF CELL CONSTRUCTION .... This way eliminates the interval between cells
 cell_sizes = [
-        3, 4, 4, 6, 4, 3, 3, 3, 5,
+        3, 4, 4, 6, 4, 3, 3, 3, 5, # start new process here but still keep track of phrase sizes by beams
         4, 4, 5, 6,
-        4, 4, 4, 5,
-        5, 6, 4,
-        6, 4, 4, 5, 5, 2,
-        2, 3, 4, 2, 3, 6, 3, 5, 4, 4,
-        6, 2, 2, 2, 3, 3, 4, 3, 4, 1,
+        4, 4, 4, 6,
+        3, 4, 4,
+        2, 6, 4, 4, 3, 5, 3, 2,
+        5, 3, 3, 3, 6, 6, 4, 2, 6,
+        3, 5, 2, 3, 4, 4, 4, 3,
     ]
 
-for i, cell in enumerate(cell_sizes):
+for i, cell in enumerate(cell_sizes[:9]):
     partitions = abjad.sequence.partition_by_counts(
         built_materials.pitches,
-        cell_sizes,
+        cell_sizes[:9],
         cyclic=True,
         overhang=True,
     )
     relevant_partition = partitions[i]
-    intervals = get_intervals_from_pitches(relevant_partition)
+    intervals_ = get_intervals_from_pitches(relevant_partition)
     built_materials(
         [
             # add more but as subdivisions: maybe based on phrase groups
-            intervals,
+            intervals_,
         ]
     )
 
+expanding_pairs = [[0], [1, 3], [2, 5], [4, 8], [6, 11], [1+11], [2+11, 4+11], [3+11, 6+11], [5+11, 9+11], [7+11, 12+11]]
+for i, pair in enumerate(expanding_pairs):
+    if 1 < len(pair):
+        if i % 2 == 0:
+            gotten_intervals = get_intervals_from_pitches(built_materials.pitches)[pair[0]:pair[1]]
+        else:
+            gotten_intervals = [0 - _ for _ in get_intervals_from_pitches(built_materials.pitches)[pair[0]:pair[1]]]
+        built_materials(
+            [
+                gotten_intervals,
+            ]
+        )
+    else:
+        if i % 2 == 0:
+            gotten_interval = get_intervals_from_pitches(built_materials.pitches)[pair[0]]
+        else:
+            gotten_interval = 0 - get_intervals_from_pitches(built_materials.pitches)[pair[0]]
+        built_materials(
+            [
+                gotten_interval,
+            ]
+        )
 
 segment_1_pitches = evans.Sequence(built_materials.pitches).mod(12, indices=True)
 
@@ -380,7 +405,6 @@ def get_a_d_group_lengths_from_ties(leaves, toggle=abjad.UP):
 def transpose_to_or_immediately_above_pitch(tie, reference):
     arg = tie[0].written_pitch
     if abjad.NamedPitch(arg) == reference:
-        print("SAME!")
         arg = arg
     elif reference < abjad.NamedPitch(arg):
         while reference < abjad.NamedPitch(arg):
@@ -483,3 +507,113 @@ def ascend_and_descend_in_range(leaves, pitch_range, toggle=abjad.UP):
             )
     assert len(ties) == len(out)
     # return out
+
+
+# Segment 2
+
+row_intervals = intervals + intervals
+folded_intervals = evans.Sequence(row_intervals).zipped_bifurcation()
+row_intervals_2 = intervals + intervals + [None for _ in range(row_intervals[0] % 5)]
+folded_intervals_2 = evans.Sequence(row_intervals_2).zipped_bifurcation()
+row_intervals_3 = intervals + intervals + [None for _ in range(row_intervals[0] % 5)] + [None for _ in range(row_intervals[3] % 5)]
+folded_intervals_3 = evans.Sequence(row_intervals_3).zipped_bifurcation()
+row_intervals_4 = intervals + intervals + [None for _ in range(row_intervals[0] % 5)] + [None for _ in range(row_intervals[3] % 5)] + [None for _ in range(row_intervals[2] % 5)]
+folded_intervals_4 = evans.Sequence(row_intervals_4).zipped_bifurcation()
+pli_selon_pli = folded_intervals + folded_intervals_2 + folded_intervals_3 + folded_intervals_4
+
+
+alternating_directions = []
+for i, integer in enumerate(pli_selon_pli):
+    if i % 2 == 0:
+        alternating_directions.append(0 - integer)
+    else:
+        alternating_directions.append(integer)
+
+
+segment_2_material_2_intervals_to_pitches = CannibalizingPitchSequence(
+    intervals=[
+        alternating_directions
+    ],
+    starting_pitch=4,
+    steer_by="final pitch",
+)
+
+cycle = evans.CyclicList([0, 24, 0, 12, 12, 0, 12, 12, 24, 12, 0, 0, 12, 24, 24, 12, 24, 24, 24, 12, 0, 0, 0, 12, 12, 0, 12, 12, 12], forget=False)
+
+segment_2_sequence_object = evans.Sequence(segment_2_material_2_intervals_to_pitches.pitches).mod(12, indices=True)
+segment_2_sequence_object = segment_2_sequence_object.add_sequences(cycle(r=len(segment_2_sequence_object)))
+
+segment_2_stutters = segment_2_sequence_object.stutter(
+    counts=[(_ % 4) + 3 for _ in cell_sizes],
+    indices=[0],
+    period=1,
+    cyclic=True,
+)
+
+cell_size_construction = []
+for cell, rest in zip([_ + 3 for _ in cell_sizes], [(_ % 2) + 1 for _ in intervals + inverted_intervals + reversed_intervals]):
+    cell_size_construction.extend([1 for _ in range(cell)])
+    cell_size_construction.append(0 - rest)
+
+def vector_to_indices(vector):
+    cell_indices = []
+    cell_counter = 0
+    for integer in vector:
+        cell_counter += abs(integer)
+        if 0 < integer:
+            cell_indices.append(cell_counter)
+        else:
+            continue
+    return cell_indices
+
+
+# segment 2 main materials
+segment_2_cumulative_sums = abjad.math.cumulative_sums([5 for _ in range(6)])
+segment_2_sums_pairs = abjad.sequence.nwise(segment_2_cumulative_sums, 2)
+segment_2_gotten_intervals = [get_intervals_from_pitches(built_materials.pitches[pair[0]:pair[1]]) for pair in segment_2_sums_pairs]
+
+segment_2_pitches = CannibalizingPitchSequence(
+    intervals=segment_2_gotten_intervals,
+    starting_pitch=6,
+    steer_by="final pitch",
+)
+
+full_interval_sequence = get_intervals_from_pitches(built_materials.pitches)
+segment_2_partitions = abjad.sequence.partition_by_counts(full_interval_sequence, cell_sizes[::-1], cyclic=True, overhang=True)
+
+for i, partition in enumerate(segment_2_partitions[:12]):
+    if (i % 3 == 0 or i % 5 == 0):
+        partition = partition[::-1]
+    if (i % 6 == 0 or i % 7 == 0):
+        partition = [0 - integer for integer in partition]
+    segment_2_pitches(
+        [
+            partition,
+        ]
+    )
+
+partitioned_cells = abjad.sequence.partition_by_counts(cell_sizes, cell_sizes, cyclic=True, overhang=True)
+warped_cells = []
+for i, cell in enumerate(partitioned_cells):
+    if (i % 3 == 0 or i % 5 == 0 or i % 7 == 0):
+        warped_cells += cell[::-1]
+    else:
+        warped_cells += cell
+
+segment_2_cumulative_sums_2 = abjad.math.cumulative_sums(warped_cells)
+segment_2_sums_pairs_2 = [_ for _ in abjad.sequence.nwise(segment_2_cumulative_sums_2, 2)]
+new_motives = [get_intervals_from_pitches(built_materials.pitches[pair[0]:pair[1]]) for pair in segment_2_sums_pairs_2[:18]]
+for i, motive in enumerate(new_motives):
+    if (i % 4 == 0 or i % 6 == 0):
+        partition = partition[::-1]
+    if (i % 7 == 0 or i % 10 == 0):
+        partition = [0 - integer for integer in partition]
+    segment_2_pitches(
+        [
+            partition,
+        ]
+    )
+
+segment_2_pitches = evans.Sequence(segment_2_pitches).mod(12, indices=True)
+
+# raise Exception(len(segment_2_pitches))
