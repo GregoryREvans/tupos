@@ -130,7 +130,7 @@ front_half = manipulated_pairs[:15]
 back_half = manipulated_pairs[15:]
 folded_back = [_ for _ in evans.Sequence(back_half).zipped_bifurcation(reversed=True)]
 rejoined_halves = front_half + folded_back
-signatures_05 = [abjad.TimeSignature(_) for _ in folded_pairs]
+signatures_05 = [abjad.TimeSignature(_) for _ in rejoined_halves]
 assert len(signatures_05) == len(signatures_01)
 
 # all_sigs = (

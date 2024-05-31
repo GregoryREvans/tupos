@@ -38,7 +38,6 @@ maker = evans.SegmentMaker(
             stutter_handler,
             evans.ArticulationHandler(["staccatissimo"]),
             lambda _: [abjad.beam(group) for group in abjad.select.group_by_pitch(_)],
-            # lambda _: [abjad.beam(group) for group in abjad.select.runs(_)],
             lambda _: baca.hairpin(abjad.select.notes(_), "ffff -- niente"),
         ),
         evans.MusicCommand(
@@ -52,6 +51,7 @@ maker = evans.SegmentMaker(
                 weighted="left",
             ),
             main_handler,
+            tupos.tenuto_stammers,
         ),
         evans.call(
             "piccolo voice",
@@ -94,6 +94,7 @@ maker = evans.SegmentMaker(
                 subdivided=False,
             ),
             main_handler,
+            tupos.tenuto_stammers,
         ),
         evans.call(
             "piccolo voice",
@@ -136,6 +137,7 @@ maker = evans.SegmentMaker(
                 subdivided=False,
             ),
             main_handler,
+            tupos.tenuto_stammers,
         ),
         evans.call(
             "piccolo voice",
@@ -180,6 +182,7 @@ maker = evans.SegmentMaker(
                 subdivided=False,
             ),
             main_handler,
+            tupos.tenuto_stammers,
         ),
         evans.call(
             "piccolo voice",
@@ -222,6 +225,7 @@ maker = evans.SegmentMaker(
                 subdivided=False,
             ),
             main_handler,
+            tupos.tenuto_stammers,
         ),
         evans.call(
             "piccolo voice",

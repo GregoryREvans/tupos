@@ -1,5 +1,13 @@
 import abjad
 import evans
+from abjadext import rmakers
+
+
+#duplicate to avoid circular import
+def return_parent(arg):
+    parent = abjad.get.parentage(arg).parent
+    return parent
+###
 
 
 def get_intervals_from_pitches(pitches):
@@ -16,14 +24,21 @@ class CannibalizingPitchSequence:
         steer_by="next pitch",
     ):
         self.intervals = intervals
-        self.starting_pitch = starting_pitch
         self.steer_by = steer_by
         self.counter = None
+        self.pitches = [starting_pitch]
         if self.steer_by == "next pitch":
             self.counter = 0
-        self.pitches = self._pitch_from_interval_groups(
-            self.intervals, self.starting_pitch, self.steer_by
-        )
+        else:
+            self.counter = None
+        if self.steer_by == "next pitch":
+            self._pitch_from_interval_groups_by_next_pitch(
+                self.intervals
+            )
+        elif self.steer_by == "final pitch":
+            self._pitch_from_interval_groups_by_final_pitch(
+                self.intervals
+            )
 
     def __getitem__(self, index):
         return self.pitches[index]
@@ -64,65 +79,58 @@ class CannibalizingPitchSequence:
         return instance_of_object
 
     def __call__(self, arg):
-        new_pitches = self._pitch_from_interval_groups(
-            intervals=arg,
-            starting_pitch=self.starting_pitch,
-            _steer_by=self.steer_by,
-            user_counter=self.counter,
-        )
+        if self.steer_by == "next pitch":
+            self._pitch_from_interval_groups_by_next_pitch(
+                intervals=arg,
+            )
+        else:
+            self._pitch_from_interval_groups_by_final_pitch(
+                intervals=arg,
+            )
         self.intervals += arg
+        # print(self.pitches)
 
     def __contains__(self, argument):
         test_value = argument in self.pitches
         return test_value
 
-    def _pitch_from_interval_groups(
+    def _pitch_from_interval_groups_by_next_pitch(
         self,
         intervals,
-        starting_pitch,
-        _steer_by,
-        user_counter=None,
     ):
-        counter = None
-        if _steer_by == "next pitch":
-            if user_counter is None:
-                counter = 0
-            else:
-                counter = user_counter
-        else:
-            counter = -1
-        if user_counter is None:
-            pitches = [starting_pitch]
-        else:
-            pitches = self.pitches
         for interval in intervals:
             if isinstance(interval, list):
-                if counter is None:
-                    for interval_ in interval:
-                        pitches.append(pitches[-1] + interval_)
+                temp = type(self)(
+                    intervals=interval,
+                    starting_pitch=self.pitches[self.counter],
+                    steer_by="final pitch",
+                )
+                if len(self.pitches) == 1:
+                    self.pitches = temp.pitches
                 else:
-                    temp = CannibalizingPitchSequence(
-                        intervals=interval,
-                        starting_pitch=pitches[counter],
-                        steer_by="final pitch",
-                    )
-                    if len(pitches) == 1:
-                        pitches = temp.pitches
-                    else:
-                        if _steer_by == "next pitch":
-                            pitches.extend(temp)
-                        else:
-                            pitches.extend(temp[1:])
-                    if counter != -1:
-                        counter += 1
+                    self.pitches.extend(temp)
+                self.counter += 1
             else:
-                if counter is None:
-                    pitches.append(pitches[-1] + interval)
+                self.pitches.append(self.pitches[self.counter] + interval)
+                self.counter += 1
+
+    def _pitch_from_interval_groups_by_final_pitch( # fix this....what is wrong...........
+        self,
+        intervals,
+    ):
+        for interval in intervals:
+            if isinstance(interval, list):
+                temp = type(self)(
+                    intervals=interval,
+                    starting_pitch=self.pitches[-1],
+                    steer_by="final pitch",
+                )
+                if len(self.pitches) == 1:
+                    self.pitches = temp.pitches
                 else:
-                    pitches.append(pitches[counter] + interval)
-                    counter += 1
-        self.counter = counter
-        return pitches
+                    self.pitches.extend(temp[1:])
+            else:
+                self.pitches.append(self.pitches[-1] + interval)
 
 
 ### materials ###
@@ -255,6 +263,7 @@ segment_1_pitches = evans.Sequence(built_materials.pitches).mod(12, indices=True
 
 segment_1_pitch_intervals = get_intervals_from_pitches(segment_1_pitches)
 
+# raise Exception(segment_1_pitches)
 # materials based on steiner system
 
 forward = [1, 2, 3, 2, 4, 5, 4, 3, 6, 3, 5, 7, 5, 6, 1, 6, 7, 2, 7, 1, 4]
@@ -617,3 +626,311 @@ for i, motive in enumerate(new_motives):
 segment_2_pitches = evans.Sequence(segment_2_pitches).mod(12, indices=True)
 
 # raise Exception(len(segment_2_pitches))
+
+# segment 3
+pattern_1 = abjad.index(
+    abjad.math.cumulative_sums(inverted_intervals + reversed_intervals)[1:],
+    abjad.math.cumulative_sums(inverted_intervals + reversed_intervals)[-1] + 1,
+)
+
+pattern_2 = abjad.index(
+    abjad.math.cumulative_sums(intervals)[1:],
+    abjad.math.cumulative_sums(intervals)[-1] + 1,
+)
+
+pattern_3 = abjad.index(
+    abjad.math.cumulative_sums(cell_sizes)[1:],
+    abjad.math.cumulative_sums(cell_sizes)[-1] + 1,
+)
+
+pattern_union = pattern_1 | pattern_2 | pattern_3
+rest_pattern = ~pattern_union
+
+pattern_1_pitches = [_ + 24 for _ in row]
+pattern_2_pitches = [_ + 12 for _ in inverted_row + reversed_row]
+pattern_3_pitches = [_ for _ in evans.Sequence(row).transpose(2)]
+
+def layered_pitch_applicator(ties, pitches, pattern):
+    cyc_pitches = evans.CyclicList(pitches, forget=False)
+    ties = abjad.select.logical_ties(ties, pitched=True, grace=False)
+    gotten_ties = abjad.select.get(ties, pattern)
+    for tie in gotten_ties:
+        tie_pitch = cyc_pitches(r=1)[0]
+        for leaf in tie:
+            annotation = abjad.get.annotation(leaf, "pitched by applicator")
+            if annotation is None:
+                leaf.written_pitch = tie_pitch
+                abjad.annotate(leaf, "pitched by applicator", True)
+            else:
+                if isinstance(leaf, abjad.Note):
+                    chord_pitches = [leaf.written_pitch]
+                    chord_pitches.append(tie_pitch)
+                    constructed_chord = abjad.Chord(chord_pitches, leaf.written_duration)
+                    indicators = abjad.get.indicators(leaf)
+                    for indicator in indicators:
+                        abjad.detach(indicator, leaf)
+                        abjad.attach(indicator, constructed_chord)
+                    abjad.annotate(constructed_chord, "pitched by applicator", True)
+                    abjad.mutate.replace(leaf, constructed_chord)
+                elif isinstance(leaf, abjad.Chord):
+                    full_pitch_list = [_ for _ in leaf.written_pitches]
+                    full_pitch_list.append(tie_pitch)
+                    full_pitch_tuple = tuple(full_pitch_list)
+                    leaf.written_pitches = full_pitch_tuple
+
+
+def chord_to_graces(ties, directions=[abjad.UP, abjad.DOWN], stem_position=18, grace_location="after"):
+    cyc_directions = evans.CyclicList(directions, forget=False)
+    ties = abjad.select.logical_ties(ties, pitched=True, grace=False)
+    chords = [tie for tie in ties if isinstance(tie[0], abjad.Chord)]
+    for chord in chords:
+        if cyc_directions(r=1)[0] == abjad.DOWN:
+            pitches = chord[0].written_pitches
+        else:
+            pitches = chord[0].written_pitches[::-1]
+        for i, chord_head in enumerate(chord):
+            constructed_note = abjad.Note(pitches[0], chord_head.written_duration)
+            if i == 0:
+                grace_strings = [f"{abjad.lilypond(_)}16" for _ in pitches[-1:0:-1]]
+                combined_string = " ".join(grace_strings)
+                if grace_location == "before":
+                    graces = evans.BeforeGraceContainer(components=combined_string, position=stem_position)
+                    abjad.attach(graces, constructed_note)
+                elif grace_location == "after":
+                    graces = evans.AfterGraceContainer(components=combined_string, position=stem_position)
+                    target = abjad.get.leaf(chord_head, -1)
+                    abjad.attach(graces, target)
+            indicators = abjad.get.indicators(chord_head)
+            for indicator in indicators:
+                abjad.detach(indicator, chord_head)
+                abjad.attach(indicator, constructed_note)
+            abjad.annotate(chord_head, "pitched by applicator", True)
+            abjad.mutate.replace(chord_head, constructed_note)
+
+
+# segment 4
+# dense primary + secondary materials
+segment_4_rest_groups = []
+for i, group in enumerate(cell_sizes):
+    if i < 3:
+        if i % 2 == 0:
+            segment_4_rest_groups.append(3 * group)
+        else:
+            segment_4_rest_groups.append(group)
+    elif i < 3 + 4:
+        if i % 2 == 0:
+            segment_4_rest_groups.append(4 * group)
+        else:
+            segment_4_rest_groups.append(group)
+    elif i < 3 + 4 + 5:
+        if i % 2 == 0:
+            segment_4_rest_groups.append(5 * group)
+        else:
+            segment_4_rest_groups.append(group)
+
+
+segment_4_burble_pitches = CannibalizingPitchSequence(
+    intervals=[
+        inverted_intervals,
+    ],
+    starting_pitch=8,
+    steer_by="next pitch",
+)
+
+segment_4_sums = abjad.math.cumulative_sums(get_intervals_from_pitches(segment_2_material_2_intervals_to_pitches.pitches))
+segment_4_sums_pairs = abjad.sequence.nwise(segment_4_sums)
+for i, pair in enumerate(segment_4_sums_pairs):
+    intervals_ = get_intervals_from_pitches(segment_4_burble_pitches.pitches)[pair[0]:pair[1]]
+    if i % 3 == 0 or i % 4 == 0:
+        intervals_ = [0 - _ for _ in intervals_]
+    segment_4_burble_pitches(
+        [
+            # add more but as subdivisions: maybe based on phrase groups
+            intervals_,
+        ]
+    )
+
+segment_4_burble_pitches = evans.Sequence(segment_4_burble_pitches).stutter(
+    counts=cell_sizes,
+    indices=abjad.math.cumulative_sums(get_intervals_from_pitches(segment_2_material_2_intervals_to_pitches.pitches))[1:],
+    period=sum(abjad.math.cumulative_sums(get_intervals_from_pitches(segment_2_material_2_intervals_to_pitches.pitches)))+1,
+    cyclic=True,
+)
+
+def segment_4_alternate_rester(arg, groups=segment_4_rest_groups): # insert long tones! by grouping groups by cell sizes
+    sustain_pitches = evans.CyclicList(evans.Sequence(inverted_row).transpose(3).items, forget=False)
+    burble_pitches = evans.CyclicList(segment_4_burble_pitches, forget=False)
+    ties = abjad.select.logical_ties(arg, pitched=True) # long tones are of length of row intervals
+    partitioned_ties = abjad.select.partition_by_counts(ties, groups, cyclic=True, overhang=True)
+    toggles = []
+    for i, group in enumerate(partitioned_ties):
+        if i % 2 == 0:
+            toggles.append("group")
+        else:
+            toggles.append("rest")
+    revised_toggles = []
+    cyc_intervals = evans.CyclicList(segment_1_pitch_intervals, forget=False)
+    cyc_groups = evans.CyclicList(segment_4_rest_groups, forget=False)
+    partitioned_toggles = abjad.sequence.partition_by_counts(toggles, [(_ % 5) + 2 for _ in segment_1_pitch_intervals], cyclic=True, overhang=True)
+    for toggle_partition in partitioned_toggles:
+        revised_toggles.extend(toggle_partition)
+        revised_toggles.extend(cyc_intervals(r=1))
+    tuple_pairs = []
+    for toggle in revised_toggles:
+        if toggle == "group" or toggle == "rest":
+            tuple_pairs.append((toggle, cyc_groups(r=1)[0]))
+        else:
+            tuple_pairs.append(("sustain", toggle))
+    final_partitions = abjad.select.partition_by_counts(ties, [pair[1] for pair in tuple_pairs], cyclic=True, overhang=True)
+    for partition, toggle in zip(final_partitions, tuple_pairs):
+        if toggle[0] == "sustain":
+            leaves = abjad.select.leaves(partition)
+            contiguities = abjad.select.group_by_contiguity(leaves)
+            for contiguity in contiguities:
+                abjad.tie(contiguity)
+                sustain_tie_pitch = sustain_pitches(r=1)[0]
+                for leaf in contiguity:
+                    leaf.written_pitch = sustain_tie_pitch
+                parent_groups = abjad.select.group_by(contiguity, return_parent)
+                for parent_delimited_group in parent_groups:
+                    abjad.mutate.fuse(parent_delimited_group)
+        elif toggle[0] == "rest":
+            for tie in partition:
+                rmakers.force_rest(tie)
+        else:
+            for tie in abjad.select.logical_ties(partition):
+                tie_pitch = burble_pitches(r=1)[0] % 12
+                for leaf in tie:
+                    leaf.written_pitch = tie_pitch
+
+## sparse tertiary material
+pattern_4 = abjad.index(
+    abjad.math.cumulative_sums(inverted_intervals[::-1] + reversed_intervals[::-1])[1:],
+    abjad.math.cumulative_sums(inverted_intervals[::-1] + reversed_intervals[::-1])[-1] + 1,
+)
+
+pattern_5 = abjad.index(
+    abjad.math.cumulative_sums(intervals[::-1])[1:],
+    abjad.math.cumulative_sums(intervals[::-1])[-1] + 1,
+)
+
+pattern_6 = abjad.index(
+    abjad.math.cumulative_sums(cell_sizes[::-1])[1:],
+    abjad.math.cumulative_sums(cell_sizes[::-1])[-1] + 1,
+)
+
+pattern_union_456 = pattern_4 | pattern_5 | pattern_6
+rest_pattern_456 = ~pattern_union_456
+
+pattern_4_pitches = [(_ / 2) + 24 + 3 for _ in row]
+pattern_5_pitches = [(_ / 2) + 12 + 2 for _ in inverted_row + reversed_row]
+pattern_6_pitches = [(_ / 2) + 1 for _ in evans.Sequence(row).transpose(2)]
+
+
+def graft_post_sustains(arg, pattern, debug="False"):
+    leaves = abjad.select.leaves(arg, grace=False)
+    gotten_leaves = abjad.select.get(leaves, pattern)
+    contiguities = abjad.select.group_by_contiguity(gotten_leaves)
+    for i, contiguity in enumerate(contiguities):
+        if 1 < len(contiguity):
+            abjad.tie(contiguity)
+        if i == 0:
+            rmakers.force_rest(contiguity)
+        previous_leaf = abjad.get.leaf(contiguity[0], -1)
+        if isinstance(previous_leaf, abjad.Note):
+            sustain_tie_pitch = previous_leaf.written_pitch
+            for leaf in contiguity:
+                leaf.written_pitch = sustain_tie_pitch
+        elif isinstance(previous_leaf, abjad.Chord):
+            sustain_tie_pitch = previous_leaf.written_pitches
+            for leaf in contiguity:
+                leaf.written_pitch = sustain_tie_pitch[0]
+        parent_groups = abjad.select.group_by(contiguity, return_parent)
+        for parent_delimited_group in parent_groups:
+            previous_indicators = None
+            final_indicators = None
+            after_grace = None
+            if previous_leaf is not None:
+                if return_parent(parent_delimited_group[0]) is return_parent(previous_leaf):
+                    parent_delimited_group = [previous_leaf] + parent_delimited_group
+                    previous_indicators = abjad.get.indicators(previous_leaf)
+                    for indicator in previous_indicators:
+                        abjad.detach(indicator, previous_leaf)
+                    final_indicators = abjad.get.indicators(parent_delimited_group[-1])
+                    for indicator in final_indicators:
+                        abjad.detach(indicator, parent_delimited_group[-1])
+                    after_grace = abjad.get.after_grace_container(parent_delimited_group[-1])
+                    abjad.detach(after_grace, parent_delimited_group[-1])
+            fused = abjad.mutate.fuse(parent_delimited_group)
+            if debug is True:
+                for leaf in fused:
+                    abjad.tweak(leaf.note_head, r"\tweak color #blue")
+            if previous_indicators is not None:
+                for indicator in previous_indicators:
+                    abjad.attach(indicator, fused[0])
+            if final_indicators is not None:
+                for indicator in final_indicators:
+                    abjad.attach(indicator, fused[-1])
+            if after_grace is not None:
+                abjad.attach(after_grace, fused[-1])
+        if previous_leaf is not None:
+            abjad.attach(abjad.Tie(), previous_leaf)
+
+
+### segment 5
+pattern_7 = abjad.index(
+    abjad.math.cumulative_sums([_ % 12 for _ in inverted_intervals if _ != 0])[1:],
+    abjad.math.cumulative_sums([_ % 12 for _ in inverted_intervals if _ != 0])[-1] + 1,
+)
+
+pattern_8 = abjad.index(
+    abjad.math.cumulative_sums(reversed_intervals)[1:],
+    abjad.math.cumulative_sums(reversed_intervals)[-1] + 1,
+)
+
+pattern_9 = abjad.index(
+    abjad.math.cumulative_sums(intervals)[1:],
+    abjad.math.cumulative_sums(intervals)[-1] + 1,
+)
+
+pattern_10 = abjad.index(
+    abjad.math.cumulative_sums(folded_intervals)[1:],
+    abjad.math.cumulative_sums(folded_intervals)[-1] + 1,
+)
+
+pattern_11 = abjad.index(
+    abjad.math.cumulative_sums(cell_sizes)[1:],
+    abjad.math.cumulative_sums(cell_sizes)[-1] + 1,
+)
+
+pattern_union_789te = pattern_7 | pattern_8 | pattern_9  | pattern_10  | pattern_11
+rest_pattern_789te = ~pattern_union_789te
+
+pattern_7_pitches = [(_ / 2) + 3 + 6 + 6 + 6 + 6 for _ in evans.Sequence(evans.Sequence(inverted_row) + evans.Sequence(row).reverse()).zipped_bifurcation()]
+
+pattern_8_pitches = [_ + 3 + 6 + 6 + 6 for _ in evans.Sequence(evans.Sequence(reversed_row) + evans.Sequence([_ / 2 for _ in reversed_row] + [None, None, None]).reverse()).zipped_bifurcation().remove_none()]
+
+pattern_9_pitches = [_ + 3 + 6 + 6 for _ in evans.Sequence(evans.Sequence([_ / 2 for _ in row]) + evans.Sequence(row + [None]).reverse()).zipped_bifurcation().remove_none()]
+
+pattern_10_pitches = [_ + 3 + 6 for _ in evans.Sequence(evans.Sequence(inverted_row) + evans.Sequence([_ / 2 for _ in inverted_row]).reverse()).zipped_bifurcation()]
+
+pattern_11_pitches = [(_ / 2) + 3 + 12 for _ in evans.Sequence(row)]
+
+
+def extra_grace_encrustation(arg, transpositions=[0, 1], stem_position=18):
+    cyc_transpositions = evans.CyclicList(transpositions, forget=False)
+    cyc_pitches = evans.CyclicList([_ % 12 for _ in built_materials], forget=False)
+    grace_sizes = evans.CyclicList([_ for _ in row if _ != 0], forget=False)
+    ties = abjad.select.logical_ties(arg, pitched=True, grace=False)
+    filtered_ties = [tie for tie in ties if abjad.get.after_grace_container(abjad.get.leaf(tie[0], -1)) is None and not isinstance(abjad.get.parentage(abjad.get.leaf(tie[0], -1)).parent, evans.AfterGraceContainer)]
+    gotten_ties = abjad.select.get(filtered_ties, abjad.index(abjad.math.cumulative_sums(cell_sizes)[1:], abjad.math.cumulative_sums(cell_sizes)[-1] + 1))
+    for tie in gotten_ties:
+        target = abjad.get.leaf(tie[0], -1)
+        if target is not None:
+            grace_count = grace_sizes(r=1)[0]
+            transposition = cyc_transpositions(r=1)[0]
+            grace_leaves = [abjad.Note(cyc_pitches(r=1)[0] + transposition, abjad.Duration(1, 16)) for _ in range(grace_count)]
+            graces = evans.AfterGraceContainer(components=grace_leaves, position=stem_position)
+            abjad.attach(graces, target)
+            abjad.attach(abjad.StartSlur(), graces[0])
+            abjad.attach(abjad.StopSlur(), tie[0])

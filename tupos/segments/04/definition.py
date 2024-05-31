@@ -20,11 +20,48 @@ maker = evans.SegmentMaker(
     name_staves=False,
     fermata_measures=tupos.fermata_measures_04,
     commands=[
-        # evans.attach(
-        #     "Global Context",
-        #     tupos.literal_mark,
-        #     lambda _: abjad.select.leaf(_, 0),
-        # ),
+        evans.MusicCommand(
+            ("piccolo voice", [0, 1, 2, 3, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 18, 19, 23]),
+            tupos.numeric_subdivisions(
+                tupos.segment_1_pitch_intervals,
+                preprocessor=None,
+                rewrite=None,
+                treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
+                subdivided=False, # ?
+                # preprocessor=evans.make_preprocessor(split_divisions_by_proportions=[(1, 1)]),
+            ),
+            tupos.segment_4_alternate_rester,
+            tupos.clean_up_rests,
+            # lambda _: [rmakers.force_rest(x) for x in abjad.select.get(abjad.select.logical_ties(_), abjad.index(abjad.math.cumulative_sums(tupos.cell_sizes)[1:], sum(abjad.math.cumulative_sums(tupos.cell_sizes))+1))],
+        ),
+        evans.MusicCommand(
+            ("piccolo voice", [4, 10, 11, 17, 20, 21, 22, 24, 25, 26, 27]),
+            tupos.numeric_subdivisions(
+                tupos.segment_1_pitch_intervals[::-1],
+                preprocessor=None,
+                rewrite=None,
+                treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
+                subdivided=False, # ?
+            ),
+            lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_4_pitches, tupos.pattern_4),
+            lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_5_pitches, tupos.pattern_5),
+            lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_6_pitches, tupos.pattern_6),
+            lambda _: [rmakers.force_rest(x) for x in abjad.select.get(abjad.select.logical_ties(_, pitched=True, grace=False), tupos.rest_pattern_456)],
+            lambda _: tupos.clean_up_rests(_),
+            lambda _: tupos.chord_to_graces(_, directions=[
+                abjad.DOWN, abjad.DOWN, abjad.UP, abjad.DOWN, abjad.UP,
+                abjad.UP, abjad.UP, abjad.DOWN, abjad.UP, abjad.DOWN,
+                ], stem_position=12.5),
+            tupos.slur_after_graces,
+            tupos.tenuto_stammers,
+        ),
+        evans.call(
+            "piccolo voice",
+            lambda _: evans.long_beam(
+                _, beam_rests=False, beam_lone_notes=False, direction=None,
+            ),
+            lambda _: _,
+        ),
         evans.attach(
             "Global Context",
             tupos.met,

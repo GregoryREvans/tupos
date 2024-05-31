@@ -32,6 +32,7 @@ maker = evans.SegmentMaker(
                 subdivided=False, # ?
             ),
             pitches,
+            tupos.tenuto_stammers,
         ),
         evans.MusicCommand(
             ("piccolo voice", (12, 16)),
@@ -43,6 +44,7 @@ maker = evans.SegmentMaker(
                 subdivided=False, # ?
             ),
             pitches,
+            tupos.tenuto_stammers,
         ),
         evans.MusicCommand(
             ("piccolo voice", (16, 22)),
@@ -55,6 +57,7 @@ maker = evans.SegmentMaker(
                 weighted="right",
             ),
             pitches,
+            tupos.tenuto_stammers,
         ),
         evans.MusicCommand(
             ("piccolo voice", (22, 28)),
@@ -66,6 +69,7 @@ maker = evans.SegmentMaker(
                 subdivided=False, # ?
             ),
             pitches,
+            tupos.tenuto_stammers,
         ),
         evans.call(
             "piccolo voice",

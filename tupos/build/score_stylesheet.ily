@@ -106,40 +106,24 @@ dashedStaffSymbolLines =
 				\fontsize #1.4 "t   o       J   o   s   h   u   a       P   a   u   l       S   t   i   n   e"
 			}
             \line{\fontsize #-1.5 \with-color "white" "." }
-            \override #'(font-name . "Bell MT Regular")
+            \override #'(font-name . "Noto Serif")
             \fontsize #14
             \line {
                 \concat {
-                I
+                τ
                 \hspace #2.5
-                N
+                ῠ́
                 \hspace #2.5
-                F
+                π
                 \hspace #2.5
-                I
+                ο
                 \hspace #2.5
-                O
-                \hspace #2.5
-                R
-                \hspace #2.5
-                E
-                \hspace #2.5
-                S
-                \hspace #2.5
-                C
-                \hspace #2.5
-                E
-                \hspace #2.5
-                N
-                \hspace #2.5
-                Z
-                \hspace #2.5
-                E
+                ς
                 }
             }
             \line{
 				\override #'(font-name . "Bell MT Regular")
-				"o   ,       l   i   b   e   r       a   b   a   c   i"
+				"o   ,       l   i   b   e   r       a   b   a   c   i       I I"
 			}
             \line{\fontsize #-1.5 \with-color "white" "." }
             \override #'(font-name . "Bell MT Italic")
@@ -147,8 +131,7 @@ dashedStaffSymbolLines =
             \line {
                 f o r \hspace #2.75
                 s o l o \hspace #2.75
-                a l t o \hspace #2.75
-                f l u t e
+                p i c c o l o
             }
     }
 	composer = \markup \override #'(font-name . "Bell MT") \fontsize #5 {"Gregory Rowland Evans (*1995)"}
@@ -257,7 +240,7 @@ dashedStaffSymbolLines =
 		\shape #'((-2 . 0) (-1 . 0) (-0.5 . 0) (0 . 0)) RepeatTie
 		\override RepeatTie.X-extent = ##f
 		\override PaperColumn.used = ##t % just trying this out
-		\override SpacingSpanner.spacing-increment = 1.25
+		%{ \override SpacingSpanner.spacing-increment = 1.25 %}
 		%{ \override SpacingSpanner.strict-grace-spacing = ##t % trevor  %% BREAKS MULTI TRILL? %}
 		%{ \override SpacingSpanner.strict-note-spacing = ##t % trevor  %% BREAKS MULTI TRILL? %}
 		\override SpacingSpanner.uniform-stretching = ##t % trevor

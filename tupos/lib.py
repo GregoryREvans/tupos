@@ -31,6 +31,26 @@ literal_mark = abjad.LilyPondLiteral(
     site="after",
 )
 
+###
+###
+###
+
+def tenuto_stammers(arg):
+    ties = abjad.select.logical_ties(arg, pitched=True, grace=False)
+    pairs = abjad.sequence.nwise(ties, 2)
+    for pair in pairs:
+        if pair[0][0].written_pitch == pair[1][0].written_pitch:
+            abjad.attach(abjad.Articulation("tenuto"), pair[1][0])
+
+
+def clean_up_graces(arg):
+    score = abjad.get.parentage(arg[0])[-1]
+    global_context = score["Global Context"]
+    measures = abjad.select.group_by_measure(arg)
+    for i, measure in enumerate(measures):
+        leaves = abjad.select.notes(measure)
+
+
 ##
 ##
 ##
@@ -60,6 +80,34 @@ def beam_groups_by_count(ties, counts, cyclic=True, overhang=True):
 
 ###
 
+
+def return_parent(arg):
+    parent = abjad.get.parentage(arg).parent
+    return parent
+
+def clean_up_rests(arg):
+    rests = abjad.select.rests(arg, grace=False)
+    groups = abjad.select.group_by_contiguity(rests)
+    for group in groups:
+        sub_groups = abjad.select.group_by(group, return_parent)
+        for sub_group in sub_groups:
+            abjad.mutate.fuse(sub_group)
+
+###
+
+def slur_after_graces(arg):
+    graces = abjad.select.notes(arg, grace=True)
+    groups = abjad.select.group_by_contiguity(graces)
+    for group in groups:
+        anchor_note = abjad.get.leaf(group[-1], 1)
+        if anchor_note is not None:
+            if abjad.get.annotation(group[0], "hidden grace") is True:
+                abjad.attach(abjad.StartSlur(), group[1])
+            else:
+                abjad.attach(abjad.StartSlur(), group[0])
+            abjad.attach(abjad.StopSlur(), anchor_note)
+
+###
 
 def with_sharps(selections):
     abjad.iterpitches.respell_with_sharps(selections)
@@ -142,93 +190,6 @@ clef_whitespace = abjad.LilyPondLiteral(
 tremolo_handler = evans.ArticulationHandler(
     ["tremolo"],
 )
-
-### Transposition Handlers ###
-
-octave_up = evans.TranspositionHandler([abjad.NumberedInterval(12)])
-octave_down = evans.TranspositionHandler([abjad.NumberedInterval(-12)])
-two_octaves_up = evans.TranspositionHandler([abjad.NumberedInterval(24)])
-two_octaves_down = evans.TranspositionHandler([abjad.NumberedInterval(-24)])
-three_octaves_up = evans.TranspositionHandler([abjad.NumberedInterval(36)])
-three_octaves_down = evans.TranspositionHandler([abjad.NumberedInterval(-36)])
-
-quarter_up = evans.TranspositionHandler([abjad.NumberedInterval(0.5)])
-quarter_down = evans.TranspositionHandler([abjad.NumberedInterval(-0.5)])
-
-half_up = evans.TranspositionHandler([abjad.NumberedInterval(1)])
-half_down = evans.TranspositionHandler([abjad.NumberedInterval(-1)])
-
-trill_handler = evans.TrillHandler(boolean_vector=[1], only_chords=True)
-
-bis_handler = evans.BisbigliandoHandler(
-    fingering_list=[
-        r"\double-diamond-parenthesized-top-markup",
-        r"\diamond-parenthesized-double-diamond-markup",
-        r"\double-diamond-parenthesized-top-markup",
-    ],
-    boolean_vector=[1],
-    staff_padding=1,
-    forget=False,
-)
-
-start_damp_indicator = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"\damp-markup"),
-    style="dashed-line-with-hook",
-    command=r"\startTextSpanOne",
-)
-
-start_damp = abjad.bundle(start_damp_indicator, r"- \tweak staff-padding #3.5")
-
-stop_damp = abjad.StopTextSpan(command=r"\stopTextSpanOne")
-
-
-def fireworks(selections):
-    for run in abjad.Selection(selections).runs():
-        first_leaf = abjad.Selection(run).leaf(0)
-        last_leaf = abjad.Selection(run).leaf(-1)
-        abjad.attach(abjad.Dynamic("sfp"), first_leaf)
-        abjad.attach(abjad.StartHairpin("<"), first_leaf)
-        abjad.attach(abjad.Dynamic("fff", leak=True), last_leaf)
-
-
-def sforzandi(selections):
-    ties = abjad.Selection(selections).logical_ties(pitched=True)
-    for tie in ties:
-        abjad.attach(abjad.Dynamic("sfz"), tie[0])
-
-
-start_scratch_indicator = abjad.StartTextSpan(
-    left_text=abjad.Markup(r"poco \hspace #1 gridato"),
-    right_text=abjad.Markup("molto gridato"),
-    style="solid-line-with-arrow",
-    command=r"\startTextSpanTwo",
-)
-start_scratch = abjad.bundle(start_scratch_indicator, r"- \tweak staff-padding #7")
-
-stop_scratch = abjad.StopTextSpan(command=r"\stopTextSpanTwo")
-
-
-def select_all_first_leaves(selections):
-    run_ties = abjad.Selection(selections).runs().logical_ties(pitched=True)
-    ties_first_leaves = abjad.Selection([_[0] for _ in run_ties])
-    return ties_first_leaves
-
-
-def select_run_first_leaves(selections):
-    runs = abjad.Selection(selections).runs()
-    first_ties = abjad.Selection([abjad.Selection(run).logical_tie(0) for run in runs])
-    first_leaves = abjad.Selection([abjad.Selection(tie).leaf(0) for tie in first_ties])
-    return first_leaves
-
-
-# Scordatura
-
-
-def scordatura(staff_padding=8):
-    handler = evans.ScordaturaHandler(
-        string_number="IV", default_pitch="c,", new_pitch="bf,,", padding=staff_padding
-    )
-    return handler
 
 
 # ANNOTATIONS

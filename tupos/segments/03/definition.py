@@ -9,8 +9,9 @@ from abjadext import rmakers
 
 import tupos
 
-maker = evans.SegmentMaker(
-    instruments=tupos.instruments,
+
+maker = evans.SegmentMaker( # do some work to shift grace notes at the start of tuplets *before* the tuplet.
+    instruments=tupos.instruments, # also move time signatures in front of graces at the beginning of measure (and remove from global context)
     names=[
         '"Piccolo"',
     ],
@@ -20,11 +21,34 @@ maker = evans.SegmentMaker(
     name_staves=False,
     fermata_measures=tupos.fermata_measures_03,
     commands=[
-        # evans.attach(
-        #     "Global Context",
-        #     tupos.literal_mark,
-        #     lambda _: abjad.select.leaf(_, 0),
-        # ),
+        evans.MusicCommand(
+            ("piccolo voice", (0, 28)),
+            tupos.numeric_subdivisions(
+                tupos.segment_1_pitch_intervals,
+                preprocessor=None,
+                rewrite=None,
+                treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
+                subdivided=False, # ?
+            ),
+            lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_1_pitches, tupos.pattern_1),
+            lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_2_pitches, tupos.pattern_2),
+            lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_3_pitches, tupos.pattern_3),
+            lambda _: [rmakers.force_rest(x) for x in abjad.select.get(abjad.select.logical_ties(_, pitched=True, grace=False), tupos.rest_pattern)],
+            lambda _: tupos.clean_up_rests(_),
+            lambda _: tupos.chord_to_graces(_, directions=[
+                abjad.UP, abjad.UP, abjad.DOWN, abjad.UP, abjad.DOWN,
+                abjad.DOWN, abjad.DOWN, abjad.UP, abjad.DOWN, abjad.UP,
+                ], stem_position=11.5),
+            tupos.slur_after_graces,
+            tupos.tenuto_stammers,
+        ),
+        evans.call(
+            "piccolo voice",
+            lambda _: evans.long_beam(
+                _, beam_rests=False, beam_lone_notes=False, direction=None,
+            ),
+            lambda _: _,
+        ),
         evans.attach(
             "Global Context",
             tupos.met,

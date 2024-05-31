@@ -273,111 +273,56 @@
                             \context Voice = "piccolo voice"
                             {
 
+                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 4/5
+                                \times 24/25
                                 {
 
-                                    \times 2/3
-                                    {
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 1]
+                                    r16
 
-                                          %! COMMENT_MEASURE_NUMBERS
-                                          %! evans.SegmentMaker.comment_measure_numbers()
-                                        % [piccolo voice measure 1]
-                                        r16
+                                    e'16
+                                    - \staccatissimo
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \ffff
+                                    [
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    - \tweak stencil #constante-hairpin
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \<
 
-                                        e'16
-                                        - \staccatissimo
-                                          %! SPANNER_STOP
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \ffff
-                                        [
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        - \tweak stencil #constante-hairpin
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \<
+                                    e'16
+                                    - \staccatissimo
 
-                                        e'16
-                                        - \staccatissimo
+                                    e'16
+                                    - \staccatissimo
 
-                                    }
+                                    e'16
+                                    - \staccatissimo
 
-                                    \times 2/3
-                                    {
+                                    e'16
+                                    - \staccatissimo
 
-                                        e'16
-                                        - \staccatissimo
+                                    e'16
+                                    - \staccatissimo
+                                    ]
 
-                                        e'16
-                                        - \staccatissimo
+                                    r16
 
-                                        e'16
-                                        - \staccatissimo
+                                    af'''16
+                                    - \staccatissimo
+                                    [
 
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        e'16
-                                        - \staccatissimo
-                                        ]
-
-                                        r16
-
-                                        af'''16
-                                        - \staccatissimo
-                                        [
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        af'''16
-                                        - \staccatissimo
-
-                                        af'''16
-                                        - \staccatissimo
-                                        ]
-
-                                        af'16
-                                        - \staccatissimo
-                                        [
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        af'16
-                                        - \staccatissimo
-
-                                        af'16
-                                        - \staccatissimo
-                                        ]
-
-                                        ef''16
-                                        - \staccatissimo
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        r16
-
-                                        r16
-
-                                        ef''16
-                                        - \staccatissimo
-                                        [
-
-                                    }
+                                    af'''16
+                                    - \staccatissimo
 
                                 }
 
@@ -385,37 +330,87 @@
                                 \times 16/25
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 2]
-                                    ef''8
-                                    - \staccatissimo
+                                    \times 4/5
+                                    {
 
-                                    ef''8
-                                    - \staccatissimo
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 2]
+                                        af'''16
+                                        - \staccatissimo
+                                        ]
 
-                                    ef''8
-                                    - \staccatissimo
+                                        c'16
+                                        - \staccatissimo
+                                        [
 
-                                    ef''8
-                                    - \staccatissimo
+                                        c'16
+                                        - \staccatissimo
 
-                                    ef''8
-                                    - \staccatissimo
+                                        c'16
+                                        - \staccatissimo
+                                        ]
 
-                                    ef''8
+                                        g''16
+                                        - \staccatissimo
+
+                                    }
+
+                                    \times 4/5
+                                    {
+
+                                        r16
+
+                                        r16
+
+                                        g''16
+                                        - \staccatissimo
+                                        [
+
+                                        g''16
+                                        - \staccatissimo
+
+                                        g''16
+                                        - \staccatissimo
+
+                                    }
+
+                                    g''16
                                     - \staccatissimo
                                     ]
 
-                                    r8
-
-                                    r8
-
-                                    fs'8
+                                    d''16
                                     - \staccatissimo
                                     [
 
-                                    fs'8
+                                    d''16
+                                    - \staccatissimo
+
+                                    d''16
+                                    - \staccatissimo
+                                    ]
+
+                                    r16
+
+                                    r16
+
+                                    f'16
+                                    - \staccatissimo
+                                    [
+
+                                    f'16
+                                    - \staccatissimo
+
+                                    f'16
+                                    - \staccatissimo
+
+                                    f'16
+                                    - \staccatissimo
+
+                                    f'16
+                                    - \staccatissimo
+
+                                    f'16
                                     - \staccatissimo
                                       %! SPANNER_STOP
                                       %! baca.PiecewiseCommand._call(3)
@@ -437,25 +432,28 @@
 
                                     d'''16
 
-                                    ef'''16
+                                    g'''16
                                     ]
 
-                                    d''16
+                                    e''16
                                     - \accent
                                     [
 
-                                    d''16
+                                    ef'''16
+                                    ]
 
                                 }
 
                                 \times 2/3
                                 {
 
-                                    f''8
+                                    a'8
+                                    - \accent
+                                    [
 
-                                    a''8
+                                    g''8
 
-                                    b''8
+                                    af''8
 
                                 }
 
@@ -463,30 +461,25 @@
                                 \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 4]
-                                    fs'''16
-                                    ]
+                                    \times 2/3
+                                    {
 
-                                    c''16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 4]
+                                        b''8
+
+                                        ef'''8
+
+                                        f'''8
+                                        ]
+
+                                    }
+
+                                    a'4
                                     - \accent
-                                    [
 
-                                    d''16
-
-                                    e''16
-
-                                    f''16
-
-                                    fs''16
-
-                                    d'''8
-
-                                    ef'''8
-
-                                    g'''8
-                                    ]
+                                    e''4
 
                                 }
 
@@ -497,53 +490,71 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 5]
-                                    bf'32
-                                    - \accent
+                                    f''16
                                     [
 
-                                    a''32
-
-                                    e'''32
-
-                                    fs'''32
-                                    ]
-
-                                    ef''16
-                                    - \accent
-                                    [
-
-                                    fs''16
-
-                                    d'''16
+                                    ef'''16
                                     ]
 
                                     a'16
                                     - \accent
                                     [
 
+                                    b'16
+
+                                    af''16
+
+                                    cs'''16
+                                    ]
+
                                     a'8
+                                    - \accent
+                                    [
 
-                                    c''8
+                                    af''8
 
-                                    cs''8
+                                    cs'''8
+                                    ]
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 6/5
+                                \times 4/5
                                 {
 
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 6]
-                                    c'''8
+                                    bf'32
+                                    - \accent
+                                    [
 
-                                    e'''8
+                                    a''32
+
+                                    b''32
+
+                                    d'''32
                                     ]
 
-                                    ef''4
+                                    a'16
                                     - \accent
+                                    [
+
+                                    cs''16
+
+                                    c'''16
+
+                                    d'''16
+                                    ]
+
+                                    af'8
+                                    - \accent
+                                    [
+
+                                    fs''8
+
+                                    g''8
+                                    ]
 
                                 }
 
@@ -552,54 +563,26 @@
                                 \times 7/10
                                 {
 
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 7]
+                                    bf''2
+
+                                    f'''2
+
+                                }
+
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 2/3
+                                {
+
                                     \times 4/5
                                     {
 
                                           %! COMMENT_MEASURE_NUMBERS
                                           %! evans.SegmentMaker.comment_measure_numbers()
-                                        % [piccolo voice measure 7]
-                                        b''8
-                                        [
-
-                                        f'''8
-                                        ]
-
-                                        af'8
-                                        - \accent
-                                        [
-
-                                        ef''8
-
-                                        d'''8
-                                        ]
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        d'''4
-
-                                        f'''4
-
-                                        fs'''4
-
-                                    }
-
-                                }
-
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 10/9
-                                {
-
-                                    \times 2/3
-                                    {
-
-                                          %! COMMENT_MEASURE_NUMBERS
-                                          %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 8]
-                                        fs'32
+                                        af''32
                                         - \staccatissimo
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(2)
@@ -615,7 +598,13 @@
                                           %! baca.hairpin()
                                         \<
 
-                                        fs'32
+                                        af''32
+                                        - \staccatissimo
+
+                                        af''32
+                                        - \staccatissimo
+
+                                        af''32
                                         - \staccatissimo
                                         ]
 
@@ -623,84 +612,71 @@
 
                                     }
 
-                                    \times 2/3
+                                    \times 4/5
                                     {
 
-                                        fs'32
+                                        af''32
                                         - \staccatissimo
                                         [
 
-                                        fs'32
+                                        af''32
                                         - \staccatissimo
                                         ]
 
-                                        fs''32
+                                        a''32
                                         - \staccatissimo
                                         [
 
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        fs''32
+                                        a''32
                                         - \staccatissimo
 
-                                        fs''32
-                                        - \staccatissimo
-
-                                        fs''32
+                                        a''32
                                         - \staccatissimo
 
                                     }
 
-                                    \times 2/3
-                                    {
+                                    a''32
+                                    - \staccatissimo
 
-                                        fs''32
-                                        - \staccatissimo
+                                    a''32
+                                    - \staccatissimo
 
-                                        fs''32
-                                        - \staccatissimo
-                                        ]
+                                    a''32
+                                    - \staccatissimo
+                                    ]
 
-                                        g''32
-                                        - \staccatissimo
+                                    bf'''32
+                                    - \staccatissimo
 
-                                    }
+                                    r32
 
-                                    \times 2/3
-                                    {
+                                    bf'''32
+                                    - \staccatissimo
+                                    [
 
-                                        r32
+                                    bf'''32
+                                    - \staccatissimo
 
-                                        g''32
-                                        - \staccatissimo
-                                        [
+                                    bf'''32
+                                    - \staccatissimo
+                                    ]
 
-                                        g''32
-                                        - \staccatissimo
+                                    af''32
+                                    - \staccatissimo
+                                    [
 
-                                    }
+                                    af''32
+                                    - \staccatissimo
 
-                                    \times 2/3
-                                    {
+                                    af''32
+                                    - \staccatissimo
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(3)
+                                      %! baca.hairpin()
+                                    \!
+                                    ]
 
-                                        g''32
-                                        - \staccatissimo
-
-                                        g''32
-                                        - \staccatissimo
-
-                                        g''32
-                                        - \staccatissimo
-                                          %! SPANNER_STOP
-                                          %! baca.PiecewiseCommand._call(3)
-                                          %! baca.hairpin()
-                                        \!
-                                        ]
-
-                                    }
+                                    r32
 
                                 }
 
@@ -712,65 +688,75 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 9]
-                                    cs'''8
+                                    a'''16
                                     - \accent
                                     [
 
-                                    d''8
+                                    c'''16
+
+                                    g''16
                                     ]
 
-                                    bf'''8
-                                    - \accent
-                                    [
-
-                                }
-
-                                  %! COMMENT_MEASURE_NUMBERS
-                                  %! evans.SegmentMaker.comment_measure_numbers()
-                                % [piccolo voice measure 10]
-                                b''16
-
-                                f''16
-
-                                e''16
-                                ]
-
-                                af'''16
-                                - \accent
-                                [
-
-                                g'''16
-
-                                d'''16
-
-                                f''16
-                                ]
-
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 10/9
-                                {
-
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 11]
                                     b'''16
                                     - \accent
                                     [
 
-                                    d'''16
+                                    cs'''16
 
-                                    b''16
+                                    d''16
 
-                                    ef''16
+                                }
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \times 7/10
+                                {
+
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 10]
+                                    c''16
                                     ]
 
                                     fs'''16
                                     - \accent
                                     [
 
-                                    fs''16
+                                    f'''16
+
+                                    g''16
                                     ]
+
+                                    b'''16
+                                    - \accent
+                                    [
+
+                                    c'''16
+
+                                    e''16
+                                    ]
+
+                                    b'''16
+                                    - \accent
+                                    [
+
+                                    d'''16
+
+                                    a''16
+                                    ]
+
+                                }
+
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 2/3
+                                {
+
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 11]
+                                    c''2
+                                    ~
+
+                                    c''8
 
                                 }
 
@@ -779,18 +765,19 @@
                                 \times 24/25
                                 {
 
-                                    \times 4/5
+                                    \times 2/3
                                     {
 
                                           %! COMMENT_MEASURE_NUMBERS
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 12]
-                                        g'''64
+                                        fs'32
                                         - \staccatissimo
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(2)
                                           %! baca.hairpin()
                                         \ffff
+                                        [
                                           %! SPANNER_START
                                           %! baca.PiecewiseCommand._call(2)
                                           %! baca.hairpin()
@@ -800,245 +787,207 @@
                                           %! baca.hairpin()
                                         \<
 
-                                        r64
-
-                                        r64
-
-                                        g'''64
+                                        fs'32
                                         - \staccatissimo
-                                        [
 
-                                        g'''64
+                                        fs'32
                                         - \staccatissimo
+                                        ]
 
                                     }
 
-                                    \times 4/5
+                                    \times 2/3
                                     {
 
-                                        g'''64
-                                        - \staccatissimo
-                                        ]
+                                        r32
 
-                                        f''64
+                                        c'32
                                         - \staccatissimo
                                         [
 
-                                        f''64
+                                        c'32
                                         - \staccatissimo
 
-                                        f''64
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        c'32
+                                        - \staccatissimo
+
+                                        c'32
                                         - \staccatissimo
                                         ]
 
-                                        f'64
+                                        fs''32
                                         - \staccatissimo
                                         [
 
                                     }
 
-                                    f'64
-                                    - \staccatissimo
+                                    \times 2/3
+                                    {
 
-                                    f'64
-                                    - \staccatissimo
-                                    ]
+                                        fs''32
+                                        - \staccatissimo
 
-                                    r64
+                                        fs''32
+                                        - \staccatissimo
+                                        ]
 
-                                    b'64
-                                    - \staccatissimo
-                                    [
+                                        r32
 
-                                    b'64
-                                    - \staccatissimo
+                                    }
 
-                                    b'64
-                                    - \staccatissimo
+                                    r32
 
-                                    b'64
-                                    - \staccatissimo
-                                    ]
-
-                                    b''64
-                                    - \staccatissimo
-                                    [
-
-                                    b''64
-                                    - \staccatissimo
-
-                                    b''64
-                                    - \staccatissimo
-                                    ]
-
-                                    r64
-
-                                    b''64
+                                    fs''32
                                     - \staccatissimo
                                     [
 
                                 }
 
                                 \tweak text #tuplet-number::calc-fraction-text
-                                \times 17/20
+                                \times 17/24
                                 {
 
-                                    \times 4/5
+                                    \times 2/3
                                     {
 
                                           %! COMMENT_MEASURE_NUMBERS
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 13]
-                                        b''32
+                                        fs''16
                                         - \staccatissimo
                                         ]
 
-                                        cs'''32
+                                        af'''16
                                         - \staccatissimo
                                         [
 
-                                        cs'''32
-                                        - \staccatissimo
-
-                                        cs'''32
-                                        - \staccatissimo
-
-                                        cs'''32
+                                        af'''16
                                         - \staccatissimo
 
                                     }
 
-                                    \times 4/5
+                                    \times 2/3
                                     {
 
-                                        cs'''32
+                                        af'''16
                                         - \staccatissimo
                                         ]
 
-                                        r32
-
-                                        r32
-
-                                        cs'''32
+                                        bf'''16
                                         - \staccatissimo
 
-                                        c''32
-                                        - \staccatissimo
-                                        [
+                                        r16
 
                                     }
 
-                                    c''32
-                                    - \staccatissimo
+                                    \times 2/3
+                                    {
 
-                                    c''32
-                                    - \staccatissimo
-                                    ]
+                                        r16
 
-                                    c'''32
-                                    - \staccatissimo
-                                    [
+                                        bf'''16
+                                        - \staccatissimo
+                                        [
 
-                                    c'''32
-                                    - \staccatissimo
-                                    ]
+                                        bf'''16
+                                        - \staccatissimo
+                                        ]
 
-                                    r32
+                                    }
 
-                                    r32
+                                    \times 2/3
+                                    {
 
-                                    c'''32
-                                    - \staccatissimo
-                                    [
+                                        a''16
+                                        - \staccatissimo
+                                        [
 
-                                    c'''32
-                                    - \staccatissimo
+                                        a''16
+                                        - \staccatissimo
 
-                                    c'''32
-                                    - \staccatissimo
-                                    ]
+                                        a''16
+                                        - \staccatissimo
+                                        ]
 
-                                    a'''32
-                                    - \staccatissimo
-                                    [
+                                    }
 
-                                    a'''32
-                                    - \staccatissimo
+                                    \times 2/3
+                                    {
 
-                                    a'''32
-                                    - \staccatissimo
-                                      %! SPANNER_STOP
-                                      %! baca.PiecewiseCommand._call(3)
-                                      %! baca.hairpin()
-                                    \!
-                                    ]
+                                        af'''16
+                                        - \staccatissimo
+                                        [
 
-                                }
+                                        af'''16
+                                        - \staccatissimo
 
-                                \times 2/3
-                                {
+                                        af'''16
+                                        - \staccatissimo
+                                        ]
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 14]
-                                    cs''16
-                                    - \accent
-                                    [
+                                    }
 
-                                    c'''16
+                                    \times 2/3
+                                    {
 
-                                    bf''16
+                                        r16
 
-                                    bf'16
+                                        r16
 
-                                    bf'16
-                                    ]
+                                        af'''16
+                                        - \staccatissimo
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(3)
+                                          %! baca.hairpin()
+                                        \!
 
-                                    e''16
-                                    - \accent
-                                    [
-
-                                    ef'''16
-
-                                    fs''16
-
-                                    e''16
+                                    }
 
                                 }
 
-                                \times 4/5
+                                  %! COMMENT_MEASURE_NUMBERS
+                                  %! evans.SegmentMaker.comment_measure_numbers()
+                                % [piccolo voice measure 14]
+                                cs''8
+                                - \accent
+                                [
+
+                                ef''8
+
+                                a''8
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \times 8/7
                                 {
 
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 15]
-                                    d''8
+                                    g''8
+
+                                    af'8
+                                    ]
+
+                                    b'8
+                                    - \accent
+                                    [
 
                                     fs'8
                                     ]
 
-                                    cs''8
+                                    a'8
                                     - \accent
                                     [
 
-                                    g''8
-
-                                    g''8
-
-                                    bf'8
-                                    ]
-
-                                    d''8
-                                    - \accent
-                                    [
-
-                                    g''8
-
-                                    b'8
-                                    ]
-
                                     cs''8
-                                    - \accent
+
+                                    c'''8
+                                    ]
 
                                 }
 
@@ -1049,7 +998,199 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 16]
-                                    a'''8
+                                    af'''8
+                                    - \staccatissimo
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \ffff
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    - \tweak stencil #constante-hairpin
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \<
+
+                                    f'''8
+                                    - \staccatissimo
+
+                                    r8
+
+                                    r8
+
+                                    f'''8
+                                    - \staccatissimo
+                                    [
+
+                                    f'''8
+                                    - \staccatissimo
+
+                                    f'''8
+                                    - \staccatissimo
+
+                                    f'''8
+                                    - \staccatissimo
+
+                                    f'''8
+                                    - \staccatissimo
+                                    ]
+
+                                    d'''8
+                                    - \staccatissimo
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(3)
+                                      %! baca.hairpin()
+                                    \!
+
+                                }
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 6/5
+                                {
+
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 17]
+                                    bf'''16
+                                    - \accent
+                                    [
+
+                                    ef'''16
+
+                                    b''16
+
+                                    cs''16
+                                    ]
+
+                                }
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 6/5
+                                {
+
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 18]
+                                    g'''4
+                                    - \accent
+
+                                    d'''4
+
+                                }
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 7/10
+                                {
+
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 19]
+                                    ef''8
+
+                                    fs'''8
+                                    - \accent
+                                    [
+
+                                    cs'''8
+
+                                    fs''8
+
+                                }
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \times 5/7
+                                {
+
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 20]
+                                    ef''8
+
+                                    d''8
+                                    ]
+
+                                    g'''8
+                                    - \accent
+                                    [
+
+                                    cs'''8
+
+                                    b''8
+
+                                    e''8
+
+                                    cs''8
+                                    ]
+
+                                }
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \times 11/20
+                                {
+
+                                    \times 4/5
+                                    {
+
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 21]
+                                        d'''32
+                                        - \staccatissimo
+
+                                        r32
+
+                                        r32
+
+                                        d'''32
+                                        - \staccatissimo
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \pppp
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \<
+
+                                        g''32
+                                        - \staccatissimo
+                                        [
+
+                                    }
+
+                                    \times 4/5
+                                    {
+
+                                        g''32
+                                        - \staccatissimo
+
+                                        g''32
+                                        - \staccatissimo
+                                        ]
+
+                                        c'32
+                                        - \staccatissimo
+                                        [
+
+                                        c'32
+                                        - \staccatissimo
+
+                                        c'32
+                                        - \staccatissimo
+                                        ]
+
+                                    }
+
+                                    r32
+
+                                    r32
+
+                                    c'32
                                     - \staccatissimo
                                       %! SPANNER_STOP
                                       %! baca.PiecewiseCommand._call(2)
@@ -1065,39 +1206,175 @@
                                       %! baca.hairpin()
                                     \<
 
-                                    a'''8
-                                    - \staccatissimo
-
-                                    a'''8
+                                    c'32
                                     - \staccatissimo
                                     ]
 
-                                    r8
-
-                                    a'''8
+                                    af'32
                                     - \staccatissimo
                                     [
 
-                                    a'''8
+                                    af'32
                                     - \staccatissimo
 
-                                    a'''8
+                                    af'32
+                                    - \staccatissimo
+
+                                    af'32
+                                    - \staccatissimo
+
+                                    af'32
                                     - \staccatissimo
                                     ]
 
-                                    d''8
-                                    - \staccatissimo
-                                    [
+                                    r32
 
-                                    d''8
-                                    - \staccatissimo
-
-                                    d''8
+                                    e'32
                                     - \staccatissimo
                                       %! SPANNER_STOP
-                                      %! baca.PiecewiseCommand._call(3)
+                                      %! baca.PiecewiseCommand._call(2)
                                       %! baca.hairpin()
-                                    \!
+                                    \ff
+                                    [
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    - \tweak stencil #constante-hairpin
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \<
+
+                                    e'32
+                                    - \staccatissimo
+
+                                }
+
+                                \times 2/3
+                                {
+
+                                    \times 2/3
+                                    {
+
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 22]
+                                        e'16
+                                        - \staccatissimo
+                                        ]
+
+                                        af''16
+                                        - \staccatissimo
+                                        [
+
+                                        af''16
+                                        - \staccatissimo
+
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        af''16
+                                        - \staccatissimo
+                                        ]
+
+                                        cs''16
+                                        - \staccatissimo
+                                        [
+
+                                        cs''16
+                                        - \staccatissimo
+                                        ]
+
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        r16
+
+                                        cs''16
+                                        - \staccatissimo
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \mf
+                                        [
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \<
+
+                                        cs''16
+                                        - \staccatissimo
+
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        cs''16
+                                        - \staccatissimo
+
+                                        cs''16
+                                        - \staccatissimo
+                                        ]
+
+                                        e'16
+                                        - \staccatissimo
+                                        [
+
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        e'16
+                                        - \staccatissimo
+
+                                        e'16
+                                        - \staccatissimo
+
+                                        e'16
+                                        - \staccatissimo
+                                        ]
+
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        ef''16
+                                        - \staccatissimo
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(3)
+                                          %! baca.hairpin()
+                                        \f
+
+                                        r16
+
+                                        r16
+
+                                    }
+
+                                }
+
+                                \tweak text #tuplet-number::calc-fraction-text
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 10/9
+                                {
+
+                                      %! COMMENT_MEASURE_NUMBERS
+                                      %! evans.SegmentMaker.comment_measure_numbers()
+                                    % [piccolo voice measure 23]
+                                    c''8
+                                    - \accent
+                                    [
+
+                                    f''8
+
+                                    b''8
                                     ]
 
                                 }
@@ -1108,101 +1385,56 @@
 
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 17]
-                                    bf'''16
+                                    % [piccolo voice measure 24]
+                                    a'2
                                     - \accent
+                                    ~
+
+                                    a'16
                                     [
-
-                                    d'''16
-
-                                    fs''16
-                                    ]
-
-                                    b'''16
-                                    - \accent
-                                    [
-
-                                    ef'''16
-
-                                    f''16
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 6/5
+                                \times 16/25
                                 {
 
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 18]
+                                    % [piccolo voice measure 25]
                                     d''16
+
+                                    b''16
                                     ]
 
-                                    fs'''16
+                                    bf'16
                                     - \accent
                                     [
 
-                                    bf''16
-
                                     ef''16
-                                    ]
+
+                                    a''16
 
                                     g'''16
+                                    ]
+
+                                    c''16
                                     - \accent
                                     [
 
                                     a''16
-
-                                    fs''16
                                     ]
 
-                                    bf'''16
+                                    af'16
                                     - \accent
                                     [
 
-                                }
-
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 7/10
-                                {
-
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 19]
-                                    d'''8
-
-                                    g''8
-                                    ]
-
-                                    b'''8
-                                    - \accent
-                                    [
-
-                                    cs'''8
+                                    cs''16
                                     ]
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \times 5/6
-                                {
-
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 20]
-                                    bf''4
-
-                                    d''4
-
-                                    fs'''4
-                                    - \accent
-
-                                }
-
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \times 11/20
+                                \times 2/3
                                 {
 
                                     \times 2/3
@@ -1210,8 +1442,8 @@
 
                                           %! COMMENT_MEASURE_NUMBERS
                                           %! evans.SegmentMaker.comment_measure_numbers()
-                                        % [piccolo voice measure 21]
-                                        d'16
+                                        % [piccolo voice measure 26]
+                                        ef''16
                                         - \staccatissimo
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(2)
@@ -1223,10 +1455,10 @@
                                           %! baca.hairpin()
                                         \<
 
-                                        d'16
+                                        ef''16
                                         - \staccatissimo
 
-                                        d'16
+                                        ef''16
                                         - \staccatissimo
 
                                     }
@@ -1234,83 +1466,55 @@
                                     \times 2/3
                                     {
 
-                                        d'16
-                                        - \staccatissimo
-
-                                        d'16
-                                        - \staccatissimo
-                                        ]
-
-                                        bf'16
-                                        - \staccatissimo
-                                        [
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        bf'16
+                                        ef''16
                                         - \staccatissimo
                                         ]
 
                                         r16
 
-                                        bf'16
+                                        ef''16
                                         - \staccatissimo
-                                          %! SPANNER_STOP
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \ffff
-                                        [
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        - \tweak stencil #constante-hairpin
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \<
 
                                     }
 
                                     \times 2/3
                                     {
 
-                                        bf'16
+                                        b''16
+                                        - \staccatissimo
+                                        [
+
+                                        b''16
                                         - \staccatissimo
 
-                                        bf'16
-                                        - \staccatissimo
-
-                                        bf'16
+                                        b''16
                                         - \staccatissimo
 
                                     }
 
-                                    bf'16
-                                    - \staccatissimo
+                                    \times 2/3
+                                    {
 
-                                    bf'16
-                                    - \staccatissimo
-                                    ]
+                                        b''16
+                                        - \staccatissimo
 
-                                }
+                                        b''16
+                                        - \staccatissimo
+                                        ]
 
-                                \times 4/5
-                                {
+                                        cs''16
+                                        - \staccatissimo
+                                        [
+
+                                    }
 
                                     \times 2/3
                                     {
 
-                                          %! COMMENT_MEASURE_NUMBERS
-                                          %! evans.SegmentMaker.comment_measure_numbers()
-                                        % [piccolo voice measure 22]
-                                        d''16
+                                        cs''16
                                         - \staccatissimo
-                                        [
 
-                                        d''16
+                                        cs''16
                                         - \staccatissimo
                                         ]
 
@@ -1321,258 +1525,111 @@
                                     \times 2/3
                                     {
 
-                                        d''16
+                                        cs''16
                                         - \staccatissimo
-                                          %! SPANNER_STOP
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \ff
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        - \tweak stencil #constante-hairpin
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \<
 
-                                        ef''16
+                                        fs'16
                                         - \staccatissimo
                                         [
 
-                                        ef''16
+                                        fs'16
                                         - \staccatissimo
 
                                     }
-
-                                    \times 2/3
-                                    {
-
-                                        ef''16
-                                        - \staccatissimo
-
-                                        ef''16
-                                        - \staccatissimo
-
-                                        ef''16
-                                        - \staccatissimo
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        ef''16
-                                        - \staccatissimo
-                                        ]
-
-                                        f'16
-                                        - \staccatissimo
-                                        [
-
-                                        f'16
-                                        - \staccatissimo
-                                          %! SPANNER_STOP
-                                          %! baca.PiecewiseCommand._call(3)
-                                          %! baca.hairpin()
-                                        \mf
-                                        ]
-
-                                    }
-
-                                    r16
-
-                                    r16
 
                                 }
 
-                                \tweak edge-height #'(0.7 . 0)
                                 \times 2/3
                                 {
 
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 23]
-                                    d''2
-                                    - \accent
-                                    ~
+                                    % [piccolo voice measure 27]
+                                    fs'32
+                                    - \staccatissimo
 
-                                    d''8
-                                    [
+                                    fs'32
+                                    - \staccatissimo
 
-                                }
-
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 4/5
-                                {
-
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 24]
-                                    g''16
-
-                                    cs'''16
-
-                                    cs'''16
-                                    ]
-
-                                    bf'16
-                                    - \accent
-                                    [
-
-                                    fs''16
-
-                                    d'''16
-
-                                    g'''16
-                                    ]
-
-                                    cs''16
-                                    - \accent
-                                    [
-
-                                    cs''16
+                                    fs'32
+                                    - \staccatissimo
                                     ]
 
                                 }
 
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 4/5
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 25]
-                                    bf''2
+                                    r32
+
+                                    fs'32
+                                    - \staccatissimo
+
+                                    c'''32
+                                    - \staccatissimo
+                                    [
 
                                 }
 
-                                \times 4/5
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 26]
-                                    f'16
-                                    - \staccatissimo
-                                      %! SPANNER_STOP
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    \pppp
-                                    [
-                                      %! SPANNER_START
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    \<
-
-                                    f'16
-                                    - \staccatissimo
-                                    ]
-
-                                    d''16
-                                    - \staccatissimo
-                                    [
-
-                                    d''16
+                                    c'''32
                                     - \staccatissimo
 
-                                    d''16
+                                    c'''32
+                                    - \staccatissimo
+
+                                    c'''32
+                                    - \staccatissimo
+
+                                }
+
+                                \times 2/3
+                                {
+
+                                    c'''32
+                                    - \staccatissimo
+
+                                    c'''32
                                     - \staccatissimo
                                     ]
 
-                                    r16
+                                    r32
 
-                                    d''16
+                                }
+
+                                \times 2/3
+                                {
+
+                                    r32
+
+                                    a'32
                                     - \staccatissimo
                                     [
 
-                                    d''16
+                                    a'32
                                     - \staccatissimo
 
-                                    d''16
-                                    - \staccatissimo
-                                    ]
+                                }
 
-                                    cs''16
+                                \times 2/3
+                                {
+
+                                    a'32
                                     - \staccatissimo
-                                    [
+
+                                    a'32
+                                    - \staccatissimo
+
+                                    a'32
+                                    - \staccatissimo
 
                                 }
 
                                 \tweak text #tuplet-number::calc-fraction-text
-                                \times 6/5
-                                {
-
-                                    \times 2/3
-                                    {
-
-                                          %! COMMENT_MEASURE_NUMBERS
-                                          %! evans.SegmentMaker.comment_measure_numbers()
-                                        % [piccolo voice measure 27]
-                                        cs''32
-                                        - \staccatissimo
-
-                                        cs''32
-                                        - \staccatissimo
-
-                                        cs''32
-                                        - \staccatissimo
-                                        ]
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        r32
-
-                                        r32
-
-                                        cs''32
-                                        - \staccatissimo
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        e''32
-                                        - \staccatissimo
-                                        [
-
-                                        e''32
-                                        - \staccatissimo
-
-                                        e''32
-                                        - \staccatissimo
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        e''32
-                                        - \staccatissimo
-                                        ]
-
-                                        fs'32
-                                        - \staccatissimo
-                                        [
-
-                                        fs'32
-                                        - \staccatissimo
-                                        ]
-
-                                    }
-
-                                    r32
-
-                                    r32
-
-                                }
-
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 16/25
+                                \times 16/15
                                 {
 
                                     \times 2/3
@@ -1581,42 +1638,27 @@
                                           %! COMMENT_MEASURE_NUMBERS
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 28]
-                                        fs'16
-                                        - \staccatissimo
-                                        [
-
-                                        fs'16
-                                        - \staccatissimo
-
-                                        fs'16
-                                        - \staccatissimo
-
-                                    }
-
-                                    \times 2/3
-                                    {
-
-                                        fs'16
+                                        a'32
                                         - \staccatissimo
                                         ]
 
-                                        bf'''16
+                                        g''32
                                         - \staccatissimo
 
-                                        r16
+                                        r32
 
                                     }
 
                                     \times 2/3
                                     {
 
-                                        r16
+                                        r32
 
-                                        bf'''16
+                                        g''32
                                         - \staccatissimo
                                         [
 
-                                        bf'''16
+                                        g''32
                                         - \staccatissimo
 
                                     }
@@ -1624,29 +1666,65 @@
                                     \times 2/3
                                     {
 
-                                        bf'''16
+                                        g''32
                                         - \staccatissimo
 
-                                        bf'''16
+                                        g''32
+                                        - \staccatissimo
+                                        ]
+
+                                        fs''32
                                         - \staccatissimo
 
-                                        bf'''16
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        r32
+
+                                        r32
+
+                                        fs''32
+                                        - \staccatissimo
+                                        [
+
+                                    }
+
+                                    \times 2/3
+                                    {
+
+                                        fs''32
+                                        - \staccatissimo
+
+                                        fs''32
+                                        - \staccatissimo
+
+                                        fs''32
                                         - \staccatissimo
                                         ]
 
                                     }
 
-                                    ef'16
-                                    - \staccatissimo
-                                    [
+                                    \times 2/3
+                                    {
 
-                                    ef'16
-                                    - \staccatissimo
-                                      %! SPANNER_STOP
-                                      %! baca.PiecewiseCommand._call(3)
-                                      %! baca.hairpin()
-                                    \ffff
-                                    ]
+                                        g'32
+                                        - \staccatissimo
+                                        [
+
+                                        g'32
+                                        - \staccatissimo
+
+                                        g'32
+                                        - \staccatissimo
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(3)
+                                          %! baca.hairpin()
+                                        \ffff
+                                        ]
+
+                                    }
 
                                 }
 
