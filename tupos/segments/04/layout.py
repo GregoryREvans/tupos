@@ -8,12 +8,12 @@ breaks = evans.Breaks(
     evans.Page(
         evans.System(measures=4, lbsd=(8, "(7)"), x_offset=4),
         evans.System(measures=4, lbsd=(8 + 23, "(7)"), x_offset=4),
-        evans.System(measures=4, lbsd=(8 + 23 + 23, "(7)"), x_offset=4),
-        evans.System(measures=4, lbsd=(8 + 23 + 23 + 23, "(7)"), x_offset=4),
-        evans.System(measures=4, lbsd=(8 + 23 + 23 + 23 + 23, "(7)"), x_offset=4),
-        evans.System(measures=4, lbsd=(8 + 23 + 23 + 23 + 23 + 23, "(7)"), x_offset=4),
+        evans.System(measures=5, lbsd=(8 + 23 + 23, "(7)"), x_offset=4),
+        evans.System(measures=5, lbsd=(8 + 23 + 23 + 23, "(7)"), x_offset=4),
+        evans.System(measures=5, lbsd=(8 + 23 + 23 + 23 + 23, "(7)"), x_offset=4),
+        evans.System(measures=5, lbsd=(8 + 23 + 23 + 23 + 23 + 23, "(7)"), x_offset=4),
         evans.System(
-            measures=4, lbsd=(8 + 23 + 23 + 23 + 23 + 23 + 23, "(7)"), x_offset=4
+            measures=5, lbsd=(8 + 23 + 23 + 23 + 23 + 23 + 23, "(7)"), x_offset=4
         ),
     ),
     time_signatures=tupos.reduced_signatures_04,

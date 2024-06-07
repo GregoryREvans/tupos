@@ -1,6 +1,9 @@
 import abjad
 import evans
 
+
+# segment 4 last 5 grafted on June 6
+
 available_dens = [4, 5, 6, 8, 10, 12, 16, 20, 24, 32]
 
 nums = [
@@ -112,8 +115,8 @@ assert len(signatures_03) == len(signatures_01)
 folded_pairs = [
     _ for _ in evans.Sequence(manipulated_pairs).zipped_bifurcation(reversed=True)
 ]
-signatures_04 = [abjad.TimeSignature(_) for _ in folded_pairs]
-assert len(signatures_04) == len(signatures_01)
+signatures_04 = [abjad.TimeSignature(_) for _ in folded_pairs] + signatures_03[:5]
+assert len(signatures_04) == len(signatures_01) + 5
 
 # SEGMENT 5
 manipulated_pairs = []
@@ -362,7 +365,7 @@ reduced_signatures_05 = evans.reduce_fermata_measures(
 assert len(reduced_signatures_01) == 28
 assert len(reduced_signatures_02) == 28
 assert len(reduced_signatures_03) == 28
-assert len(reduced_signatures_04) == 28
+assert len(reduced_signatures_04) == 28 + 5
 assert len(reduced_signatures_05) == 28
 
 ##

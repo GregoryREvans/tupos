@@ -28,8 +28,9 @@ maker = evans.SegmentMaker(
                 tupos.segment_1_pitch_intervals[0:12],
                 preprocessor=None,
                 rewrite=None,
-                treat_tuplets=True, # ? Probably need to modify tuplet treating to accomodate nested values.
+                treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
+                intercept_irregular_meters=True,
             ),
             pitches,
             tupos.tenuto_stammers,
@@ -40,8 +41,9 @@ maker = evans.SegmentMaker(
                 tupos.segment_1_pitch_intervals[12:16],
                 preprocessor=None,
                 rewrite=None,
-                treat_tuplets=True, # ? Probably need to modify tuplet treating to accomodate nested values.
+                treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
+                intercept_irregular_meters=True,
             ),
             pitches,
             tupos.tenuto_stammers,
@@ -55,6 +57,7 @@ maker = evans.SegmentMaker(
                 treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=True, # ?
                 weighted="right",
+                intercept_irregular_meters=True,
             ),
             pitches,
             tupos.tenuto_stammers,
@@ -65,8 +68,9 @@ maker = evans.SegmentMaker(
                 tupos.segment_1_pitch_intervals[22:28],
                 preprocessor=None,
                 rewrite=None,
-                treat_tuplets=True, # ? Probably need to modify tuplet treating to accomodate nested values.
+                treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
+                intercept_irregular_meters=True,
             ),
             pitches,
             tupos.tenuto_stammers,
@@ -172,6 +176,7 @@ maker = evans.SegmentMaker(
     cutaway="invisible",
     beam_pattern="meter",
     beam_rests=True,
+    beautify_tuplets=False,
     barline="|.",
     rehearsal_mark="",
     fermata="scripts.ufermata",

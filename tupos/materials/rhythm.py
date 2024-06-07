@@ -8,7 +8,7 @@ from abjadext import rmakers
 
 # numeric_subdivisions
 def numeric_subdivisions(
-    integers, preprocessor=None, rewrite=None, treat_tuplets=True, subdivided=False, weighted=None,
+    integers, preprocessor=None, rewrite=None, treat_tuplets=True, subdivided=False, weighted=None, intercept_irregular_meters=False,
 ):
     temp = []
     for integer in integers:
@@ -89,5 +89,6 @@ def numeric_subdivisions(
         preprocessor=preprocessor,
         rewrite=rewrite,
         treat_tuplets=treat_tuplets,
+        intercept_irregular_meters=intercept_irregular_meters,
     )
     return maker

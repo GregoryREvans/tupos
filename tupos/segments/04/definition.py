@@ -21,13 +21,14 @@ maker = evans.SegmentMaker(
     fermata_measures=tupos.fermata_measures_04,
     commands=[
         evans.MusicCommand(
-            ("piccolo voice", [0, 1, 2, 3, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 18, 19, 23]),
+            ("piccolo voice", [0, 1, 2, 3, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 18, 19, 23, 28, 29, 30, 31, 32]),
             tupos.numeric_subdivisions(
                 tupos.segment_1_pitch_intervals,
                 preprocessor=None,
                 rewrite=None,
                 treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
+                intercept_irregular_meters=True,
                 # preprocessor=evans.make_preprocessor(split_divisions_by_proportions=[(1, 1)]),
             ),
             tupos.segment_4_alternate_rester,
@@ -42,6 +43,7 @@ maker = evans.SegmentMaker(
                 rewrite=None,
                 treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
+                intercept_irregular_meters=True,
             ),
             lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_4_pitches, tupos.pattern_4),
             lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_5_pitches, tupos.pattern_5),
@@ -83,6 +85,7 @@ maker = evans.SegmentMaker(
     cutaway="invisible",
     beam_pattern="meter",
     beam_rests=True,
+    beautify_tuplets=False,
     barline="|.",
     rehearsal_mark="",
     fermata="scripts.ufermata",

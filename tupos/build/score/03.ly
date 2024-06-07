@@ -318,83 +318,93 @@
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 16/27
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 3]
-                                    g''16
-                                    [
+                                    \times 8/9
+                                    {
 
-                                    af'''16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 3]
+                                        g''16
+                                        [
 
-                                    f'''16
-                                    ]
+                                        af'''16
 
-                                    r16
+                                        f'''16
+                                        ]
 
-                                    g'16
+                                        r16
 
-                                    r8.
+                                        g'16
 
-                                    fs'16
-                                    [
+                                        r8.
+
+                                        fs'16
+                                        [
+
+                                    }
 
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 32/55
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 4]
-                                    d''32
-                                    ]
-
-                                    r32
-
-                                    af'32
-                                    [
-
-                                    e'''32
-                                    ]
-
-                                    r32
-
-                                    d'32
-
-                                    r16
-
-                                    c''32
-                                    [
-
-                                    fs'''32
-                                    ]
-
-                                    \afterGrace
-                                    r32
+                                    \times 8/11
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(11.5 . 11.5)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        f''16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 4]
+                                        d''32
+                                        ]
+
+                                        r32
+
+                                        af'32
                                         [
 
-                                        f''!16
+                                        e'''32
                                         ]
-                                        (
-                                        \stop-single-grace
+
+                                        r32
+
+                                        d'32
+
+                                        r16
+
+                                        c''32
+                                        [
+
+                                        fs'''32
+                                        ]
+
+                                        \afterGrace
+                                        r32
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(11.5 . 11.5)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            f''16
+                                            [
+
+                                            f''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
 
                                     }
-
 
                                 }
 
@@ -442,31 +452,35 @@
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 16/15
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 7]
-                                    e''32
+                                    \times 4/5
+                                    {
 
-                                    r32
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 7]
+                                        e''16
 
-                                    b'32
-                                    [
+                                        r16
 
-                                    bf'''32
-                                    ]
+                                        b'16
+                                        [
 
-                                    r16.
+                                        bf'''16
+                                        ]
 
-                                    ef'32
+                                        r8.
 
-                                    \set stemLeftBeamCount = 2
-                                    \set stemRightBeamCount = 2
-                                    r16
+                                        ef'16
+
+                                        \set stemLeftBeamCount = 1
+                                        \set stemRightBeamCount = 1
+                                        r8
+
+                                    }
 
                                 }
 
@@ -604,9 +618,8 @@
                                 \set stemRightBeamCount = 1
                                 r8
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 5/6
+                                \times 2/3
                                 {
 
                                       %! COMMENT_MEASURE_NUMBERS
@@ -614,71 +627,79 @@
                                     % [piccolo voice measure 13]
                                     r2
 
+                                    \set stemLeftBeamCount = 1
+                                    \set stemRightBeamCount = 1
+                                    r8
+
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 16/21
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 14]
-                                    \set stemLeftBeamCount = 2
-                                    \set stemRightBeamCount = 2
-                                    fs'16
-
-                                    r16
-
-                                    \afterGrace
-                                    cs'''16
-                                    [
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 8/7
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(11.5 . 11.5)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        a''16
-                                        [
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 14]
+                                        fs'16
 
-                                        a''!16
+                                        r16
+
+                                        \afterGrace
+                                        cs'''16
+                                        [
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(11.5 . 11.5)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            a''16
+                                            [
+
+                                            a''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        af'16
+                                        )
                                         ]
-                                        (
-                                        \stop-single-grace
+
+                                        \afterGrace
+                                        r8.
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(11.5 . 11.5)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            d'16
+                                            [
+
+                                            d'!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
 
                                     }
-
-
-                                    af'16
-                                    )
-                                    ]
-
-                                    \afterGrace
-                                    r8.
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(11.5 . 11.5)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        d'16
-                                        [
-
-                                        d'!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
 
                                 }
 
@@ -701,46 +722,47 @@
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \times 9/16
-                                {
+                                  %! COMMENT_MEASURE_NUMBERS
+                                  %! evans.SegmentMaker.comment_measure_numbers()
+                                % [piccolo voice measure 16]
+                                r4
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 16]
-                                    r2
+                                \set stemLeftBeamCount = 3
+                                \set stemRightBeamCount = 3
+                                r32
 
-                                }
-
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 14/15
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 17]
-                                    \set stemLeftBeamCount = 3
-                                    \set stemRightBeamCount = 3
-                                    c''32
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 7/10
+                                    {
 
-                                    r32
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 17]
+                                        c''16
 
-                                    cs''32
+                                        r16
 
-                                    r16
+                                        cs''16
 
-                                    ef'''32
-                                    [
+                                        r8
 
-                                    e''32
-                                    ]
+                                        ef'''16
+                                        [
 
-                                    r32
+                                        e''16
+                                        ]
 
-                                    e'32
+                                        r16
 
-                                    r32
+                                        e'16
+
+                                        r16
+
+                                    }
 
                                 }
 
@@ -789,76 +811,81 @@
 
                                 a''8
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 20/33
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 20]
-                                    \afterGrace
-                                    f'''32
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 10/11
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(11.5 . 11.5)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        a'16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 20]
+                                        \afterGrace
+                                        f'''32
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(11.5 . 11.5)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            a'16
+                                            [
+
+                                            a'!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        fs''32
+                                        )
+                                        ]
+
+                                        \afterGrace
+                                        r8
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(11.5 . 11.5)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            f'16
+                                            [
+
+                                            f'!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        e'''32
+                                        )
                                         [
 
-                                        a'!16
+                                        f''32
                                         ]
-                                        (
-                                        \stop-single-grace
+
+                                        r32
+
+                                        bf'32
+
+                                        r32
 
                                     }
-
-
-                                    fs''32
-                                    )
-                                    ]
-
-                                    \afterGrace
-                                    r8
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(11.5 . 11.5)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        f'16
-                                        [
-
-                                        f'!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
-
-                                    e'''32
-                                    )
-                                    [
-
-                                    f''32
-                                    ]
-
-                                    r32
-
-                                    bf'32
-
-                                    r32
 
                                 }
 
@@ -927,22 +954,28 @@
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 16/15
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 22]
-                                    bf'''16
+                                    \times 4/5
+                                    {
 
-                                    b''16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 22]
+                                        bf'''8
 
-                                    d'16
-                                    ]
+                                        b''8
 
-                                    r8
+                                        \set stemLeftBeamCount = 1
+                                        \set stemRightBeamCount = 1
+                                        d'8
+                                        ]
+
+                                        r4
+
+                                    }
 
                                 }
 
@@ -953,6 +986,8 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 23]
+                                    \set stemLeftBeamCount = 4
+                                    \set stemRightBeamCount = 4
                                     c''64
 
                                     r64
@@ -996,71 +1031,76 @@
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 32/33
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 24]
-                                    r64.
-
-                                    a'''128
-                                    [
-
-                                    e'128
-                                    ]
-
-                                    \afterGrace
-                                    r64.
+                                    \times 8/11
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(11.5 . 11.5)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        bf''16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 24]
+                                        r32.
+
+                                        a'''64
                                         [
 
-                                        bf''!16
+                                        e'64
                                         ]
-                                        (
-                                        \stop-single-grace
+
+                                        \afterGrace
+                                        r32.
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(11.5 . 11.5)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            bf''16
+                                            [
+
+                                            bf''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        b'64
+                                        )
+
+                                        \afterGrace
+                                        r64
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(11.5 . 11.5)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            cs'''16
+                                            [
+
+                                            cs'''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        ef'64
+                                        )
 
                                     }
-
-
-                                    b'128
-                                    )
-
-                                    \afterGrace
-                                    r128
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(11.5 . 11.5)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        cs'''16
-                                        [
-
-                                        cs'''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
-
-                                    ef'128
-                                    )
 
                                 }
 

@@ -29,6 +29,7 @@ maker = evans.SegmentMaker( # do some work to shift grace notes at the start of 
                 rewrite=None,
                 treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
+                intercept_irregular_meters=True,
             ),
             lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_1_pitches, tupos.pattern_1),
             lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_2_pitches, tupos.pattern_2),
@@ -41,6 +42,11 @@ maker = evans.SegmentMaker( # do some work to shift grace notes at the start of 
                 ], stem_position=11.5),
             tupos.slur_after_graces,
             tupos.tenuto_stammers,
+        ),
+        evans.MusicCommand(
+            ("piccolo voice", 12),
+            evans.note(),
+            lambda _: rmakers.force_rest(_),
         ),
         evans.call(
             "piccolo voice",
@@ -70,6 +76,7 @@ maker = evans.SegmentMaker( # do some work to shift grace notes at the start of 
     cutaway="invisible",
     beam_pattern="meter",
     beam_rests=True,
+    beautify_tuplets=False,
     barline="|.",
     rehearsal_mark="",
     fermata="scripts.ufermata",

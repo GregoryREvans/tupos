@@ -28,6 +28,7 @@ maker = evans.SegmentMaker(
                 rewrite=None,
                 treat_tuplets=False, # ? Probably need to modify tuplet treating to accomodate nested values.
                 subdivided=False, # ?
+                intercept_irregular_meters=True,
             ),
             lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_7_pitches, tupos.pattern_7),
             lambda _: tupos.layered_pitch_applicator(_, tupos.pattern_8_pitches, tupos.pattern_8),
@@ -44,7 +45,7 @@ maker = evans.SegmentMaker(
         ),
         evans.call(
             "piccolo voice",
-            lambda _: tupos.graft_post_sustains(_, tupos.rest_pattern_789te, debug=True),
+            lambda _: tupos.graft_post_sustains(_, tupos.rest_pattern_789te, debug=False),
             evans.select_measures([_ for _ in range(27)]),
         ),
         evans.call(
@@ -104,6 +105,7 @@ maker = evans.SegmentMaker(
     cutaway="invisible",
     beam_pattern="meter",
     beam_rests=True,
+    beautify_tuplets=False,
     barline="|.",
     rehearsal_mark="",
     fermata="scripts.ufermata",

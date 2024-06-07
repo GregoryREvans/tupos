@@ -1,5 +1,5 @@
   %! abjad.LilyPondFile._get_format_pieces()
-\version "2.23.81"
+\version "2.25.16"
   %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
 \include "abjad.ily"
@@ -301,7 +301,6 @@
                                     gqf''16
                                     [
 
-                                    \tweak color #blue
                                     eqs'''8.
                                     ~
 
@@ -329,167 +328,174 @@
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 16/25
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 2]
-                                    \afterGrace
-                                    \tweak color #blue
-                                    f'''2.
-                                    )
-                                    ~
+                                    \times 4/5
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        g''16
-                                        [
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 2]
+                                        \afterGrace
+                                        f'''2.
+                                        )
+                                        ~
+                                        {
 
-                                        g''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            g''16
+                                            [
+
+                                            g''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        gqf'''4
+                                        )
+
+                                        \afterGrace
+                                        bqf'4
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            cs'''16
+                                            [
+
+                                            cs'''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
 
                                     }
-
-
-                                    gqf'''4
-                                    )
-
-                                    \afterGrace
-                                    bqf'4
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        cs'''16
-                                        [
-
-                                        cs'''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 28/45
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 3]
-                                    \set stemLeftBeamCount = 2
-                                    \set stemRightBeamCount = 2
-                                    \afterGrace
-                                    bf''16
-                                    )
-                                    [
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 7/9
                                     {
 
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        d'16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 3]
+                                        \set stemLeftBeamCount = 2
+                                        \set stemRightBeamCount = 2
+                                        \afterGrace
+                                        bf''16
+                                        )
                                         [
-                                        (
+                                        {
 
-                                        \once \override Flag.stencil = ##f
-                                        bf'16
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            d'16
+                                            [
+                                            (
 
-                                        ef'16
+                                            \once \override Flag.stencil = ##f
+                                            bf'16
 
-                                        c'16
+                                            ef'16
 
-                                        b'16
+                                            c'16
 
-                                        cs'16
+                                            b'16
 
-                                        g'16
+                                            cs'16
+
+                                            g'16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                        gqf'''16
+                                        )
+
+                                        \set stemLeftBeamCount = 1
+                                        \set stemRightBeamCount = 1
+                                        \afterGrace
+                                        eqs'''8
                                         ]
-                                        \stop-multi-grace
+                                        ~
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            e''16
+                                            [
+
+                                            e''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        fqs''4
+                                        )
+                                        ~
+
+                                        \set stemLeftBeamCount = 2
+                                        \set stemRightBeamCount = 2
+                                        \afterGrace
+                                        f''16
+                                        [
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            cs'''16
+                                            [
+
+                                            cs'''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
 
                                     }
-
-
-                                    gqf'''16
-                                    )
-
-                                    \set stemLeftBeamCount = 1
-                                    \set stemRightBeamCount = 1
-                                    \afterGrace
-                                    \tweak color #blue
-                                    eqs'''8
-                                    ]
-                                    ~
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        e''16
-                                        [
-
-                                        e''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
-
-                                    \tweak color #blue
-                                    fqs''4
-                                    )
-                                    ~
-
-                                    \set stemLeftBeamCount = 2
-                                    \set stemRightBeamCount = 2
-                                    \afterGrace
-                                    f''16
-                                    [
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        cs'''16
-                                        [
-
-                                        cs'''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
 
                                 }
 
@@ -501,7 +507,6 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 4]
                                     \afterGrace
-                                    \tweak color #blue
                                     eqs''8
                                     )
                                     ~
@@ -529,11 +534,9 @@
                                     cqs''16
                                     )
 
-                                    \tweak color #blue
                                     e'''8
                                     ~
 
-                                    \tweak color #blue
                                     ef''8.
                                     ~
 
@@ -542,7 +545,6 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     \afterGrace
-                                    \tweak color #blue
                                     g'''8
                                     ]
                                     ~
@@ -566,98 +568,101 @@
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 6/5
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 5]
-                                    \afterGrace
-                                    \tweak color #blue
-                                    b'2
-                                    )
-                                    ~
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 3/4
                                     {
 
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        g''16
-                                        [
-                                        (
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 5]
+                                        \afterGrace
+                                        b'1
+                                        )
+                                        ~
+                                        {
 
-                                        \once \override Flag.stencil = ##f
-                                        aqf''16
-                                        ]
-                                        \stop-multi-grace
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            g''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            aqf''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
 
                                     }
-
 
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 8/9
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 6]
-                                    \set stemLeftBeamCount = 1
-                                    \set stemRightBeamCount = 1
-                                    \set stemLeftBeamCount = 1
-                                    \set stemRightBeamCount = 1
-                                    \afterGrace
-                                    fs'''8
-                                    )
+                                    \times 2/3
                                     {
 
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        a'16
-                                        [
-                                        (
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 6]
+                                        \afterGrace
+                                        fs'''4
+                                        )
+                                        {
 
-                                        \once \override Flag.stencil = ##f
-                                        bf'16
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            a'16
+                                            [
+                                            (
 
-                                        cs''16
-                                        ]
-                                        \stop-multi-grace
+                                            \once \override Flag.stencil = ##f
+                                            bf'16
+
+                                            cs''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                        bf'2.
+                                        )
+                                        ~
+
+                                        \afterGrace
+                                        e''2
+                                        ~
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            dqf'''16
+                                            [
+
+                                            dqf'''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
 
                                     }
-
-
-                                    \tweak color #blue
-                                    bf'4.
-                                    )
-                                    ~
-
-                                    \afterGrace
-                                    \tweak color #blue
-                                    e''4
-                                    ~
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        dqf'''16
-                                        [
-
-                                        dqf'''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
 
                                 }
 
@@ -666,7 +671,6 @@
                                 % [piccolo voice measure 7]
                                 \set stemLeftBeamCount = 2
                                 \set stemRightBeamCount = 2
-                                \tweak color #blue
                                 b''16
                                 )
                                 [
@@ -674,7 +678,6 @@
 
                                 gqs''32
 
-                                \tweak color #blue
                                 fqs'''16.
                                 ~
 
@@ -701,7 +704,6 @@
                                 }
 
 
-                                \tweak color #blue
                                 eqf''16
                                 )
                                 ~
@@ -764,140 +766,152 @@
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 8/9
+                                \times 2/3
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 9]
-                                    \set stemLeftBeamCount = 1
-                                    \set stemRightBeamCount = 1
-                                    c'''8
-                                    )
-                                    [
-
-                                    fs'''8
-
-                                    \afterGrace
-                                    gqf''8
+                                    \times 2/3
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        d'''16
-                                        [
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 9]
+                                        c'''4
+                                        )
 
-                                        d'''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
+                                        fs'''4
+
+                                        \afterGrace
+                                        gqf''4
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            d'''16
+                                            [
+
+                                            d'''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
 
                                     }
-
 
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 32/35
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 10]
-                                    \afterGrace
-                                    \tweak color #blue
-                                    f''16.
-                                    )
-                                    ~
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 8/7
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        eqs''16
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 10]
+                                        \set stemLeftBeamCount = 3
+                                        \set stemRightBeamCount = 3
+                                        \afterGrace
+                                        f''16.
+                                        )
                                         [
+                                        ~
+                                        {
 
-                                        eqs''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            eqs''16
+                                            [
 
-                                    }
+                                            eqs''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
 
-
-                                    \tweak color #blue
-                                    f'''16
-                                    )
-                                    ~
-
-                                    \set stemLeftBeamCount = 2
-                                    \set stemRightBeamCount = 2
-                                    \afterGrace
-                                    \tweak color #blue
-                                    c''16
-                                    ]
-                                    ~
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        bqs''16
-                                        [
-                                        (
-
-                                        \once \override Flag.stencil = ##f
-                                        g''16
-                                        ]
-                                        \stop-multi-grace
-
-                                    }
+                                        }
 
 
-                                }
-
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 5/6
-                                {
-
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 11]
-                                    \afterGrace
-                                    \tweak color #blue
-                                    g''2
-                                    )
-                                    ~
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
                                         f'''16
-                                        [
-                                        (
+                                        )
+                                        ~
 
-                                        \once \override Flag.stencil = ##f
-                                        e'''16
-
-                                        fs''16
-
-                                        fqs''16
+                                        \set stemLeftBeamCount = 2
+                                        \set stemRightBeamCount = 2
+                                        \afterGrace
+                                        c''16
                                         ]
-                                        \stop-multi-grace
+                                        ~
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            bqs''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            g''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
 
                                     }
 
+                                }
+
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 2/3
+                                {
+
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 5/4
+                                    {
+
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 11]
+                                        \afterGrace
+                                        g''2
+                                        )
+                                        ~
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            f'''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            e'''16
+
+                                            fs''16
+
+                                            fqs''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                    }
 
                                 }
 
@@ -908,7 +922,6 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 12]
-                                    \tweak color #blue
                                     cs''4
                                     )
                                     ~
@@ -919,7 +932,6 @@
                                   %! evans.SegmentMaker.comment_measure_numbers()
                                 % [piccolo voice measure 13]
                                 \afterGrace
-                                \tweak color #blue
                                 cs''4.
                                 {
 
@@ -983,7 +995,6 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 14]
                                     \afterGrace
-                                    \tweak color #blue
                                     b'8.
                                     ~
                                     {
@@ -1002,7 +1013,6 @@
                                     }
 
 
-                                    \tweak color #blue
                                     cqs'''8.
                                     )
                                     ~
@@ -1120,7 +1130,6 @@
 
 
                                     \afterGrace
-                                    \tweak color #blue
                                     aqf''8
                                     )
                                     ~
@@ -1145,7 +1154,6 @@
                                     }
 
 
-                                    \tweak color #blue
                                     aqs''16
                                     )
                                     ~
@@ -1167,7 +1175,6 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 18]
                                     \afterGrace
-                                    \tweak color #blue
                                     af'''4
                                     {
 
@@ -1198,7 +1205,6 @@
                                     gqs''8
                                     )
 
-                                    \tweak color #blue
                                     a'4
                                     ~
 
@@ -1231,363 +1237,385 @@
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 9/10
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 19]
-                                    \afterGrace
-                                    eqf''4
-                                    )
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 9/8
                                     {
 
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        af''16
-                                        [
-                                        (
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 19]
+                                        \afterGrace
+                                        eqf''4
+                                        )
+                                        {
 
-                                        \once \override Flag.stencil = ##f
-                                        af'''16
-                                        ]
-                                        \stop-multi-grace
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            af''16
+                                            [
+                                            (
 
-                                    }
+                                            \once \override Flag.stencil = ##f
+                                            af'''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
 
 
-                                    aqf'''4
-                                    )
-                                    ~
-
-                                }
-
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 48/55
-                                {
-
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 20]
-                                    \set stemLeftBeamCount = 3
-                                    \set stemRightBeamCount = 3
-                                    \afterGrace
-                                    \tweak color #blue
-                                    aqf'''32
-                                    [
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        dqs'''16
-                                        [
-                                        (
-
-                                        \once \override Flag.stencil = ##f
-                                        cs'''16
-                                        ]
-                                        \stop-multi-grace
+                                        aqf'''4
+                                        )
+                                        ~
 
                                     }
-
-
-                                    \tweak color #blue
-                                    gqf''8
-                                    )
-                                    ~
-
-                                    \tweak color #blue
-                                    gqf''32
-
-                                    \afterGrace
-                                    eqs''32
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        a''16
-                                        [
-                                        (
-
-                                        \once \override Flag.stencil = ##f
-                                        aqf''16
-                                        ]
-                                        \stop-multi-grace
-
-                                    }
-
-
-                                    \tweak color #blue
-                                    dqs''16
-                                    )
-                                    ~
-
-                                    g''32
-
-                                    \afterGrace
-                                    g'''32
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        af''16
-                                        [
-                                        (
-
-                                        \once \override Flag.stencil = ##f
-                                        g''16
-
-                                        ef'''16
-
-                                        af''16
-                                        ]
-                                        \stop-multi-grace
-
-                                    }
-
-
-                                }
-
-                                \tweak text #tuplet-number::calc-fraction-text
-                                \tweak edge-height #'(0.7 . 0)
-                                \times 20/27
-                                {
-
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 21]
-                                    \tweak color #blue
-                                    fqs''8.
-                                    )
-                                    ~
-
-                                    \tweak color #blue
-                                    f''8
-                                    ~
-
-                                    \afterGrace
-                                    f''16
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        d'''16
-                                        [
-
-                                        d'''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
-
-                                    \afterGrace
-                                    a''16
-                                    )
-                                    {
-
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        e''16
-                                        [
-
-                                        e''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
-
-                                    }
-
-
-                                    \afterGrace
-                                    c'''16
-                                    )
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        e'''16
-                                        [
-                                        (
-
-                                        \once \override Flag.stencil = ##f
-                                        fs''16
-                                        ]
-                                        \stop-multi-grace
-
-                                    }
-
-
-                                    cs''16
-                                    )
-                                    ~
 
                                 }
 
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 16/25
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 22]
-                                    \afterGrace
-                                    \tweak color #blue
-                                    cs''8
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 12/11
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 20]
+                                        \set stemLeftBeamCount = 3
+                                        \set stemRightBeamCount = 3
+                                        \afterGrace
+                                        aqf'''32
+                                        [
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            dqs'''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            cs'''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                        gqf''8
+                                        )
+                                        ~
+
+                                        gqf''32
+
+                                        \afterGrace
+                                        eqs''32
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            a''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            aqf''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                        dqs''16
+                                        )
+                                        ~
+
+                                        g''32
+
+                                        \afterGrace
+                                        g'''32
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            af''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            g''16
+
+                                            ef'''16
+
+                                            af''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                    }
+
+                                }
+
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 2/3
+                                {
+
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 10/9
+                                    {
+
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 21]
+                                        fqs''8.
+                                        )
+                                        ~
+
+                                        f''8
+                                        ~
+
+                                        \afterGrace
                                         f''16
-                                        [
+                                        {
 
-                                        f''!16
-                                        ]
-                                        (
-                                        \stop-single-grace
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            d'''16
+                                            [
 
-                                    }
+                                            d'''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
 
 
-                                    bqf''8
-                                    )
-
-                                    ef''8
-
-                                    \afterGrace
-                                    bf'8
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
+                                        \afterGrace
                                         a''16
-                                        [
-                                        (
+                                        )
+                                        {
 
-                                        \once \override Flag.stencil = ##f
-                                        af''16
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            e''16
+                                            [
 
-                                        bf''16
+                                            e''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
 
-                                        e'''16
+                                        }
 
-                                        d'''16
 
-                                        ef'''16
-                                        ]
-                                        \stop-multi-grace
+                                        \afterGrace
+                                        c'''16
+                                        )
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            e'''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            fs''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                        cs''16
+                                        )
+                                        ~
 
                                     }
-
-
-                                    eqf'''8
-                                    )
 
                                 }
 
-                                \tweak text #tuplet-number::calc-fraction-text
                                 \tweak edge-height #'(0.7 . 0)
-                                \times 6/5
+                                \times 4/5
                                 {
 
-                                      %! COMMENT_MEASURE_NUMBERS
-                                      %! evans.SegmentMaker.comment_measure_numbers()
-                                    % [piccolo voice measure 23]
-                                    \afterGrace
-                                    \tweak color #blue
-                                    af''8.
-                                    ~
+                                    \times 4/5
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        gqs''16
-                                        [
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 22]
+                                        \afterGrace
+                                        cs''8
+                                        {
 
-                                        gqs''!16
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            f''16
+                                            [
+
+                                            f''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        bqf''8
+                                        )
+
+                                        ef''8
+
+                                        \afterGrace
+                                        bf'8
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            a''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            af''16
+
+                                            bf''16
+
+                                            e'''16
+
+                                            d'''16
+
+                                            ef'''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                        \set stemLeftBeamCount = 1
+                                        \set stemRightBeamCount = 1
+                                        eqf'''8
+                                        )
                                         ]
-                                        (
-                                        \stop-single-grace
 
                                     }
 
+                                }
 
-                                    \afterGrace
-                                    \tweak color #blue
-                                    g'''8.
-                                    )
-                                    ~
+                                \tweak edge-height #'(0.7 . 0)
+                                \times 4/5
+                                {
+
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \times 3/4
                                     {
 
-                                        \start-single-grace
-                                        \once \override Accidental.transparent = ##t
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        \once \override Beam.transparent = ##t
-                                        \once \override Flag.transparent = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                        \once \override Stem.stencil = ##f
-                                        \tweak X-extent #'(0 . 0)
-                                        aqs'16
-                                        [
+                                          %! COMMENT_MEASURE_NUMBERS
+                                          %! evans.SegmentMaker.comment_measure_numbers()
+                                        % [piccolo voice measure 23]
+                                        \afterGrace
+                                        af''4.
+                                        ~
+                                        {
 
-                                        aqs'!16
-                                        ]
-                                        (
-                                        \stop-single-grace
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            gqs''16
+                                            [
+
+                                            gqs''!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        \afterGrace
+                                        g'''4.
+                                        )
+                                        ~
+                                        {
+
+                                            \start-single-grace
+                                            \once \override Accidental.transparent = ##t
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            \once \override Beam.transparent = ##t
+                                            \once \override Flag.transparent = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                            \once \override Stem.stencil = ##f
+                                            \tweak X-extent #'(0 . 0)
+                                            aqs'16
+                                            [
+
+                                            aqs'!16
+                                            ]
+                                            (
+                                            \stop-single-grace
+
+                                        }
+
+
+                                        \set stemLeftBeamCount = 1
+                                        \set stemRightBeamCount = 1
+                                        \afterGrace
+                                        aqf''8
+                                        )
+                                        [
+                                        {
+
+                                            \start-multi-grace
+                                            \once \override Beam.positions = #'(14 . 14)
+                                            gqs'''16
+                                            [
+                                            (
+
+                                            \once \override Flag.stencil = ##f
+                                            d'''16
+                                            ]
+                                            \stop-multi-grace
+
+                                        }
+
+
+                                        c'''8
+                                        )
+                                        ~
 
                                     }
-
-
-                                    \afterGrace
-                                    aqf''16
-                                    )
-                                    {
-
-                                        \start-multi-grace
-                                        \once \override Beam.positions = #'(14 . 14)
-                                        gqs'''16
-                                        [
-                                        (
-
-                                        \once \override Flag.stencil = ##f
-                                        d'''16
-                                        ]
-                                        \stop-multi-grace
-
-                                    }
-
-
-                                    c'''16
-                                    )
-                                    ~
 
                                 }
 
@@ -1598,10 +1626,8 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 24]
-                                    \tweak color #blue
                                     c'''8
 
-                                    \tweak color #blue
                                     gqs'''16.
                                     )
                                     ~
@@ -1624,7 +1650,6 @@
                                     }
 
 
-                                    \tweak color #blue
                                     eqf''16
                                     )
                                     ~
@@ -1662,7 +1687,6 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 25]
                                     \afterGrace
-                                    \tweak color #blue
                                     dqf''8
                                     )
                                     ~
@@ -1750,7 +1774,6 @@
 
                                     \set stemLeftBeamCount = 2
                                     \set stemRightBeamCount = 2
-                                    \tweak color #blue
                                     gqf''8.
                                     )
                                     ]
@@ -1765,7 +1788,6 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 26]
                                     \afterGrace
-                                    \tweak color #blue
                                     eqs''4.
                                     ~
                                     {
@@ -1844,11 +1866,9 @@
 
                                     gqf'''16
 
-                                    \tweak color #blue
                                     fqs''8.
                                     ~
 
-                                    \tweak color #blue
                                     f''8
                                     ~
 
