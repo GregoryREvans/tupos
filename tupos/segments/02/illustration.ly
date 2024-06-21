@@ -19,13 +19,20 @@
                   %! COMMENT_MEASURE_NUMBERS
                   %! evans.SegmentMaker.comment_measure_numbers()
                 % [Global Context measure 1]
-                \tempo 4=80
+                \tempo 4=70
                   %! scaling time signatures
                 #(ly:expect-warning "strange time signature found")
                   %! scaling time signatures
                 \time 3/5
                 \mark \markup \bold {  }
                 s1 * 3/5
+                ^ \markup {
+                  \raise #11 \with-dimensions-from \null
+                  \override #'(font-size . 3)
+                  \concat {
+                      \abjad-metronome-mark-markup #2 #0 #1 #"70"
+                  }
+                }
 
                   %! COMMENT_MEASURE_NUMBERS
                   %! evans.SegmentMaker.comment_measure_numbers()
@@ -291,7 +298,7 @@
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(2)
                                           %! baca.hairpin()
-                                        \ffff
+                                        \mp
                                         [
                                           %! SPANNER_START
                                           %! baca.PiecewiseCommand._call(2)
@@ -438,18 +445,26 @@
                                     % [piccolo voice measure 3]
                                     fs''16
                                     - \accent
+                                    \f
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     d'''16
 
                                     g'''16
+                                    \!
                                     ]
 
                                     e''16
                                     - \accent
+                                    \ff
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     ef'''16
+                                    \!
                                     ]
 
                                 }
@@ -459,7 +474,10 @@
 
                                     a'8
                                     - \accent
+                                    \fff
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     g''8
 
@@ -482,12 +500,16 @@
                                         ef'''8
 
                                         f'''8
+                                        \!
                                         ]
 
                                     }
 
                                     a'4
                                     - \accent
+                                    \mp
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     e''4
 
@@ -504,26 +526,35 @@
                                     [
 
                                     ef'''16
+                                    \!
                                     ]
 
                                     a'16
                                     - \accent
+                                    \mf
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     b'16
 
                                     af''16
 
                                     cs'''16
+                                    \!
                                     ]
 
                                     a'8
                                     - \accent
+                                    \p
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     af''8
 
                                     cs'''8
+                                    \!
                                     ]
 
                                 }
@@ -537,29 +568,40 @@
                                     % [piccolo voice measure 6]
                                     bf'32
                                     - \accent
+                                    \mp
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     a''32
 
                                     b''32
 
                                     d'''32
+                                    \!
                                     ]
 
                                     a'16
                                     - \accent
+                                    \ff
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     cs''16
 
                                     c'''16
 
                                     d'''16
+                                    \!
                                     ]
 
                                     af'8
                                     - \accent
+                                    \mf
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     fs''8
 
@@ -582,6 +624,7 @@
                                         bf''2
 
                                         f'''2
+                                        \!
 
                                     }
 
@@ -602,7 +645,7 @@
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(2)
                                           %! baca.hairpin()
-                                        \ffff
+                                        \fff
                                         [
                                           %! SPANNER_START
                                           %! baca.PiecewiseCommand._call(2)
@@ -708,7 +751,9 @@
                                         % [piccolo voice measure 9]
                                         a'''8
                                         - \accent
+                                        \f
                                         [
+                                        \<
 
                                         c'''8
 
@@ -722,6 +767,7 @@
                                         cs'''8
 
                                         d''8
+                                        \fff
 
                                     }
 
@@ -735,7 +781,9 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 10]
                                     c''16
+                                    \ff
                                     ]
+                                    \>
 
                                     fs'''16
                                     - \accent
@@ -744,11 +792,15 @@
                                     f'''16
 
                                     g''16
+                                    \mp
                                     ]
 
                                     b'''16
                                     - \accent
+                                    \fff
                                     [
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     c'''16
 
@@ -777,6 +829,7 @@
                                     ~
 
                                     c''8
+                                    \!
 
                                 }
 
@@ -799,12 +852,8 @@
                                               %! SPANNER_STOP
                                               %! baca.PiecewiseCommand._call(2)
                                               %! baca.hairpin()
-                                            \ffff
+                                            \mp
                                             [
-                                              %! SPANNER_START
-                                              %! baca.PiecewiseCommand._call(2)
-                                              %! baca.hairpin()
-                                            - \tweak stencil #constante-hairpin
                                               %! SPANNER_START
                                               %! baca.PiecewiseCommand._call(2)
                                               %! baca.hairpin()
@@ -969,7 +1018,7 @@
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(3)
                                           %! baca.hairpin()
-                                        \!
+                                        \ff
 
                                     }
 
@@ -980,7 +1029,9 @@
                                 % [piccolo voice measure 14]
                                 cs''8
                                 - \accent
+                                \mf
                                 [
+                                \<
 
                                 ef''8
 
@@ -1010,8 +1061,11 @@
                                     [
 
                                     cs''8
+                                    \ff
 
                                     c'''8
+                                    \f
+                                    \p
                                     ]
 
                                 }
@@ -1028,15 +1082,11 @@
                                       %! SPANNER_STOP
                                       %! baca.PiecewiseCommand._call(2)
                                       %! baca.hairpin()
-                                    \ffff
+                                    \ff
                                       %! SPANNER_START
                                       %! baca.PiecewiseCommand._call(2)
                                       %! baca.hairpin()
-                                    - \tweak stencil #constante-hairpin
-                                      %! SPANNER_START
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    \<
+                                    \>
 
                                     f'''8
                                     - \staccatissimo
@@ -1067,7 +1117,7 @@
                                       %! SPANNER_STOP
                                       %! baca.PiecewiseCommand._call(3)
                                       %! baca.hairpin()
-                                    \!
+                                    \mf
 
                                 }
 
@@ -1084,7 +1134,9 @@
                                         % [piccolo voice measure 17]
                                         bf'''8
                                         - \accent
+                                        \f
                                         [
+                                        \>
 
                                         ef'''8
 
@@ -1152,11 +1204,14 @@
                                     ef''8
 
                                     d''8
+                                    \mp
                                     ]
 
                                     g'''8
                                     - \accent
+                                    \pp
                                     [
+                                    \<
 
                                     cs'''8
 
@@ -1165,6 +1220,7 @@
                                     e''8
 
                                     cs''8
+                                    \mf
                                     ]
 
                                 }
@@ -1181,6 +1237,14 @@
                                         % [piccolo voice measure 21]
                                         d'''64
                                         - \staccatissimo
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \fff
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \>
 
                                         r64
 
@@ -1188,14 +1252,6 @@
 
                                         d'''64
                                         - \staccatissimo
-                                          %! SPANNER_STOP
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \pppp
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \<
 
                                         g''64
                                         - \staccatissimo
@@ -1232,19 +1288,7 @@
 
                                     c'64
                                     - \staccatissimo
-                                      %! SPANNER_STOP
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    \ffff
                                     [
-                                      %! SPANNER_START
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    - \tweak stencil #constante-hairpin
-                                      %! SPANNER_START
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    \<
 
                                     c'64
                                     - \staccatissimo
@@ -1271,19 +1315,7 @@
 
                                     e'64
                                     - \staccatissimo
-                                      %! SPANNER_STOP
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    \ff
                                     [
-                                      %! SPANNER_START
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    - \tweak stencil #constante-hairpin
-                                      %! SPANNER_START
-                                      %! baca.PiecewiseCommand._call(2)
-                                      %! baca.hairpin()
-                                    \<
 
                                     e'64
                                     - \staccatissimo
@@ -1336,15 +1368,7 @@
 
                                         cs''16
                                         - \staccatissimo
-                                          %! SPANNER_STOP
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \mf
                                         [
-                                          %! SPANNER_START
-                                          %! baca.PiecewiseCommand._call(2)
-                                          %! baca.hairpin()
-                                        \<
 
                                         cs''16
                                         - \staccatissimo
@@ -1390,7 +1414,7 @@
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(3)
                                           %! baca.hairpin()
-                                        \f
+                                        \pp
 
                                         r16
 
@@ -1413,6 +1437,8 @@
                                         % [piccolo voice measure 23]
                                         c''4
                                         - \accent
+                                        \ff
+                                        \>
 
                                         f''4
 
@@ -1476,6 +1502,7 @@
                                         [
 
                                         cs''16
+                                        \p
                                         ]
 
                                     }
@@ -1496,12 +1523,12 @@
                                           %! SPANNER_STOP
                                           %! baca.PiecewiseCommand._call(2)
                                           %! baca.hairpin()
-                                        \pppp
+                                        \ffff
                                         [
                                           %! SPANNER_START
                                           %! baca.PiecewiseCommand._call(2)
                                           %! baca.hairpin()
-                                        \<
+                                        \>
 
                                         ef''16
                                         - \staccatissimo
@@ -1771,7 +1798,7 @@
                                               %! SPANNER_STOP
                                               %! baca.PiecewiseCommand._call(3)
                                               %! baca.hairpin()
-                                            \ffff
+                                            \pppp
                                             ]
 
                                         }

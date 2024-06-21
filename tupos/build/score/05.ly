@@ -13,6 +13,13 @@
                 \time 2/5
                 \mark \markup \bold {  }
                 s1 * 2/5
+                ^ \markup {
+                  \raise #6 \with-dimensions-from \null
+                  \override #'(font-size . 3)
+                  \concat {
+                      \abjad-metronome-mark-markup #2 #0 #1 #"80"
+                  }
+                }
 
                   %! COMMENT_MEASURE_NUMBERS
                   %! evans.SegmentMaker.comment_measure_numbers()
@@ -285,11 +292,16 @@
 
                                     r16
 
+                                    \crescTextCresc
+                                    \set crescendoText = \markup { \italic { cresc. poco a poco} }
                                     gqf''16
+                                    \ppp
                                     [
+                                    \<
 
                                     eqs'''8.
                                     ~
+                                    \startTrillSpan
 
                                     \set stemLeftBeamCount = 2
                                     \set stemRightBeamCount = 2
@@ -301,6 +313,7 @@
                                         \start-multi-grace
                                         \once \override Beam.positions = #'(14 . 14)
                                         c''16
+                                        \stopTrillSpan
                                         [
                                         (
 
@@ -328,6 +341,7 @@
                                         f'''2.
                                         )
                                         ~
+                                        \startTrillSpan
                                         {
 
                                             \start-single-grace
@@ -342,6 +356,7 @@
                                             [
 
                                             g''!16
+                                            \stopTrillSpan
                                             ]
                                             (
                                             \stop-single-grace
@@ -351,9 +366,12 @@
 
                                         gqf'''4
                                         )
+                                        \startTrillSpan
 
                                         \afterGrace
                                         bqf'4
+                                        \stopTrillSpan
+                                        \startTrillSpan
                                         {
 
                                             \start-single-grace
@@ -365,6 +383,7 @@
                                             \once \override Stem.stencil = ##f
                                             \tweak X-extent #'(0 . 0)
                                             cs'''16
+                                            \stopTrillSpan
                                             [
 
                                             cs'''!16
@@ -455,6 +474,7 @@
                                         fqs''4
                                         )
                                         ~
+                                        \startTrillSpan
 
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
@@ -472,6 +492,7 @@
                                             \once \override Stem.stencil = ##f
                                             \tweak X-extent #'(0 . 0)
                                             cs'''16
+                                            \stopTrillSpan
                                             [
 
                                             cs'''!16
@@ -523,8 +544,10 @@
 
                                     e'''8
                                     ~
+                                    \startTrillSpan
 
                                     ef''8.
+                                    \stopTrillSpan
                                     ~
 
                                     af''16
@@ -533,6 +556,7 @@
                                     \set stemRightBeamCount = 1
                                     \afterGrace
                                     g'''8
+                                    \stopTrillSpan
                                     ]
                                     ~
                                     {
@@ -624,9 +648,11 @@
                                         bf'2.
                                         )
                                         ~
+                                        \startTrillSpan
 
                                         \afterGrace
                                         e''2
+                                        \stopTrillSpan
                                         ~
                                         {
 
@@ -642,6 +668,7 @@
                                             [
 
                                             dqf'''!16
+                                            \stopTrillSpan
                                             ]
                                             (
                                             \stop-single-grace
@@ -666,6 +693,7 @@
                                 gqs''32
 
                                 fqs'''16.
+                                - \accent
                                 ~
 
                                 \afterGrace
@@ -727,8 +755,10 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 8]
+                                    \once \override TrillSpanner.staff-padding = 6
                                     \afterGrace
                                     ef'''1
+                                    \startTrillSpan
                                     {
 
                                         \start-single-grace
@@ -740,6 +770,7 @@
                                         \once \override Stem.stencil = ##f
                                         \tweak X-extent #'(0 . 0)
                                         af''16
+                                        \stopTrillSpan
                                         [
 
                                         af''!16
@@ -764,11 +795,16 @@
                                         % [piccolo voice measure 9]
                                         c'''4
                                         )
+                                        \startTrillSpan
 
                                         fs'''4
+                                        \stopTrillSpan
+                                        \startTrillSpan
 
                                         \afterGrace
                                         gqf''4
+                                        \stopTrillSpan
+                                        \startTrillSpan
                                         {
 
                                             \start-single-grace
@@ -780,6 +816,7 @@
                                             \once \override Stem.stencil = ##f
                                             \tweak X-extent #'(0 . 0)
                                             d'''16
+                                            \stopTrillSpan
                                             [
 
                                             d'''!16
@@ -952,6 +989,7 @@
                                 \set stemRightBeamCount = 1
                                 \afterGrace
                                 fs'''8
+                                - \accent
                                 )
                                 [
                                 {
@@ -984,6 +1022,7 @@
                                     \afterGrace
                                     b'8.
                                     ~
+                                    \startTrillSpan
                                     {
 
                                         \start-multi-grace
@@ -994,6 +1033,7 @@
 
                                         \once \override Flag.stencil = ##f
                                         a''16
+                                        \stopTrillSpan
                                         ]
                                         \stop-multi-grace
 
@@ -1003,8 +1043,10 @@
                                     cqs'''8.
                                     )
                                     ~
+                                    \startTrillSpan
 
                                     af'''16
+                                    \stopTrillSpan
 
                                 }
 
@@ -1017,6 +1059,8 @@
                                     % [piccolo voice measure 15]
                                     \afterGrace
                                     ef''8
+                                    - \accent
+                                    \stopTrillSpan
                                     {
 
                                         \start-single-grace
@@ -1039,12 +1083,14 @@
 
 
                                     ef''8
+                                    - \tenuto
                                     )
 
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     \afterGrace
                                     ef'''8
+                                    - \tenuto
                                     ]
                                     {
 
@@ -1078,6 +1124,7 @@
                                     % [piccolo voice measure 16]
                                     ef'''2
                                     )
+                                    \startTrillSpan
 
                                 }
 
@@ -1091,6 +1138,7 @@
                                     \set stemLeftBeamCount = 3
                                     \set stemRightBeamCount = 3
                                     af''32
+                                    \stopTrillSpan
                                     [
 
                                     \afterGrace
@@ -1152,6 +1200,7 @@
                                     af'''32
                                     ]
                                     ~
+                                    \startTrillSpan
 
                                 }
 
@@ -1168,6 +1217,7 @@
                                         \start-multi-grace
                                         \once \override Beam.positions = #'(14 . 14)
                                         f''16
+                                        \stopTrillSpan
                                         [
                                         (
 
@@ -1190,10 +1240,12 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     gqs''8
+                                    - \accent
                                     )
 
                                     a'4
                                     ~
+                                    \startTrillSpan
 
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
@@ -1212,6 +1264,7 @@
                                         \once \override Stem.stencil = ##f
                                         \tweak X-extent #'(0 . 0)
                                         af''16
+                                        \stopTrillSpan
                                         [
 
                                         af''!16
@@ -1238,11 +1291,13 @@
                                         \afterGrace
                                         eqf''4
                                         )
+                                        \startTrillSpan
                                         {
 
                                             \start-multi-grace
                                             \once \override Beam.positions = #'(14 . 14)
                                             af''16
+                                            \stopTrillSpan
                                             [
                                             (
 
@@ -1257,6 +1312,7 @@
                                         aqf'''4
                                         )
                                         ~
+                                        \startTrillSpan
 
                                     }
 
@@ -1283,6 +1339,7 @@
                                             \start-multi-grace
                                             \once \override Beam.positions = #'(14 . 14)
                                             dqs'''16
+                                            \stopTrillSpan
                                             [
                                             (
 
@@ -1364,8 +1421,10 @@
                                         fqs''8.
                                         )
                                         ~
+                                        \startTrillSpan
 
                                         f''8
+                                        \stopTrillSpan
                                         ~
 
                                         \afterGrace
@@ -1381,6 +1440,7 @@
                                             \once \override Stem.stencil = ##f
                                             \tweak X-extent #'(0 . 0)
                                             d'''16
+                                            \stopTrillSpan
                                             [
 
                                             d'''!16
@@ -1476,12 +1536,15 @@
 
 
                                         bqf''8
+                                        - \accent
                                         )
 
                                         ef''8
+                                        - \tenuto
 
                                         \afterGrace
                                         bf'8
+                                        - \tenuto
                                         {
 
                                             \start-multi-grace
@@ -1509,6 +1572,7 @@
                                         \set stemLeftBeamCount = 1
                                         \set stemRightBeamCount = 1
                                         eqf'''8
+                                        - \tenuto
                                         )
                                         ]
 
@@ -1530,6 +1594,7 @@
                                         \afterGrace
                                         af''4.
                                         ~
+                                        \startTrillSpan
                                         {
 
                                             \start-single-grace
@@ -1544,6 +1609,7 @@
                                             [
 
                                             gqs''!16
+                                            \stopTrillSpan
                                             ]
                                             (
                                             \stop-single-grace
@@ -1555,6 +1621,7 @@
                                         g'''4.
                                         )
                                         ~
+                                        \startTrillSpan
                                         {
 
                                             \start-single-grace
@@ -1569,6 +1636,7 @@
                                             [
 
                                             aqs'!16
+                                            \stopTrillSpan
                                             ]
                                             (
                                             \stop-single-grace
@@ -1580,6 +1648,7 @@
                                         \set stemRightBeamCount = 1
                                         \afterGrace
                                         aqf''8
+                                        - \accent
                                         )
                                         [
                                         {
@@ -1601,6 +1670,7 @@
                                         c'''8
                                         )
                                         ~
+                                        \startTrillSpan
 
                                     }
 
@@ -1616,7 +1686,9 @@
                                     c'''8
 
                                     gqs'''16.
+                                    - \accent
                                     )
+                                    \stopTrillSpan
                                     ~
 
                                     \afterGrace
@@ -1765,6 +1837,7 @@
                                     )
                                     ]
                                     ~
+                                    \startTrillSpan
 
                                 }
 
@@ -1776,6 +1849,7 @@
                                     % [piccolo voice measure 26]
                                     \afterGrace
                                     eqs''4.
+                                    \stopTrillSpan
                                     ~
                                     {
 
@@ -1791,6 +1865,7 @@
                                         [
 
                                         f'''!16
+                                        \stopTrillSpan
                                         ]
                                         (
                                         \stop-single-grace
@@ -1801,11 +1876,13 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     gqf''8
+                                    - \accent
                                     )
                                     [
 
                                     \afterGrace
                                     bqf'8
+                                    - \tenuto
                                     {
 
                                         \start-multi-grace
@@ -1855,13 +1932,17 @@
 
                                     fqs''8.
                                     ~
+                                    \startTrillSpan
 
                                     f''8
+                                    \stopTrillSpan
                                     ~
 
                                     eqs'''16
 
                                     e'''16
+                                    \ffff
+                                    \stopTrillSpan
                                     ]
 
                                 }

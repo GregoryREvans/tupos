@@ -11,6 +11,13 @@ import tupos
 
 pitches = evans.PitchHandler(tupos.segment_1_pitches)
 
+
+def slur_by_count(arg, counts):
+    arg = abjad.select.logical_ties(arg)
+    groups = abjad.select.partition_by_counts(arg, counts, cyclic=True, overhang=True)
+    for group in groups:
+        abjad.slur(group)
+
 maker = evans.SegmentMaker(
     instruments=tupos.instruments,
     names=[
@@ -34,6 +41,7 @@ maker = evans.SegmentMaker(
             ),
             pitches,
             tupos.tenuto_stammers,
+            lambda _: slur_by_count(_, tupos.cell_sizes),
         ),
         evans.MusicCommand(
             ("piccolo voice", (12, 16)),
@@ -48,6 +56,11 @@ maker = evans.SegmentMaker(
             pitches,
             tupos.tenuto_stammers,
         ),
+        evans.call(
+            "piccolo voice",
+            evans.ArticulationHandler(["tenuto"], articulation_boolean_vector=[1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1]),
+            evans.select_measures([12, 13, 14, 15]),
+        ),
         evans.MusicCommand(
             ("piccolo voice", (16, 22)),
             tupos.numeric_subdivisions(
@@ -61,6 +74,7 @@ maker = evans.SegmentMaker(
             ),
             pitches,
             tupos.tenuto_stammers,
+            lambda _: slur_by_count(_, [2, 6, 4, 4, 3, 5, 3, 2, 5, 3, 3, 3]),
         ),
         evans.MusicCommand(
             ("piccolo voice", (22, 28)),
@@ -74,6 +88,7 @@ maker = evans.SegmentMaker(
             ),
             pitches,
             tupos.tenuto_stammers,
+            lambda _: slur_by_count(_, [6, 6, 4, 2, 6, 3, 5, 2, 3, 4, 4, 4, 3]),
         ),
         evans.call(
             "piccolo voice",
@@ -138,6 +153,49 @@ maker = evans.SegmentMaker(
                 overhang=True,
             ),
             evans.select_measures([_ for _ in range(26, 28)]),
+        ),
+        ###########
+        evans.call(
+            "piccolo voice",
+            tupos.dynamics_by_tie_counts(
+                [
+                    "p --",
+                    "mp --",
+                    "mf --",
+                    "f --",
+                    "mp --",
+                    "pp --",
+                    "p --",
+                    "ff --",
+                    "p <| f",
+                    "p < f",
+                    "pp < f",
+                    "mp <| ff",
+                    "ppp < ff",
+                    "fff > f",
+                    "fff > mp",
+                    "fff > pp",
+                    "f > ppp",
+
+                    "p --",
+                    "p <| f",
+                    "fff > f",
+
+                    "mp --",
+                    "p < f",
+                    "fff > mp",
+
+                    "mf --",
+                    "pp < f",
+                    "fff > pp",
+
+                    "f --",
+                    "mp <| ff",
+                    "f > ppp",
+                ],
+                tupos.cell_sizes,
+            ),
+            lambda _: _,
         ),
         #
         # evans.call(

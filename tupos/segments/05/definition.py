@@ -65,6 +65,83 @@ maker = evans.SegmentMaker(
             evans.TranspositionHandler([12]),
             lambda _: [abjad.select.leaves(_, pitched=True)[-1]],
         ),
+        evans.call(
+            "piccolo voice",
+            tupos.trill_quarters,
+            lambda _: _,
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.Dynamic("ppp"),
+            lambda _: abjad.select.note(_, 0),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\crescTextCresc", site="before"),
+            lambda _: abjad.select.note(_, 0),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\set crescendoText = \markup { \italic { cresc. poco a poco} }", site="before"),
+            lambda _: abjad.select.note(_, 0),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.StartHairpin("<"),
+            lambda _: abjad.select.note(_, 0),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.Dynamic("ffff"),
+            lambda _: abjad.select.note(_, -1),
+        ),
+        #####
+        # evans.call(
+        #     "piccolo voice",
+        #     evans.annotate_leaves,
+        #     lambda _: _,
+        # ),
+        evans.attach(
+            "piccolo voice",
+            abjad.StopTrillSpan(),
+            lambda _: abjad.select.leaf(_, 36)
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.StopTrillSpan(),
+            lambda _: abjad.select.leaf(_, 50)
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.StopTrillSpan(),
+            lambda _: abjad.select.leaf(_, 100)
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.StopTrillSpan(),
+            lambda _: abjad.select.leaf(_, 150)
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.StopTrillSpan(),
+            lambda _: abjad.select.leaf(_, 212)
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.StopTrillSpan(),
+            lambda _: abjad.select.leaf(_, 231)
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override TrillSpanner.staff-padding = 6", site="before"),
+            lambda _: abjad.select.leaf(_, 27, grace=False, pitched=True),
+        ),
+        #####
+        evans.attach(
+            "Global Context",
+            tupos.literal_mark,
+            lambda _: abjad.select.leaf(_, 0),
+        ),
         evans.attach(
             "Global Context",
             tupos.met,

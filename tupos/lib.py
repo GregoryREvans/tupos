@@ -31,6 +31,52 @@ literal_mark = abjad.LilyPondLiteral(
     site="after",
 )
 
+
+##
+met_70 = abjad.MetronomeMark((1, 4), 70)
+
+# markup met
+
+mark_70 = abjad.MetronomeMark.make_tempo_equation_markup((1, 4), 70)
+
+# markup met
+
+literal_mark_70 = abjad.LilyPondLiteral(
+    [
+        r"^ \markup {",
+        r"  \raise #11 \with-dimensions-from \null",
+        # r"  \override #'(font-size . 5.5)", # score
+        r"  \override #'(font-size . 3)",  # parts
+        r"  \concat {",
+        f"      {mark_70.string[8:]}",
+        r"  }",
+        r"}",
+    ],
+    site="after",
+)
+
+met_60 = abjad.MetronomeMark((1, 4), 60)
+
+# markup met
+
+mark_60 = abjad.MetronomeMark.make_tempo_equation_markup((1, 4), 60)
+
+# markup met
+
+literal_mark_60 = abjad.LilyPondLiteral(
+    [
+        r"^ \markup {",
+        r"  \raise #6 \with-dimensions-from \null",
+        # r"  \override #'(font-size . 5.5)", # score
+        r"  \override #'(font-size . 3)",  # parts
+        r"  \concat {",
+        f"      {mark_60.string[8:]}",
+        r"  }",
+        r"}",
+    ],
+    site="after",
+)
+
 ###
 ###
 ###
@@ -642,6 +688,59 @@ def _make_subdivided_music(
     rmakers.extract_trivial(container)
     music = abjad.mutate.eject_contents(container)
     abjad.mutate.replace(selections, music)
+
+
+def dynamics_by_tie_counts(dyn_list, counts):
+    cyc_dyns = evans.CyclicList(dyn_list, forget=False)
+    def helper_function(components):
+        ties = abjad.select.logical_ties(components)
+        partitions = abjad.select.partition_by_counts(ties, counts, cyclic=True, overhang=True)
+        for partition in partitions:
+            current_dyn = cyc_dyns(r=1)[0]
+            split_dyns = current_dyn.split()
+            if not split_dyns[0].isalpha():
+                split_dyns = ["niente"] + split_dyns
+            if not split_dyns[-1].isalpha():
+                split_dyns = split_dyns + ["niente"]
+            leaves = abjad.select.leaves(partition)
+            if split_dyns[0] != "niente":
+                abjad.attach(abjad.Dynamic(split_dyns[0]), leaves[0])
+            abjad.attach(abjad.StartHairpin(split_dyns[1]), leaves[0])
+            if split_dyns[2] != "niente":
+                abjad.attach(abjad.Dynamic(split_dyns[2]), leaves[-1])
+            else:
+                abjad.attach(abjad.StopHairpin(), leaves[-1]) # leak=True ?
+
+    return helper_function
+
+
+def trill_quarters(arg):
+    ties = abjad.select.logical_ties(arg, pitched=True)
+    larger_ties = [tie for tie in ties if abjad.Duration(1, 4) <= sum([note.written_duration for note in tie])]
+    for tie in larger_ties:
+        abjad.attach(abjad.StartTrillSpan(), tie[0])
+        abjad.attach(abjad.StopTrillSpan(), abjad.get.leaf(tie[-1], 1))
+
+    medium_ties = [tie for tie in ties if abjad.Duration(1, 8) == sum([note.written_duration for note in tie])]
+    medium_groups = abjad.select.group_by_contiguity(medium_ties)
+    for group in medium_groups:
+        for i, tie in enumerate(group):
+            if i == 0:
+                abjad.attach(abjad.Articulation("accent"), tie[0])
+            else:
+                abjad.attach(abjad.Articulation("tenuto"), tie[0])
+
+
+def run_dynamics(dyns):
+    cyc_dyns = evans.CyclicList(dyns, forget=False)
+    def helper_function(arg):
+        runs = abjad.select.runs(arg, grace=False)
+        for run in runs:
+            dyn = cyc_dyns(r=1)[0]
+            dyn = abjad.Dynamic(dyn)
+            abjad.attach(dyn, run[0])
+
+    return helper_function
 
 
 def make_subdivided_music(

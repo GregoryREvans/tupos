@@ -254,27 +254,43 @@
                                 % [piccolo voice measure 1]
                                 d''16
                                 - \accent
+                                \p
                                 [
+                                (
+                                - \tweak stencil #constante-hairpin
+                                \<
 
                                 bf''16
 
                                 ef'''16
+                                \!
+                                )
                                 ]
 
                                 c''16
                                 - \accent
+                                \mp
                                 [
+                                (
+                                - \tweak stencil #constante-hairpin
+                                \<
 
                                 b''16
 
                                 cs'''16
 
                                 g'''16
+                                \!
+                                )
                                 ]
 
                                 f''16
                                 - \accent
+                                \mf
                                 [
+                                (
+                                - \tweak stencil #constante-hairpin
+                                \<
 
                                 \tweak text #tuplet-number::calc-fraction-text
                                 \times 6/5
@@ -288,11 +304,17 @@
                                     a''8
 
                                     e'''8
+                                    \!
+                                    )
                                     ]
 
                                     af'8
                                     - \accent
+                                    \f
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     bf'8
 
@@ -315,22 +337,34 @@
                                         c'''16
 
                                         cs'''16
+                                        \!
+                                        )
                                         ]
 
                                         b'16
                                         - \accent
+                                        \mp
                                         [
+                                        (
+                                        - \tweak stencil #constante-hairpin
+                                        \<
 
                                         f''16
 
                                         g''16
 
                                         fs'''16
+                                        \!
+                                        )
                                         ]
 
                                         ef''16
                                         - \accent
+                                        \pp
                                         [
+                                        (
+                                        - \tweak stencil #constante-hairpin
+                                        \<
 
                                     }
 
@@ -346,29 +380,47 @@
                                     af''16
 
                                     e'''16
+                                    \!
+                                    )
                                     ]
 
                                     ef''16
                                     - \accent
+                                    \p
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     b''16
 
                                     e'''16
+                                    \!
+                                    )
                                     ]
 
                                     cs''16
                                     - \accent
+                                    \ff
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     c'''16
 
                                     d'''16
+                                    \!
+                                    )
                                     ]
 
                                     af'16
                                     - \accent
+                                    \p
                                     [
+                                    (
+                                    - \tweak stencil #abjad-flared-hairpin
+                                    \<
 
                                     fs''16
 
@@ -387,6 +439,8 @@
                                     bf''2
 
                                     f'''2
+                                    \f
+                                    )
 
                                 }
 
@@ -399,18 +453,26 @@
                                     % [piccolo voice measure 6]
                                     a'8
                                     - \accent
+                                    \p
                                     [
+                                    (
+                                    \<
 
                                     c''8
 
                                     af''8
 
                                     cs'''8
+                                    \f
+                                    )
                                     ]
 
                                     b'8
                                     - \accent
+                                    \pp
                                     [
+                                    (
+                                    \<
 
                                     bf''8
 
@@ -426,11 +488,17 @@
                                     c'''16
 
                                     fs'''16
+                                    \f
+                                    )
                                     ]
 
                                     cs''16
                                     - \accent
+                                    \mp
                                     [
+                                    (
+                                    - \tweak stencil #abjad-flared-hairpin
+                                    \<
 
                                     d''16
 
@@ -439,11 +507,16 @@
                                     c'''16
 
                                     g'''16
+                                    \ff
+                                    )
                                     ]
 
                                     a'16
                                     - \accent
+                                    \ppp
                                     [
+                                    (
+                                    \<
 
                                     cs''16
 
@@ -475,9 +548,14 @@
                                     c'''4
 
                                     f'''4
+                                    \ff
+                                    )
 
                                     b'4
                                     - \accent
+                                    \fff
+                                    (
+                                    \>
 
                                 }
 
@@ -494,17 +572,24 @@
                                     c'''16
 
                                     fs'''16
+                                    \f
+                                    )
                                     ]
 
                                     b'16
                                     - \accent
+                                    \fff
                                     [
+                                    (
+                                    \>
 
                                     g''16
 
                                     a''16
 
                                     f'''16
+                                    \mp
+                                    )
                                     ]
 
                                 }
@@ -518,13 +603,18 @@
                                     % [piccolo voice measure 11]
                                     bf'8
                                     - \accent
+                                    \fff
                                     [
+                                    (
+                                    \>
 
                                     e''8
 
                                     ef'''8
 
                                     f'''8
+                                    \pp
+                                    )
                                     ]
 
                                 }
@@ -534,20 +624,29 @@
                                 % [piccolo voice measure 12]
                                 af'8
                                 - \accent
+                                \f
                                 [
+                                (
+                                \>
 
                                 fs''8
+                                )
 
                                   %! COMMENT_MEASURE_NUMBERS
                                   %! evans.SegmentMaker.comment_measure_numbers()
                                 % [piccolo voice measure 13]
                                 g''8
+                                - \tenuto
 
                                 bf''8
+                                - \tenuto
 
                                 f'''8
+                                - \tenuto
 
                                 fs'''8
+                                - \tenuto
+                                \ppp
                                 ]
 
                                 \tweak edge-height #'(0.7 . 0)
@@ -563,22 +662,35 @@
                                         % [piccolo voice measure 14]
                                         d''8
                                         - \accent
+                                        \p
                                         [
+                                        - \tweak stencil #constante-hairpin
+                                        \<
 
                                         a''8
+                                        - \tenuto
 
                                         c'''8
+                                        - \tenuto
+                                        \!
                                         ]
 
                                         a'8
                                         - \accent
+                                        \p
                                         [
+                                        - \tweak stencil #abjad-flared-hairpin
+                                        \<
 
                                         fs''8
+                                        - \tenuto
 
                                         f'''8
+                                        - \tenuto
 
                                         g'''8
+                                        - \tenuto
+                                        \f
                                         ]
 
                                     }
@@ -593,10 +705,14 @@
                                     % [piccolo voice measure 15]
                                     c''2
                                     - \accent
+                                    \fff
+                                    \>
 
                                     bf''2
+                                    - \tenuto
 
                                     e'''2
+                                    - \tenuto
 
                                 }
 
@@ -608,6 +724,8 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 16]
                                     fs'''1
+                                    - \tenuto
+                                    \f
 
                                 }
 
@@ -620,14 +738,23 @@
                                     % [piccolo voice measure 17]
                                     f''8
                                     - \accent
+                                    \mp
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     cs'''8
+                                    \!
+                                    )
                                     ]
 
                                     b'8
                                     - \accent
+                                    \p
                                     [
+                                    (
+                                    \<
 
                                     c''8
 
@@ -641,11 +768,16 @@
                                         d'''16
 
                                         g'''16
+                                        \f
+                                        )
                                         ]
 
                                         f''16
                                         - \accent
+                                        \fff
                                         [
+                                        (
+                                        \>
 
                                         c'''16
                                         ]
@@ -664,9 +796,15 @@
                                     ef'''4
 
                                     g'''4
+                                    \mp
+                                    )
 
                                     e''4
                                     - \accent
+                                    \mf
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     \times 2/3
                                     {
@@ -677,6 +815,8 @@
                                         f'''8
 
                                         fs'''8
+                                        \!
+                                        )
                                         ]
 
                                     }
@@ -692,6 +832,9 @@
                                     % [piccolo voice measure 19]
                                     e''4
                                     - \accent
+                                    \pp
+                                    (
+                                    \<
 
                                     bf''4
 
@@ -708,10 +851,15 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 20]
                                         c'''8
+                                        \f
+                                        )
 
                                         b'8
                                         - \accent
+                                        \fff
                                         [
+                                        (
+                                        \>
 
                                         ef''8
 
@@ -722,11 +870,17 @@
                                     d'''16
 
                                     f'''16
+                                    \pp
+                                    )
                                     ]
 
                                     c''16
                                     - \accent
+                                    \f
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     e''16
 
@@ -734,13 +888,21 @@
                                     {
 
                                         d'''16
+                                        \!
+                                        )
                                         ]
 
                                         bf'16
                                         - \accent
+                                        \mp
                                         [
+                                        (
+                                        - \tweak stencil #abjad-flared-hairpin
+                                        \<
 
                                         ef''16
+                                        \ff
+                                        )
                                         ]
 
                                     }
@@ -759,6 +921,9 @@
                                         % [piccolo voice measure 21]
                                         c''''4
                                         - \accent
+                                        \f
+                                        (
+                                        \>
 
                                         b'''4
 
@@ -770,11 +935,17 @@
                                     g''16
 
                                     f''16
+                                    \ppp
+                                    )
                                     ]
 
                                     fs'''16
                                     - \accent
+                                    \p
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     \times 2/3
                                     {
@@ -782,11 +953,17 @@
                                         a''16
 
                                         e''16
+                                        \!
+                                        )
                                         ]
 
                                         af'''16
                                         - \accent
+                                        \mp
                                         [
+                                        (
+                                        - \tweak stencil #constante-hairpin
+                                        \<
 
                                     }
 
@@ -802,6 +979,8 @@
                                     bf''8
 
                                     d''8
+                                    \!
+                                    )
                                     ]
 
                                     \times 2/3
@@ -809,11 +988,17 @@
 
                                         a'''16
                                         - \accent
+                                        \mf
                                         [
+                                        (
+                                        - \tweak stencil #constante-hairpin
+                                        \<
 
                                         c'''16
 
                                         cs''16
+                                        \!
+                                        )
                                         ]
 
                                     }
@@ -833,7 +1018,11 @@
                                         % [piccolo voice measure 23]
                                         b'16
                                         - \accent
+                                        \f
                                         [
+                                        (
+                                        - \tweak stencil #constante-hairpin
+                                        \<
 
                                         f''16
 
@@ -844,11 +1033,17 @@
                                         ef''16
 
                                         af'16
+                                        \!
+                                        )
                                         ]
 
                                         e''16
                                         - \accent
+                                        \mp
                                         [
+                                        (
+                                        - \tweak stencil #constante-hairpin
+                                        \<
 
                                         ef'''16
 
@@ -870,29 +1065,47 @@
                                     cs''32
 
                                     c''32
+                                    \!
+                                    )
                                     ]
 
                                     d''32
                                     - \accent
+                                    \pp
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     af''32
 
                                     fs''32
 
                                     g'32
+                                    \!
+                                    )
                                     ]
 
                                     bf'32
                                     - \accent
+                                    \p
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                     f'32
+                                    \!
+                                    )
                                     ]
 
                                     a'32
                                     - \accent
+                                    \ff
                                     [
+                                    (
+                                    - \tweak stencil #constante-hairpin
+                                    \<
 
                                 }
 
@@ -916,15 +1129,23 @@
                                         b'16
 
                                         bf'16
+                                        \!
+                                        )
                                         ]
 
                                         c''16
                                         - \accent
+                                        \p
                                         [
+                                        (
+                                        - \tweak stencil #abjad-flared-hairpin
+                                        \<
 
                                         fs''16
 
                                         cs''16
+                                        \f
+                                        )
                                         ]
 
                                     }
@@ -940,7 +1161,10 @@
                                     % [piccolo voice measure 26]
                                     d''8
                                     - \accent
+                                    \p
                                     [
+                                    (
+                                    \<
 
                                     f''8
 
@@ -949,6 +1173,8 @@
                                     g''8
 
                                     a'8
+                                    \f
+                                    )
                                     ]
 
                                 }
@@ -961,29 +1187,45 @@
                                     % [piccolo voice measure 27]
                                     cs'''16
                                     - \accent
+                                    \pp
                                     [
+                                    (
+                                    \<
 
                                     af''16
+                                    \f
+                                    )
                                     ]
 
                                     b'''16
                                     - \accent
+                                    \mp
                                     [
+                                    (
+                                    - \tweak stencil #abjad-flared-hairpin
+                                    \<
 
                                     c'''16
 
                                     f''16
+                                    \ff
+                                    )
                                     ]
 
                                     b'''16
                                     - \accent
+                                    \ppp
                                     [
+                                    (
+                                    \<
 
                                     cs'''16
 
                                     c'''16
 
                                     fs''16
+                                    \ff
+                                    )
                                     ]
 
                                 }
@@ -996,33 +1238,48 @@
                                     % [piccolo voice measure 28]
                                     b'''32
                                     - \accent
+                                    \fff
                                     [
+                                    (
+                                    \>
 
                                     g'''32
 
                                     a''32
 
                                     f''32
+                                    \f
+                                    )
                                     ]
 
                                     bf'''32
                                     - \accent
+                                    \fff
                                     [
+                                    (
+                                    \>
 
                                     e'''32
 
                                     ef'''32
 
                                     f''32
+                                    \mp
+                                    )
                                     ]
 
                                     af'''32
                                     - \accent
+                                    \fff
                                     [
+                                    (
+                                    \>
 
                                     fs'''32
 
                                     g''32
+                                    \pp
+                                    )
                                     ]
 
                                 }

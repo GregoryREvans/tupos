@@ -19,13 +19,20 @@
                   %! COMMENT_MEASURE_NUMBERS
                   %! evans.SegmentMaker.comment_measure_numbers()
                 % [Global Context measure 1]
-                \tempo 4=80
+                \tempo 4=60
                   %! scaling time signatures
                 #(ly:expect-warning "strange time signature found")
                   %! scaling time signatures
                 \time 1/6
                 \mark \markup \bold {  }
                 s1 * 1/6
+                ^ \markup {
+                  \raise #6 \with-dimensions-from \null
+                  \override #'(font-size . 3)
+                  \concat {
+                      \abjad-metronome-mark-markup #2 #0 #1 #"60"
+                  }
+                }
 
                   %! COMMENT_MEASURE_NUMBERS
                   %! evans.SegmentMaker.comment_measure_numbers()
@@ -320,7 +327,16 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 1]
                                     af'32
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \p
                                     [
+                                    (
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \>
 
                                     c'32
 
@@ -329,6 +345,7 @@
                                     bf'32
 
                                     b'32
+                                    )
 
                                     b'32
 
@@ -347,6 +364,11 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     ef'8
+                                    - \accent
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(3)
+                                      %! baca.hairpin()
+                                    \pp
                                     ]
 
                                     r2
@@ -362,9 +384,19 @@
                                     \set stemLeftBeamCount = 3
                                     \set stemRightBeamCount = 3
                                     f'32
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \p
                                     [
+                                    (
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \<
 
                                     e'32
+                                    )
 
                                     e'32
 
@@ -373,6 +405,7 @@
                                     e'32
 
                                     cs'32
+                                    (
 
                                     fs'32
 
@@ -392,18 +425,35 @@
                                     af'32
 
                                     cs'32
+                                    )
 
                                     bf'32
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(3)
+                                      %! baca.hairpin()
+                                    \mp
                                     ]
 
                                     r8.
 
                                     bf'32
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \mf
                                     [
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \>
 
                                     \set stemLeftBeamCount = 3
                                     \set stemRightBeamCount = 3
                                     bf'32
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(3)
+                                      %! baca.hairpin()
+                                    \ppp
                                     ]
 
                                 }
@@ -422,6 +472,8 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     fqs'8
+                                    - \accent
+                                    \mf
 
                                 }
 
@@ -433,8 +485,19 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 6]
                                     bf'4
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \pp
+                                      %! SPANNER_START
+                                      %! baca.PiecewiseCommand._call(2)
+                                      %! baca.hairpin()
+                                    \<
+                                    \startTrillSpan
 
                                     a'4
+                                    \stopTrillSpan
+                                    \startTrillSpan
 
                                 }
 
@@ -451,7 +514,9 @@
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
                                         g'16
+                                        \stopTrillSpan
                                         [
+                                        (
 
                                         f'16
 
@@ -462,6 +527,7 @@
                                         c'16
 
                                         bf'16
+                                        )
 
                                     }
 
@@ -491,6 +557,7 @@
 
                                     fs'4
                                     ~
+                                    \startTrillSpan
 
                                 }
 
@@ -514,6 +581,10 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 10]
                                         fs'8.
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(3)
+                                          %! baca.hairpin()
+                                        \p
 
                                     }
 
@@ -527,11 +598,14 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 11]
                                     eqf''32
+                                    \pp
+                                    \stopTrillSpan
                                     ]
 
                                     r16
 
                                     eqf'32
+                                    \mf
                                     [
 
                                     gqf'''32
@@ -573,11 +647,13 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 12]
                                         fs'16
+                                        \mp
                                         )
 
                                         r16
 
                                         eqs'''16
+                                        \mf
 
                                     }
 
@@ -597,9 +673,19 @@
                                         r8.
 
                                         c'16
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \p
                                         [
+                                        (
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \>
 
                                         af'16
+                                        )
 
                                         af'16
 
@@ -617,12 +703,18 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 14]
                                     af'8
+                                    - \accent
 
                                     fs'8
+                                    - \tenuto
+                                    (
 
                                     d'8
+                                    - \tenuto
 
                                     g'8
+                                    - \tenuto
+                                    )
 
                                 }
 
@@ -634,8 +726,10 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 15]
                                     g'8
+                                    - \tenuto
 
                                     g'8
+                                    - \tenuto
 
                                 }
 
@@ -652,6 +746,7 @@
 
                                     bf'8
                                     ~
+                                    \startTrillSpan
 
                                 }
 
@@ -667,13 +762,26 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 17]
                                         bf'8.
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(3)
+                                          %! baca.hairpin()
+                                        \pp
                                         ]
 
                                         r8.
+                                        \stopTrillSpan
 
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
                                         e'16
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \p
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \<
 
                                     }
 
@@ -687,7 +795,9 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 18]
                                     ef''4
+                                    \f
                                     ~
+                                    \startTrillSpan
 
                                     \set stemLeftBeamCount = 2
                                     \set stemRightBeamCount = 2
@@ -708,12 +818,24 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 19]
                                         b'8
+                                        - \accent
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \mf
+                                        \stopTrillSpan
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \>
 
                                         b'8
+                                        - \tenuto
 
                                         \set stemLeftBeamCount = 1
                                         \set stemRightBeamCount = 1
                                         b'8
+                                        - \tenuto
                                         ]
 
                                     }
@@ -725,6 +847,11 @@
                                 % [piccolo voice measure 20]
                                 \afterGrace
                                 c'4
+                                  %! SPANNER_STOP
+                                  %! baca.PiecewiseCommand._call(3)
+                                  %! baca.hairpin()
+                                \ppp
+                                \startTrillSpan
                                 {
 
                                     \start-single-grace
@@ -736,6 +863,7 @@
                                     \once \override Stem.stencil = ##f
                                     \tweak X-extent #'(0 . 0)
                                     eqs''16
+                                    \stopTrillSpan
                                     [
 
                                     eqs''!16
@@ -758,18 +886,22 @@
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
                                         eqs'16
+                                        \mp
 
                                         r8
 
                                         e'16
+                                        \mf
 
                                         r16
 
                                         f'16
+                                        \p
 
                                         r16
 
                                         g'''16
+                                        \pp
 
                                         \afterGrace
                                         r8
@@ -812,6 +944,8 @@
                                         \set stemLeftBeamCount = 1
                                         \set stemRightBeamCount = 1
                                         f''8
+                                        - \accent
+                                        \mp
                                         )
 
                                         r4
@@ -819,6 +953,8 @@
                                         \set stemLeftBeamCount = 1
                                         \set stemRightBeamCount = 1
                                         g'8
+                                        - \accent
+                                        \mf
 
                                     }
 
@@ -833,6 +969,7 @@
                                     r16
 
                                     e''32
+                                    \p
 
                                     \afterGrace
                                     r32
@@ -858,6 +995,7 @@
 
 
                                     g''32
+                                    \mf
                                     )
                                     [
 
@@ -884,7 +1022,16 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 24]
                                         d'16
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \pp
                                         [
+                                        (
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \<
 
                                         e'16
 
@@ -893,6 +1040,7 @@
                                         af'16
 
                                         a'16
+                                        )
 
                                         b'16
 
@@ -905,6 +1053,10 @@
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
                                         g'16
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(3)
+                                          %! baca.hairpin()
+                                        \p
                                         ]
 
                                     }
@@ -923,8 +1075,12 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 25]
                                         gqf'4
+                                        \p
+                                        \startTrillSpan
 
                                         fs'''4
+                                        \stopTrillSpan
+                                        \startTrillSpan
 
                                     }
 
@@ -940,12 +1096,15 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     r8
+                                    \stopTrillSpan
 
                                     d''16
+                                    \pp
 
                                     r16
 
                                     dqs'16
+                                    \mf
 
                                     r16
 
@@ -965,6 +1124,7 @@
 
                                         \afterGrace
                                         ef'''16
+                                        \pp
                                         [
                                         {
 
@@ -1017,6 +1177,7 @@
 
 
                                         aqf'''16
+                                        \mf
                                         )
 
                                         \set stemLeftBeamCount = 1
@@ -1052,7 +1213,9 @@
                                   %! evans.SegmentMaker.comment_measure_numbers()
                                 % [piccolo voice measure 28]
                                 fs''4
+                                \mp
                                 )
+                                \startTrillSpan
 
                                 \tweak edge-height #'(0.7 . 0)
                                 \times 2/3
@@ -1067,13 +1230,25 @@
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
                                         g'16
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \p
+                                        )
+                                        \stopTrillSpan
                                         [
+                                        (
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \>
 
                                         g'16
 
                                         g'16
 
                                         b'16
+                                        (
 
                                         ef'16
 
@@ -1087,8 +1262,10 @@
                                   %! evans.SegmentMaker.comment_measure_numbers()
                                 % [piccolo voice measure 30]
                                 a'8
+                                - \accent
 
                                 d'8
+                                - \tenuto
 
                                 \tweak edge-height #'(0.7 . 0)
                                 \times 2/3
@@ -1101,10 +1278,15 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 31]
                                         f'16
+                                        )
 
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
                                         af'16
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(3)
+                                          %! baca.hairpin()
+                                        \pp
                                         ]
 
                                         r4
@@ -1112,11 +1294,21 @@
                                         \set stemLeftBeamCount = 2
                                         \set stemRightBeamCount = 2
                                         e'16
+                                          %! SPANNER_STOP
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \p
                                         [
+                                        (
+                                          %! SPANNER_START
+                                          %! baca.PiecewiseCommand._call(2)
+                                          %! baca.hairpin()
+                                        \<
 
                                         b'16
 
                                         cs'16
+                                        )
 
                                         cs'16
 
@@ -1139,6 +1331,7 @@
                                         cs'32
 
                                         c'32
+                                        (
 
                                         bf'32
 
@@ -1149,6 +1342,7 @@
                                         e'32
 
                                         ef'32
+                                        )
 
                                         ef'32
 
@@ -1173,6 +1367,10 @@
                                     c'32
 
                                     f'32
+                                      %! SPANNER_STOP
+                                      %! baca.PiecewiseCommand._call(3)
+                                      %! baca.hairpin()
+                                    \mp
                                     ]
 
                                 }

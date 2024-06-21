@@ -39,7 +39,6 @@ maker = evans.SegmentMaker(
             stutter_handler,
             evans.ArticulationHandler(["staccatissimo"]),
             lambda _: [abjad.beam(group) for group in abjad.select.group_by_pitch(_)],
-            lambda _: baca.hairpin(abjad.select.notes(_), "ffff -- niente"),
         ),
         evans.MusicCommand(
             ("piccolo voice", [2, 3, 4, 5, 6]),
@@ -85,7 +84,6 @@ maker = evans.SegmentMaker(
             stutter_handler,
             evans.ArticulationHandler(["staccatissimo"]),
             lambda _: [abjad.beam(group) for group in abjad.select.group_by_pitch(_)],
-            lambda _: baca.hairpin(abjad.select.notes(_), "ffff -- niente"),
         ),
         evans.MusicCommand(
             ("piccolo voice", [8, 9, 10]),
@@ -130,7 +128,6 @@ maker = evans.SegmentMaker(
             stutter_handler,
             evans.ArticulationHandler(["staccatissimo"]),
             lambda _: [abjad.beam(group) for group in abjad.select.group_by_pitch(_)],
-            lambda _: baca.hairpin(abjad.select.notes(_), "ffff -- niente"),
         ),
         evans.MusicCommand(
             ("piccolo voice", [13, 14]),
@@ -177,7 +174,6 @@ maker = evans.SegmentMaker(
             stutter_handler,
             evans.ArticulationHandler(["staccatissimo"]),
             lambda _: [abjad.beam(group) for group in abjad.select.group_by_pitch(_)],
-            lambda _: baca.hairpin(abjad.select.notes(_), "ffff -- niente"),
         ),
         evans.MusicCommand(
             ("piccolo voice", [16, 17, 18, 19]),
@@ -222,7 +218,6 @@ maker = evans.SegmentMaker(
             stutter_handler,
             evans.ArticulationHandler(["staccatissimo"]),
             lambda _: [abjad.beam(group) for group in abjad.select.group_by_pitch(_)],
-            lambda _: baca.hairpin(_, "pppp < ffff -- ff -- mf < f --", pieces=lambda _: [run for run in abjad.select.runs(_) if 1 < len(run)]),
         ),
         evans.MusicCommand(
             ("piccolo voice", [22, 23, 24]),
@@ -267,11 +262,148 @@ maker = evans.SegmentMaker(
             stutter_handler,
             evans.ArticulationHandler(["staccatissimo"]),
             lambda _: [abjad.beam(group) for group in abjad.select.group_by_pitch(_)],
-            lambda _: baca.hairpin(_, "pppp < ffff"),
+        ),
+        ####
+        evans.call(
+            "piccolo voice",
+            lambda _: baca.hairpin(_, "mp -- niente", pieces=lambda _: abjad.select.group(abjad.select.notes(_))),
+            evans.select_measures([0, 1]),
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.dynamics_by_tie_counts(
+                [
+                    "f --",
+                    "ff --",
+                    "fff --",
+                    "mp --",
+                    "mf --",
+                    "p --",
+                    "mp --",
+                    "ff --",
+                    "mf --",
+                ],
+                [3, 2, 6, 4, 4, 3, 4, 4, 5],
+            ),
+            evans.select_measures([2, 3, 4, 5, 6]),
+        ),
+        evans.call(
+            "piccolo voice",
+            lambda _: baca.hairpin(_, "fff -- niente", pieces=lambda _: abjad.select.group(abjad.select.notes(_))),
+            evans.select_measures([7]),
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.dynamics_by_tie_counts(
+                [
+                    "f < fff",
+                    "ff > mp",
+                    "fff --",
+                    "mp > p",
+                    "mf > p",
+                    "p <| ff",
+                    "mp < f",
+                    "ff > p",
+                    "mf > p",
+                ],
+                [_ * 2 for _ in [3, 2, 6, 4, 4, 3, 4, 4, 5]],
+            ),
+            evans.select_measures([8, 9, 10]),
+        ),
+        evans.call(
+            "piccolo voice",
+            lambda _: baca.hairpin(_, "mp < ff", pieces=lambda _: abjad.select.group(abjad.select.notes(_))),
+            evans.select_measures([11, 12]),
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.dynamics_by_tie_counts(
+                [
+                    "mf < ff",
+                    "f > p",
+                    "ff --",
+                    "p > pp",
+                    "mp > pp",
+                    "pp <| f",
+                    "p < mf",
+                    "f > pp",
+                    "mp > pp",
+                ],
+                [_ * 3 for _ in [3, 2, 6, 4, 4, 3, 4, 4, 5]],
+            ),
+            evans.select_measures([13, 14]),
+        ),
+        evans.call(
+            "piccolo voice",
+            lambda _: baca.hairpin(_, "ff > mf", pieces=lambda _: abjad.select.group(abjad.select.notes(_))),
+            evans.select_measures([15]),
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.dynamics_by_tie_counts(
+                [
+                    "f > mp",
+                    "pp < mf",
+                    "f --",
+                    "ppp < pp",
+                    "ppp < p",
+                    "mf > ppp",
+                    "mp > pp",
+                    "ppp < mf",
+                    "ppp < p",
+                ],
+                [_ * 4 for _ in [3, 2, 6, 4, 4, 3, 4, 4, 5]],
+            ),
+            evans.select_measures([16, 17, 18, 19]),
+        ),
+        evans.call(
+            "piccolo voice",
+            lambda _: baca.hairpin(_, "fff > pp", pieces=lambda _: abjad.select.group(abjad.select.notes(_))),
+            evans.select_measures([20, 21]),
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.dynamics_by_tie_counts(
+                [
+                    "ff > p",
+                    "ppp < f",
+                    "ff --",
+                    "pppp < p",
+                    "pppp < mp",
+                    "f > pppp",
+                    "mf > ppp",
+                    "pppp < f",
+                    "pppp < mp",
+                ],
+                [_ * 5 for _ in [3, 2, 6, 4, 4, 3, 4, 4, 5]],
+            ),
+            evans.select_measures([22, 23, 24]),
+        ),
+        evans.call(
+            "piccolo voice",
+            lambda _: baca.hairpin(_, "ffff > pppp", pieces=lambda _: abjad.select.group(abjad.select.notes(_))),
+            evans.select_measures([25, 26, 27]),
+        ),
+        ####
+        # evans.call(
+        #     "piccolo voice",
+        #     evans.annotate_leaves,
+        #     lambda _: _,
+        # ),
+        evans.detach(
+            "piccolo voice",
+            abjad.StartHairpin(">"),
+            lambda _: abjad.select.leaf(_, 148),
+        ),
+        ####
+        evans.attach(
+            "Global Context",
+            tupos.literal_mark_70,
+            lambda _: abjad.select.leaf(_, 0),
         ),
         evans.attach(
             "Global Context",
-            tupos.met,
+            tupos.met_70,
             lambda _: abjad.select.leaf(_, 0),
         ),
     ],

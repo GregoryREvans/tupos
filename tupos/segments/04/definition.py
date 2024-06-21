@@ -9,6 +9,46 @@ from abjadext import rmakers
 
 import tupos
 
+
+def slur_non_stutters(arg):
+    notes = abjad.select.notes(arg)
+    out = []
+    final_out = []
+    temp = [notes[0]]
+    for i, note in enumerate(notes[1:]):
+        if note.written_pitch != notes[i - 1].written_pitch:
+            temp.append(note)
+        else:
+            if len(temp) != 0:
+                out.append(temp)
+                temp = []
+    for group in out:
+        contiguities = abjad.select.group_by_contiguity(group)
+        for contiguity in contiguities:
+            final_out.append(contiguity)
+    for group in final_out:
+        notes = abjad.select.notes(group)
+        for run in abjad.select.runs(notes):
+            if 1 < len(run):
+                abjad.attach(abjad.StartSlur(), run[0])
+                abjad.attach(abjad.StopSlur(), abjad.get.leaf(run[-1], -1))
+
+def short_notes(arg):
+    notes = abjad.select.notes(arg, grace=False)
+    shorter = [note for note in notes if note.written_duration < abjad.Duration(1, 8)]
+    groups = abjad.select.group_by_contiguity(shorter)
+    return groups
+
+
+def dyn_groups(dyns):
+
+    cyc_dyns = evans.CyclicList(dyns, forget=False)
+    def helper_function(arg):
+        for group in abjad.select.runs(arg, grace=False):
+            baca.hairpin(group, cyc_dyns(r=1)[0])
+
+    return helper_function
+
 maker = evans.SegmentMaker(
     instruments=tupos.instruments,
     names=[
@@ -57,6 +97,54 @@ maker = evans.SegmentMaker(
             tupos.slur_after_graces,
             tupos.tenuto_stammers,
         ),
+        ####
+        evans.call(
+            "piccolo voice",
+            dyn_groups(["p > pp", "p < mp", "mf > ppp", "pp < p"]),
+            evans.select_measures([0, 1, 2, 3, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 18, 19, 23, 28, 29, 30, 31, 32]),
+        ),
+        evans.call(
+            "piccolo voice",
+            slur_non_stutters,
+            evans.select_measures([0]),
+        ),
+        evans.call(
+            "piccolo voice",
+            slur_non_stutters,
+            evans.select_measures([2, 3]),
+        ),
+        evans.call(
+            "piccolo voice",
+            slur_non_stutters,
+            evans.select_measures([6, 7]),
+        ),
+        evans.call(
+            "piccolo voice",
+            slur_non_stutters,
+            evans.select_measures([12, 13, 14, 15]),
+        ),
+        evans.call(
+            "piccolo voice",
+            slur_non_stutters,
+            evans.select_measures([23, 24]),
+        ),
+        evans.call(
+            "piccolo voice",
+            slur_non_stutters,
+            evans.select_measures([28, 29, 30, 31, 32]),
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.trill_quarters,
+            lambda _: _,
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.run_dynamics(
+                ["mf", "pp", "mf", "mp", "mf", "f", "mp", "mf", "p", "pp", "mp", "mf", "p", "mf", "p", "pp"]),
+            evans.select_measures([4, 10, 11, 17, 20, 21, 22, 24, 25, 26, 27]),
+        ),
+        ####
         evans.call(
             "piccolo voice",
             lambda _: evans.long_beam(
@@ -66,7 +154,12 @@ maker = evans.SegmentMaker(
         ),
         evans.attach(
             "Global Context",
-            tupos.met,
+            tupos.literal_mark_60,
+            lambda _: abjad.select.leaf(_, 0),
+        ),
+        evans.attach(
+            "Global Context",
+            tupos.met_60,
             lambda _: abjad.select.leaf(_, 0),
         ),
     ],

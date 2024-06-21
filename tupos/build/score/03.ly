@@ -13,6 +13,13 @@
                 \time 1/6
                 \mark \markup \bold {  }
                 s1 * 1/6
+                ^ \markup {
+                  \raise #6 \with-dimensions-from \null
+                  \override #'(font-size . 3)
+                  \concat {
+                      \abjad-metronome-mark-markup #2 #0 #1 #"80"
+                  }
+                }
 
                   %! COMMENT_MEASURE_NUMBERS
                   %! evans.SegmentMaker.comment_measure_numbers()
@@ -266,6 +273,7 @@
                                     r16.
 
                                     a'32
+                                    \pp
                                     [
 
                                     g'''32
@@ -274,6 +282,7 @@
                                     r16
 
                                     f'32
+                                    \p
                                     [
 
                                 }
@@ -311,6 +320,7 @@
 
 
                                     ef'''16
+                                    \mf
                                     )
 
                                     r16
@@ -328,6 +338,7 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 3]
                                         g''16
+                                        \p
                                         [
 
                                         af'''16
@@ -338,10 +349,12 @@
                                         r16
 
                                         g'16
+                                        \ppp
 
                                         r8.
 
                                         fs'16
+                                        \mf
                                         [
 
                                     }
@@ -363,7 +376,9 @@
 
                                         r32
 
+                                        \once \override DynamicLineSpanner.staff-padding = 8.5
                                         af'32
+                                        \f
                                         [
 
                                         e'''32
@@ -371,11 +386,15 @@
 
                                         r32
 
+                                        \once \override DynamicLineSpanner.staff-padding = 8.5
                                         d'32
+                                        \fff
 
                                         r16
 
+                                        \once \override DynamicLineSpanner.staff-padding = 8.5
                                         c''32
+                                        \mp
                                         [
 
                                         fs'''32
@@ -412,6 +431,7 @@
                                   %! evans.SegmentMaker.comment_measure_numbers()
                                 % [piccolo voice measure 5]
                                 c'''16
+                                \pp
                                 )
 
                                 \afterGrace
@@ -443,10 +463,12 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 6]
                                     cs''16
+                                    \f
 
                                     r8.
 
                                     e'16
+                                    \p
 
                                     r16
 
@@ -463,10 +485,12 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 7]
                                         e''16
+                                        \fff
 
                                         r16
 
                                         b'16
+                                        \mf
                                         [
 
                                         bf'''16
@@ -475,6 +499,7 @@
                                         r8.
 
                                         ef'16
+                                        \mp
 
                                         \set stemLeftBeamCount = 1
                                         \set stemRightBeamCount = 1
@@ -492,6 +517,8 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 8]
                                     bf''4
+                                    \f
+                                    \startTrillSpan
 
                                 }
 
@@ -505,11 +532,15 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     c''8
+                                    - \accent
+                                    \stopTrillSpan
                                     [
 
                                     b'''8
+                                    - \tenuto
 
                                     a'8
+                                    - \tenuto
 
                                 }
 
@@ -547,6 +578,7 @@
 
 
                                     d'''16
+                                    \ppp
                                     )
 
                                     \afterGrace
@@ -584,6 +616,8 @@
                                     \set stemLeftBeamCount = 1
                                     \set stemRightBeamCount = 1
                                     bf'8
+                                    - \accent
+                                    \f
                                     )
 
                                     \afterGrace
@@ -612,6 +646,8 @@
                                 \set stemLeftBeamCount = 1
                                 \set stemRightBeamCount = 1
                                 g'8
+                                - \accent
+                                \mf
                                 )
 
                                 \set stemLeftBeamCount = 1
@@ -645,11 +681,13 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 14]
                                         fs'16
+                                        \mp
 
                                         r16
 
                                         \afterGrace
                                         cs'''16
+                                        \mf
                                         [
                                         {
 
@@ -710,10 +748,13 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 15]
                                     g'''8
+                                    - \accent
+                                    \pp
                                     )
                                     [
 
                                     af''8
+                                    - \tenuto
                                     ]
 
                                     \set stemLeftBeamCount = 1
@@ -743,14 +784,17 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 17]
                                         c''16
+                                        \mf
 
                                         r16
 
                                         cs''16
+                                        \f
 
                                         r8
 
                                         ef'''16
+                                        \fff
                                         [
 
                                         e''16
@@ -759,6 +803,7 @@
                                         r16
 
                                         e'16
+                                        \ff
 
                                         r16
 
@@ -776,6 +821,7 @@
                                     r8
 
                                     b'16
+                                    \f
 
                                     \afterGrace
                                     r8.
@@ -806,10 +852,13 @@
                                   %! evans.SegmentMaker.comment_measure_numbers()
                                 % [piccolo voice measure 19]
                                 ef'8
+                                - \accent
+                                \ppp
                                 )
                                 [
 
                                 a''8
+                                - \tenuto
 
                                 \tweak edge-height #'(0.7 . 0)
                                 \times 2/3
@@ -872,7 +921,9 @@
                                         }
 
 
+                                        \once \override DynamicLineSpanner.staff-padding = 3
                                         e'''32
+                                        \ff
                                         )
                                         [
 
@@ -882,6 +933,7 @@
                                         r32
 
                                         bf'32
+                                        \pp
 
                                         r32
 
@@ -896,6 +948,7 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 21]
                                     g'32
+                                    \p
 
                                     \afterGrace
                                     r8
@@ -922,6 +975,7 @@
 
                                     \afterGrace
                                     fs'''32
+                                    \mf
                                     )
                                     [
                                     {
@@ -965,12 +1019,15 @@
                                           %! evans.SegmentMaker.comment_measure_numbers()
                                         % [piccolo voice measure 22]
                                         bf'''8
+                                        - \accent
 
                                         b''8
+                                        - \tenuto
 
                                         \set stemLeftBeamCount = 1
                                         \set stemRightBeamCount = 1
                                         d'8
+                                        - \tenuto
                                         ]
 
                                         r4
@@ -986,13 +1043,17 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 23]
+                                    \once \override DynamicLineSpanner.staff-padding = 7
                                     \set stemLeftBeamCount = 4
                                     \set stemRightBeamCount = 4
                                     c''64
+                                    \p
 
                                     r64
 
+                                    \once \override DynamicLineSpanner.staff-padding = 7
                                     b'''64
+                                    \ppp
                                     [
 
                                     c''64
@@ -1013,6 +1074,7 @@
                                         cs''16
                                         [
 
+                                        \once \override DynamicLineSpanner.staff-padding = 7
                                         cs''!16
                                         ]
                                         (
@@ -1022,6 +1084,7 @@
 
 
                                     d'''64
+                                    \mf
                                     )
                                     [
 
@@ -1043,6 +1106,7 @@
                                         r32.
 
                                         a'''64
+                                        \f
                                         [
 
                                         e'64
@@ -1072,6 +1136,7 @@
 
 
                                         b'64
+                                        \fff
                                         )
 
                                         \afterGrace
@@ -1098,6 +1163,7 @@
 
 
                                         ef'64
+                                        \mp
                                         )
 
                                     }
@@ -1135,6 +1201,7 @@
 
 
                                     d''16
+                                    \pp
                                     )
                                     [
 
@@ -1144,6 +1211,7 @@
                                     r16
 
                                     a'16
+                                    \f
 
                                     r8
 
@@ -1157,10 +1225,12 @@
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 26]
                                     f'16
+                                    \p
 
                                     r8
 
                                     ef''16
+                                    \fff
 
                                     \afterGrace
                                     r16
@@ -1194,16 +1264,22 @@
                                       %! COMMENT_MEASURE_NUMBERS
                                       %! evans.SegmentMaker.comment_measure_numbers()
                                     % [piccolo voice measure 27]
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     af'''32
+                                    \mf
                                     )
 
                                     r32
 
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     g'32
+                                    \mp
 
                                     r16
 
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     fs'32
+                                    \f
                                     [
 
                                     f'''32
@@ -1211,8 +1287,10 @@
 
                                     r32
 
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     \afterGrace
                                     e'''32
+                                    \ppp
                                     [
                                     {
 
@@ -1249,11 +1327,15 @@
 
                                     r16
 
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     d''16
+                                    \f
 
                                     r16
 
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     d'16
+                                    \mf
 
                                     \afterGrace
                                     r8.
@@ -1278,12 +1360,16 @@
                                     }
 
 
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     f''16
+                                    \mp
                                     )
 
                                     r16
 
+                                    \once \override DynamicLineSpanner.staff-padding = 8
                                     fs'''16
+                                    \mf
 
                                 }
 

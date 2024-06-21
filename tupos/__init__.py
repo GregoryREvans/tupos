@@ -60,6 +60,15 @@ from .lib import (
     return_parent,
     clean_up_rests,
     slur_after_graces,
+    dynamics_by_tie_counts,
+    trill_quarters,
+    run_dynamics,
+    mark_70,
+    literal_mark_70,
+    met_70,
+    mark_60,
+    literal_mark_60,
+    met_60,
 )
 from .materials.instruments import instruments
 from .materials.pitch import (
@@ -179,6 +188,12 @@ __all__ = [
     "make_subdivided_music",
     "mark",
     "met",
+    "mark_70",
+    "literal_mark_70",
+    "met_70",
+    "mark_60",
+    "literal_mark_60",
+    "met_60",
     "multi_stac",
     "multi_trills",
     "numerals",
@@ -246,4 +261,7 @@ __all__ = [
     "pattern_11",
     "rest_pattern_789te",
     "extra_grace_encrustation",
+    "dynamics_by_tie_counts",
+    "trill_quarters",
+    "run_dynamics,"
 ]

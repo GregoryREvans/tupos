@@ -55,10 +55,107 @@ maker = evans.SegmentMaker( # do some work to shift grace notes at the start of 
             ),
             lambda _: _,
         ),
+        evans.call(
+            "piccolo voice",
+            tupos.trill_quarters,
+            lambda _: _,
+        ),
+        evans.call(
+            "piccolo voice",
+            tupos.run_dynamics(["pp", "p", "mf", "p", "ppp", "mf", "f", "fff", "mp", "pp", "f", "p", "fff", "mf", "mp", "f", "ppp", "f", "mf", "mp", "mf", "pp", "mf", "f", "fff", "ff", "f", "ppp", "ff"]),
+            lambda _: _,
+        ),
+        evans.attach(
+            "Global Context",
+            tupos.literal_mark,
+            lambda _: abjad.select.leaf(_, 0),
+        ),
         evans.attach(
             "Global Context",
             tupos.met,
             lambda _: abjad.select.leaf(_, 0),
+        ),
+        # evans.call(
+        #     "piccolo voice",
+        #     evans.annotate_leaves,
+        #     lambda _: _,
+        # ),
+        #####
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8.5", site="before"),
+            lambda _: abjad.select.leaf(_, 20),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8.5", site="before"),
+            lambda _: abjad.select.leaf(_, 23),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8.5", site="before"),
+            lambda _: abjad.select.leaf(_, 25),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 3", site="before"),
+            lambda _: abjad.select.leaf(_, 102),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 7", site="before"),
+            lambda _: abjad.select.leaf(_, 121),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 7", site="before"),
+            lambda _: abjad.select.leaf(_, 123),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 7", site="before"),
+            lambda _: abjad.select.leaf(_, 127),
+        ),
+        ##
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 155),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 157),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 159),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 162),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 167),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 169),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 173),
+        ),
+        evans.attach(
+            "piccolo voice",
+            abjad.LilyPondLiteral(r"\once \override DynamicLineSpanner.staff-padding = 8", site="before"),
+            lambda _: abjad.select.leaf(_, 175),
         ),
     ],
     score_template=tupos.score,
